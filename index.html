@@ -1,28 +1,167 @@
 <!DOCTYPE HTML>
 <!--
-	Baleto
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+	karem
+	greatings
+        the CCA 3.0 license 
 -->
 <html>
 	<head>
-		<title>Baleto</title>
+		<title>BALETO</title>
 		<meta charset="utf-8" />
+                <title>حاسبة المستوى | بليتو</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+                <link rel="stylesheet" href="assets/css/main.css" />
+                <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
-		<!-- Wrapper -->
-			<div id="wrapper" class="fade-in">
+                 
+  <style>
+
+body, #wrapper, #main, .post.featured {
+  background: transparent !important;
+}
+
+
+.post.featured {
+  background: transparent !important;
+}
+
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh; /* علشان تغطي الشاشة */
+  background: url('images/b.png') no-repeat center center fixed;
+  background-size: cover;
+}
+
+
+
+
+
+
+
+    #xp-calculator { /* تم إزالة النقطة من #xp-calculator في CSS الأصلي لديك */
+      direction: rtl;
+      text-align: right;
+      padding: 2rem;
+      background: #1e1e1e;
+      color: #fff;
+      border-radius: 1rem;
+      max-width: 300px;
+      margin: 2rem auto;
+    }
+    #xp-calculator input {
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 15px;
+      background: #2c2c2c;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+    }
+    #xp-calculator button {
+      background: #00ffc8;
+      color: black;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      width: 100%;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .progress-bar {
+      background-color: #444;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 20px;
+      margin-top: 10px;
+    }
+    .progress-fill {
+      background-color: #00ffc8;
+      height: 100%;
+      transition: width 0.4s ease;
+    }
+    table.rank-table {
+      margin: 2rem auto;
+      width: 100%;
+      max-width: 600px;
+      background: #222;
+      border-collapse: collapse;
+      color: #fff;
+    }
+    table.rank-table th, table.rank-table td {
+      border: 1px solid #444;
+      padding: 10px;
+      text-align: center;
+    }
+    table.rank-table th {
+      background: #00ffc8;
+      color: #000;
+    }
+  </style>
+		
+		
+	</head>
+
+<style>
+  #intro {
+    background-image: url('images/1x.gif');
+    background-repeat: no-repeat;
+    background-size: 100%; /* أو auto مثلاً */
+    background-position: 50% -600px;
+    background-color: #004; /* لو حابب تغمق الخلفية */
+    height: 300px; /* طول الجزء اللي فيه الخلفية */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative; /* ضروري علشان ::before */
+    overflow: hidden;
+  }
+
+  #intro::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4); /* طبقة تغميق */
+    z-index: 0;
+  }
+
+  #intro * {
+    position: relative;
+    z-index: 1;
+  }
+</style>
+
+
+
+
+
+
+
+		<style>
+  #wrapper {
+    background: transparent !important;
+  }
+</style>
+
 
 				<!-- Intro -->
 					<div id="intro">
-						<h1>This is<br />
-						Massively</h1>
-						<p>A free, fully responsive HTML5 + CSS3 site template designed by <a href="https://twitter.com/ajlkn">@ajlkn</a> for <a href="https://html5up.net">HTML5 UP</a><br />
-						and released for free under the <a href="https://html5up.net/license">Creative Commons license</a>.</p>
+						<h1><span>ويكي بليتو</span></h1>
+
+						<p>الموقغ مخصص للادوات والمساعدة للاعبين مقاطعة بليتو 
+
+
+                           <a href="https://boleto7.com/" target="_blank" style="display: block; margin-top: 10px; color: green; text-decoration: none;">
+                                      الموقع الرسمي
+                            </a>
+
+ 
+						 </p>
 						<ul class="actions">
 							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
 						</ul>
@@ -30,192 +169,71 @@
 
 				<!-- Header -->
 					<header id="header">
-						<a href="index.html" class="logo">Massively</a>
+						<a href="index.html" class="logo">بليتو ويكي</a>
 					</header>
 
 				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">
-							<li class="active"><a href="index.html">This is Massively</a></li>
-							<li><a href="generic.html">Generic Page</a></li>
-							<li><a href="elements.html">Elements Reference</a></li>
-						</ul>
-						<ul class="icons">
-							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-						</ul>
-					</nav>
+<nav id="nav">
+    <ul class="links">
+        <!-- رابط "حساب الخبرة" - نشط -->
+        <li class="active">
+            <a href="#xp-calculator" style="color: #000 !important; font-size: 30px; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">حساب الخبرة</a>
+        </li>
+        <!-- رابط "احسب كل شئ" -->
+        <li>
+            <a href="generic.html" style="color: #000 !important; font-size: 30px; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">احسب كل شئ</a>
+        </li>
+        <!-- رابط "بليتو ويكي" -->
+        <li>
+            <a href="elements.html" style="color: #000 !important; font-size: 30px; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">بليتو ويكي</a>
+        </li>
+    </ul>
+</nav>
+
 
 				<!-- Main -->
 					<div id="main">
 
 						<!-- Featured Post -->
-							<article class="post featured">
+							<article class="post featured" style="background: transparent;">
+
+
+
 								<header class="major">
-									<span class="date">April 25, 2017</span>
-									<h2><a href="#">And this is a<br />
-									massive headline</a></h2>
-									<p>Aenean ornare velit lacus varius enim ullamcorper proin aliquam<br />
-									facilisis ante sed etiam magna interdum congue. Lorem ipsum dolor<br />
-									amet nullam sed etiam veroeros.</p>
+								
+									
 								</header>
-								<a href="#" class="image main"><img src="images/pic01.jpg" alt="" /></a>
 								<ul class="actions special">
-									<li><a href="#" class="button large">Full Story</a></li>
-								</ul>
-							</article>
+									
+<section id="xp-calculator">
+        <h2 style="color: #00ffc8;">احسب الخبرة المضافة</h2>
+        <label for="level" style="color: #00ffc8;">مستواك داخل المقاطعة</label>
 
-						<!-- Posts -->
-							<section class="posts">
-								<article>
-									<header>
-										<span class="date">April 24, 2017</span>
-										<h2><a href="#">Sed magna<br />
-										ipsum faucibus</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 22, 2017</span>
-										<h2><a href="#">Primis eget<br />
-										imperdiet lorem</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 18, 2017</span>
-										<h2><a href="#">Ante mattis<br />
-										interdum dolor</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic04.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 14, 2017</span>
-										<h2><a href="#">Tempus sed<br />
-										nulla imperdiet</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic05.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 11, 2017</span>
-										<h2><a href="#">Odio magna<br />
-										sed consectetur</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic06.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 7, 2017</span>
-										<h2><a href="#">Augue lorem<br />
-										primis vestibulum</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic07.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-							</section>
+        <input type="number" id="level" min="1" max="400">
 
-						<!-- Footer -->
-							<footer>
-								<div class="pagination">
-									<!--<a href="#" class="previous">Prev</a>-->
-									<a href="#" class="page active">1</a>
-									<a href="#" class="page">2</a>
-									<a href="#" class="page">3</a>
-									<span class="extra">&hellip;</span>
-									<a href="#" class="page">8</a>
-									<a href="#" class="page">9</a>
-									<a href="#" class="page">10</a>
-									<a href="#" class="next">Next</a>
-								</div>
-							</footer>
+        <label for="current-xp-in-level" style="color: #00ffc8;">نقاط الخبرة الحالي في مستواك (اختياري)</label>
+        <input type="number" id="current-xp-in-level" min="0">
 
-					</div>
+        <label for="xp" style="color: #00ffc8;">نقاط الخبرة التي تريد إضافتها</label>
 
-				<!-- Footer -->
-					<footer id="footer">
-						<section>
-							<form method="post" action="#">
-								<div class="fields">
-									<div class="field">
-										<label for="name">Name</label>
-										<input type="text" name="name" id="name" />
-									</div>
-									<div class="field">
-										<label for="email">Email</label>
-										<input type="text" name="email" id="email" />
-									</div>
-									<div class="field">
-										<label for="message">Message</label>
-										<textarea name="message" id="message" rows="3"></textarea>
-									</div>
-								</div>
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
-							</form>
-						</section>
-						<section class="split contact">
-							<section class="alt">
-								<h3>Address</h3>
-								<p>1234 Somewhere Road #87257<br />
-								Nashville, TN 00000-0000</p>
-							</section>
-							<section>
-								<h3>Phone</h3>
-								<p><a href="#">(000) 000-0000</a></p>
-							</section>
-							<section>
-								<h3>Email</h3>
-								<p><a href="#">info@untitled.tld</a></p>
-							</section>
-							<section>
-								<h3>Social</h3>
-								<ul class="icons alt">
-									<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-								</ul>
-							</section>
-						</section>
-					</footer>
+        <input type="number" id="xp" min="0">
 
-				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-					</div>
+        <button onclick="calculate()">احسب المستوى</button>
 
-			</div>
+        <div id="result" style="margin-top: 1rem;"></div>
+      </section>
 
+
+
+
+							
+							
+				
+
+
+		
+
+			
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
@@ -223,7 +241,481 @@
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="assets/js/main.js"></script> 
+
+<script>
+    const XP = [0,
+  800,
+  2100,
+  3800,
+  6100,
+  9500,
+  12500,
+  16000,
+  19800,
+  24000,
+  28500,
+  33400,
+  38700,
+  44200,
+  50200,
+  56400,
+  63000,
+  69900,
+  77100,
+  84700,
+  92500,
+  100700,
+  109200,
+  118000,
+  127100,
+  136500,
+  146200,
+  156200,
+  166500,
+  177100,
+  188000,
+  199200,
+  210700,
+  222400,
+  234500,
+  246800,
+  259400,
+  272300,
+  285500,
+  299000,
+  312700,
+  326800,
+  341000,
+  355600,
+  370500,
+  385600,
+  401000,
+  416600,
+  432600,
+  448800,
+  465200,
+  482000,
+  499000,
+  516300,
+  533800,
+  551600,
+  569600,
+  588000,
+  606500,
+  625400,
+  644500,
+  663800,
+  683400,
+  703300,
+  723400,
+  743800,
+  764500,
+  785400,
+  806500,
+  827900,
+  849600,
+  871500,
+  893600,
+  916000,
+  938700,
+  961600,
+  984700,
+  1008100,
+  1031800,
+  1055700,
+  1079800,
+  1104200,
+  1128800,
+  1153700,
+  1178800,
+  1204200,
+  1229800,
+  1255600,
+  1281700,
+  1308100,
+  1334600,
+  1361400,
+  1388500,
+  1415800,
+  1443300,
+  1471100,
+  1499100,
+  1527300,
+  1555800,
+  1584350,
+  1612950,
+  1641600,
+  1670300,
+  1699050,
+  1727850,
+  1756700,
+  1785600,
+  1814550,
+  1843550,
+  1872600,
+  1901700,
+  1930850,
+  1960050,
+  1989300,
+  2018600,
+  2047950,
+  2077350,
+  2106800,
+  2136300,
+  2165850,
+  2195450,
+  2225100,
+  2254800,
+  2284550,
+  2314350,
+  2344200,
+  2374100,
+  2404050,
+  2434050,
+  2464100,
+  2494200,
+  2524350,
+  2554550,
+  2584800,
+  2615100,
+  2645450,
+  2675850,
+  2706300,
+  2736800,
+  2767350,
+  2797950,
+  2828600,
+  2859300,
+  2890050,
+  2920850,
+  2951700,
+  2982600,
+  3013550,
+  3044550,
+  3075600,
+  3106700,
+  3137850,
+  3169050,
+  3200300,
+  3231600,
+  3262950,
+  3294350,
+  3325800,
+  3357300,
+  3388850,
+  3420450,
+  3452100,
+  3483800,
+  3515550,
+  3547350,
+  3579200,
+  3611100,
+  3643050,
+  3675050,
+  3707100,
+  3739200,
+  3771350,
+  3803550,
+  3835800,
+  3868100,
+  3900450,
+  3932850,
+  3965300,
+  3997800,
+  4030350,
+  4062950,
+  4095600,
+  4128300,
+  4161050,
+  4193850,
+  4226700,
+  4259600,
+  4292550,
+  4325550,
+  4358600,
+  4391700,
+  4424850,
+  4458050,
+  4491300,
+  4524600,
+  4557950,
+  4591350,
+  4624800,
+  4658300,
+  4691850,
+  4725450,
+  4759100,
+  4792800,
+  4826550,
+  4860350,
+  4894200,
+  4928100,
+  4962050,
+  4996050,
+  5030100,
+  5064200,
+  5098350,
+  5132550,
+  5166800,
+  5201100,
+  5235450,
+  5269850,
+  5304300,
+  5338800,
+  5373350,
+  5407950,
+  5442600,
+  5477300,
+  5512050,
+  5546850,
+  5581700,
+  5616600,
+  5651550,
+  5686550,
+  5721600,
+  5756700,
+  5791850,
+  5827050,
+  5862300,
+  5897600,
+  5932950,
+  5968350,
+  6003800,
+  6039300,
+  6074850,
+  6110450,
+  6146100,
+  6181800,
+  6217550,
+  6253350,
+  6289200,
+  6325100,
+  6361050,
+  6397050,
+  6433100,
+  6469200,
+  6505350,
+  6541550,
+  6577800,
+  6614100,
+  6650450,
+  6686850,
+  6723300,
+  6759800,
+  6796350,
+  6832950,
+  6869600,
+  6906300,
+  6943050,
+  6979850,
+  7016700,
+  7053600,
+  7090550,
+  7127550,
+  7164600,
+  7201700,
+  7238850,
+  7276050,
+  7313300,
+  7350600,
+  7387950,
+  7425350,
+  7462800,
+  7500300,
+  7537850,
+  7575450,
+  7613100,
+  7650800,
+  7688550,
+  7726350,
+  7764200,
+  7802100,
+  7840050,
+  7878050,
+  7916100,
+  7954200,
+  7992350,
+  8030550,
+  8068800,
+  8107100,
+  8145450,
+  8183850,
+  8222300,
+  8260800,
+  8299350,
+8337950,
+8376600,
+8415300,
+8454050,
+8492850,
+8531700,
+8570600,
+8609550,
+8648550,
+8687600,
+8726700,
+8765850,
+8805050,
+8844300,
+8883600,
+8922950,
+8962350,
+9001800,
+9041300,
+9080850,
+9120450,
+9160100,
+9199800,
+9239550,
+9279350,
+9319200,
+9359100,
+9399050,
+9439050,
+9479100,
+9519200,
+9559350,
+9599550,
+9639800,
+9680100,
+9720450,
+9760850,
+9801300,
+9841800,
+9882350,
+9922950,
+9963600,
+10004300,
+10045050,
+10085850,
+10126700,
+10167600,
+10208550,
+10249550,
+10290600,
+10331700,
+10372850,
+10414050,
+10455300,
+10496600,
+10537950,
+10579350,
+10620800,
+10662300,
+10703850,
+10745450,
+10787100,
+10828800,
+10870550,
+10912350,
+10954200,
+10996100,
+11038050,
+11080050,
+11122100,
+11164200,
+11206350,
+11248550,
+11290800,
+11333100,
+11375450,
+11417850,
+11460300,
+11502800,
+11545350,
+11587950,
+11630600,
+11673300,
+11716050,
+11758850,
+11801700,
+11844600,
+11887550,
+11930550,
+11973600,
+12016700,
+12059850,
+12103050,
+12146300,
+12189600,
+12232950,
+12276350,
+12319800,
+12363300,
+12406850]; // انسخ جدول XP هنا كما هو
+    function calculate() {
+      const level = parseInt(document.getElementById('level').value);
+      const currentXpInLevelInput = document.getElementById('current-xp-in-level');
+      const xpToAdd = parseInt(document.getElementById('xp').value);
+      const resultEl = document.getElementById('result');
+
+      if (isNaN(level) || level < 1 || level > 400) {
+        resultEl.innerHTML = '<p style="color:red;">يرجى إدخال مستوى صحيح (من 1 إلى 400).</p>';
+        return;
+      }
+      if (isNaN(xpToAdd) || xpToAdd < 0) {
+        resultEl.innerHTML = '<p style="color:red;">يرجى إدخال نقاط خبرة موجبة للإضافة.</p>';
+        return;
+      }
+
+      let currentXPForCalculation;
+      const currentXpInLevel = parseInt(currentXpInLevelInput.value);
+
+      // إذا أدخل المستخدم نقاط خبرة في المستوى الحالي، استخدمها
+      if (!isNaN(currentXpInLevel) && currentXpInLevel >= 0) {
+        // تأكد أن نقاط الخبرة المدخلة لا تتجاوز نقاط الخبرة المطلوبة للمستوى التالي
+        // XP[level] هو إجمالي الـ XP المطلوب للوصول للمستوى التالي
+        // XP[level - 1] هو إجمالي الـ XP المطلوب للوصول للمستوى الحالي
+        const xpNeededForNextLevelFromCurrentLevelStart = XP[level] - XP[level - 1];
+        if (currentXpInLevel >= xpNeededForNextLevelFromCurrentLevelStart) {
+            resultEl.innerHTML = '<p style="color:red;">نقاط الخبرة الحالية في هذا المستوى تتجاوز أو تساوي المطلوب للمستوى التالي. يرجى التحقق من المستوى المدخل أو نقاط الخبرة الحالية.</p>';
+            return;
+        }
+        currentXPForCalculation = XP[level - 1] + currentXpInLevel;
+      } else {
+        // إذا لم يدخل المستخدم، افترض أنه في بداية المستوى (أو استخدم القيمة الافتراضية)
+        currentXPForCalculation = XP[level - 1];
+      }
+      
+      const totalXP = currentXPForCalculation + xpToAdd;
+      let newLevel = level;
+
+      // البحث عن المستوى الجديد
+      for (let i = level; i < XP.length; i++) {
+        if (totalXP >= XP[i]) {
+          newLevel = i + 1;
+        } else {
+          break;
+        }
+      }
+      
+      if (newLevel > 400) newLevel = 400;
+
+      const isMax = newLevel === 400;
+      const currentLevelXPThreshold = XP[newLevel - 1];
+      const nextLevelXPThreshold = XP[newLevel] || currentLevelXPThreshold; // إذا كان المستوى الأقصى، فالعتبة التالية هي نفسها
+
+      const xpInNewLevel = totalXP - currentLevelXPThreshold;
+      const xpForNextLevel = nextLevelXPThreshold - currentLevelXPThreshold;
+      
+      const progress = isMax ? 100 : (xpInNewLevel / xpForNextLevel) * 100;
+      const remainingXP = isMax ? 0 : nextLevelXPThreshold - totalXP;
+
+      resultEl.innerHTML = `
+        <p style="color: #00ffc8;"><strong style="color: #00ffc8;">المستوى الجديد:</strong> ${newLevel}</p>
+        <p style="color: #00ffc8; text-align: left;">
+          <strong style="color: #00ffc8;">التقدم نحو المستوى التالي:</strong>
+          <span dir="ltr">${progress.toFixed(2)}%</span>
+        </p>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width:${progress}%;"></div>
+        </div>
+        <p style="color: #00ffc8;"><strong style="color: #00ffc8;">النقاط المتبقية للوصول للمستوى القادم:</strong> ${remainingXP}</p>
+      `;
+    }
+  </script>
+
 
 	</body>
 </html>
