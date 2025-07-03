@@ -107,13 +107,40 @@
 
 				<!-- Nav -->
 					<nav id="nav">
-						<ul class="links">
-							<li><a href="index.html">حساب الخبرة</a></li>
-							<li><a href="generic.html">حساب الحمولات</a></li>
-							<li class="active"><a href="elements.html">حساب غير شرعي</a></li> <!-- تم تحديث النص ليتناسب مع اسم الملف -->
-						</ul>
-						<!-- تم إزالة أيقونات السوشيال من هنا -->
-					</nav>
+  <ul class="links">
+    <li>
+      <a href="index.html" class="flash-link">حساب الخبرة</a>
+    </li>
+    <li>
+      <a href="generic.html" class="flash-link">حساب الحمولات</a>
+    </li>
+    <li class="active">
+      <a href="elements.html" class="flash-link">حساب غير شرعي</a>
+    </li>
+  </ul>
+</nav>
+
+<style>
+.flash-link {
+  font-size: 30px;
+  font-weight: bold;
+  color: #000 !important;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  animation: flash 2s ease-in-out infinite;
+}
+
+@keyframes flash {
+  0%, 100% {
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    color: #000;
+  }
+  50% {
+    text-shadow: 0 0 15px #00ffc8, 0 0 10px #00ffc8;
+    color: #00ffc8;
+  }
+}
+</style>
+
 
 				<!-- Main -->
 					<div id="main">
