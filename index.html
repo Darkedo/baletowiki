@@ -99,6 +99,11 @@ html, body {
       background: #00ffc8;
       color: #000;
     }
+    /* CSS جديد لكلمة اختياري باللون الأحمر */
+    .optional-text {
+        color: red;
+        font-weight: bold; /* لجعلها أكثر وضوحاً */
+    }
   </style>
 		
 		
@@ -177,7 +182,7 @@ html, body {
     <ul class="links">
         <!-- رابط "حساب الخبرة" - نشط -->
         <li class="active">
-            <a href="#xp-calculator" style="color: #000 !important; font-size: 30px; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">حساب الخبرة</a>
+            <a href="#xp-calculator" style="color: #000 !important; font-size: 30px; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5 );">حساب الخبرة</a>
         </li>
         <!-- رابط "احسب كل شئ" -->
         <li>
@@ -211,7 +216,7 @@ html, body {
 
         <input type="number" id="level" min="1" max="400">
 
-        <label for="current-xp-in-level" style="color: #00ffc8;">نقاط الخبرة الحالي في مستواك (اختياري)</label>
+        <label for="current-xp-in-level" style="color: #00ffc8;">إجمالي عدد نقاط خبرة مستواك حاليا <span class="optional-text">(اختياري)</span></label>
         <input type="number" id="current-xp-in-level" min="0">
 
         <label for="xp" style="color: #00ffc8;">نقاط الخبرة التي تريد إضافتها</label>
@@ -645,12 +650,16 @@ html, body {
 12363300,
 12406850]; // انسخ جدول XP هنا كما هو
     function calculate() {
-      const level = parseInt(document.getElementById('level').value);
-      const currentXpInLevelInput = document.getElementById('current-xp-in-level');
+      const levelInput = document.getElementById('level'); // حقل المستوى المدخل من المستخدم
+      const currentTotalXPInput = document.getElementById('current-xp-in-level'); // حقل إجمالي نقاط الخبرة التراكمية
       const xpToAdd = parseInt(document.getElementById('xp').value);
       const resultEl = document.getElementById('result');
 
-      if (isNaN(level) || level < 1 || level > 400) {
+      const userLevel = parseInt(levelInput.value); // المستوى الذي أدخله المستخدم
+      let userTotalXP = parseInt(currentTotalXPInput.value); // إجمالي نقاط الخبرة التراكمية التي أدخلها المستخدم
+
+      // التحقق من صحة المدخلات الأساسية
+      if (isNaN(userLevel) || userLevel < 1 || userLevel > 400) {
         resultEl.innerHTML = '<p style="color:red;">يرجى إدخال مستوى صحيح (من 1 إلى 400).</p>';
         return;
       }
@@ -659,31 +668,30 @@ html, body {
         return;
       }
 
-      let currentXPForCalculation;
-      const currentXpInLevel = parseInt(currentXpInLevelInput.value);
-
-      // إذا أدخل المستخدم نقاط خبرة في المستوى الحالي، استخدمها
-      if (!isNaN(currentXpInLevel) && currentXpInLevel >= 0) {
-        // تأكد أن نقاط الخبرة المدخلة لا تتجاوز نقاط الخبرة المطلوبة للمستوى التالي
-        // XP[level] هو إجمالي الـ XP المطلوب للوصول للمستوى التالي
-        // XP[level - 1] هو إجمالي الـ XP المطلوب للوصول للمستوى الحالي
-        const xpNeededForNextLevelFromCurrentLevelStart = XP[level] - XP[level - 1];
-        if (currentXpInLevel >= xpNeededForNextLevelFromCurrentLevelStart) {
-            resultEl.innerHTML = '<p style="color:red;">نقاط الخبرة الحالية في هذا المستوى تتجاوز أو تساوي المطلوب للمستوى التالي. يرجى التحقق من المستوى المدخل أو نقاط الخبرة الحالية.</p>';
-            return;
-        }
-        currentXPForCalculation = XP[level - 1] + currentXpInLevel;
+      // إذا لم يتم إدخال قيمة في حقل إجمالي نقاط الخبرة التراكمية، افترض أنه في بداية المستوى
+      if (isNaN(userTotalXP) || userTotalXP < 0) {
+          userTotalXP = XP[userLevel - 1]; // نقاط الخبرة المطلوبة لبداية المستوى المدخل
       } else {
-        // إذا لم يدخل المستخدم، افترض أنه في بداية المستوى (أو استخدم القيمة الافتراضية)
-        currentXPForCalculation = XP[level - 1];
+          // إذا تم إدخال قيمة، تحقق من تناسقها مع المستوى المدخل
+          if (userLevel > 1 && userTotalXP < XP[userLevel - 1]) {
+              resultEl.innerHTML = '<p style="color:red;">إجمالي نقاط الخبرة التراكمية المدخلة لا تتناسب مع المستوى المدخل. يرجى التحقق.</p>';
+              return;
+          }
+          if (userLevel < 400 && userTotalXP >= XP[userLevel]) {
+              resultEl.innerHTML = '<p style="color:red;">إجمالي نقاط الخبرة التراكمية المدخلة تتجاوز المستوى المدخل. يرجى التحقق.</p>';
+              return;
+          }
       }
-      
-      const totalXP = currentXPForCalculation + xpToAdd;
-      let newLevel = level;
 
-      // البحث عن المستوى الجديد
-      for (let i = level; i < XP.length; i++) {
-        if (totalXP >= XP[i]) {
+
+      // الآن، userTotalXP هو إجمالي نقاط الخبرة الحالية للاعب (سواء تم إدخالها أو تم افتراضها)
+      // ونحن نضيف xpToAdd إليها
+      const totalXPAfterAddition = userTotalXP + xpToAdd;
+      let newLevel = 0;
+
+      // البحث عن المستوى الجديد بناءً على إجمالي نقاط الخبرة التراكمية بعد الإضافة
+      for (let i = 0; i < XP.length; i++) {
+        if (totalXPAfterAddition >= XP[i]) {
           newLevel = i + 1;
         } else {
           break;
@@ -693,14 +701,14 @@ html, body {
       if (newLevel > 400) newLevel = 400;
 
       const isMax = newLevel === 400;
-      const currentLevelXPThreshold = XP[newLevel - 1];
-      const nextLevelXPThreshold = XP[newLevel] || currentLevelXPThreshold; // إذا كان المستوى الأقصى، فالعتبة التالية هي نفسها
+      const currentLevelXPThreshold = XP[newLevel - 1] || 0; // XP المطلوبة لبداية المستوى الجديد
+      const nextLevelXPThreshold = XP[newLevel] || currentLevelXPThreshold; // XP المطلوبة لبداية المستوى التالي
 
-      const xpInNewLevel = totalXP - currentLevelXPThreshold;
+      const xpInNewLevel = totalXPAfterAddition - currentLevelXPThreshold;
       const xpForNextLevel = nextLevelXPThreshold - currentLevelXPThreshold;
       
       const progress = isMax ? 100 : (xpInNewLevel / xpForNextLevel) * 100;
-      const remainingXP = isMax ? 0 : nextLevelXPThreshold - totalXP;
+      const remainingXP = isMax ? 0 : nextLevelXPThreshold - totalXPAfterAddition;
 
       resultEl.innerHTML = `
         <p style="color: #00ffc8;"><strong style="color: #00ffc8;">المستوى الجديد:</strong> ${newLevel}</p>
