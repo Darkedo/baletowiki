@@ -1,126 +1,618 @@
 <!DOCTYPE HTML>
 <!--
-	Massively by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+	kareem
+	greatings
+	CCA 3.0 license
 -->
 <html>
-	<head>
-		<title>Generic Page - Massively by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<head>
+  <title>BALETO</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+  <!-- رابط لـ Font Awesome للأيقونات (مثل أيقونة السهم) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+  <style>
+    /* الأنماط العامة من مشروعك (تم نسخها من index.html لضمان التناسق   ) */
+    html, body {
+      margin: 0 !important;
+      padding: 0 !important;
+      height: 100% !important;
+      background-image: url('images/b.png') !important;
+      background-size: cover !important;
+      background-position: center center !important;
+      background-repeat: no-repeat !important;
+      background-attachment: fixed !important;
+      background-color: #1e252d !important;
+    }
 
-				<!-- Header -->
-					<header id="header">
-						<a href="index.html" class="logo">Massively</a>
-					</header>
+    #wrapper, #main, .post, section, .post.featured {
+      background: transparent !important;
+    }
 
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">
-							<li><a href="index.html">This is Massively</a></li>
-							<li class="active"><a href="generic.html">Generic Page</a></li>
-							<li><a href="elements.html">Elements Reference</a></li>
-						</ul>
-						<ul class="icons">
-							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-						</ul>
-					</nav>
+    #intro {
+      background-image: url('images/1x.gif') !important;
+      background-repeat: no-repeat !important;
+      background-size: 100% !important;
+      background-position: 50% -600px !important;
+      background-color: #004 !important;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
 
-				<!-- Main -->
-					<div id="main">
+    #intro::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 0;
+    }
 
-						<!-- Post -->
-							<section class="post">
-								<header class="major">
-									<span class="date">April 25, 2017</span>
-									<h1>This is a<br />
-									Generic Page</h1>
-									<p>Aenean ornare velit lacus varius enim ullamcorper proin aliquam<br />
-									facilisis ante sed etiam magna interdum congue. Lorem ipsum dolor<br />
-									amet nullam sed etiam veroeros.</p>
-								</header>
-								<div class="image main"><img src="images/pic01.jpg" alt="" /></div>
-								<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur sapien risus, commodo eget turpis at, elementum convallis enim turpis, lorem ipsum dolor sit amet nullam.</p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus. Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum.</p>
-							</section>
+    #intro * {
+      position: relative;
+      z-index: 1;
+    }
 
-					</div>
+    /* تعديلات على الروابط في Nav لتكون مرئية (تم نسخها من index.html لضمان التناسق) */
+    #nav ul.links li a {
+        color: black !important;
+        font-size: 30px;
+        font-weight: bold;
+    }
+    #nav ul.links li.active a {
+        color: white !important;
+    }
 
-				<!-- Footer -->
-					<footer id="footer">
-						<section>
-							<form method="post" action="#">
-								<div class="fields">
-									<div class="field">
-										<label for="name">Name</label>
-										<input type="text" name="name" id="name" />
-									</div>
-									<div class="field">
-										<label for="email">Email</label>
-										<input type="text" name="email" id="email" />
-									</div>
-									<div class="field">
-										<label for="message">Message</label>
-										<textarea name="message" id="message" rows="3"></textarea>
-									</div>
-								</div>
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
-							</form>
-						</section>
-						<section class="split contact">
-							<section class="alt">
-								<h3>Address</h3>
-								<p>1234 Somewhere Road #87257<br />
-								Nashville, TN 00000-0000</p>
-							</section>
-							<section>
-								<h3>Phone</h3>
-								<p><a href="#">(000) 000-0000</a></p>
-							</section>
-							<section>
-								<h3>Email</h3>
-								<p><a href="#">info@untitled.tld</a></p>
-							</section>
-							<section>
-								<h3>Social</h3>
-								<ul class="icons alt">
-									<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-								</ul>
-							</section>
-						</section>
-					</footer>
+    /* أنماط عامة للحاسبة المدمجة */
+    .combined-calculator-section {
+      direction: rtl;
+      text-align: right;
+      padding: 2rem;
+      background: #1e1e1e; /* نفس خلفية حاسبة الخبرة */
+      color: #fff;
+      border-radius: 1rem;
+      max-width: 450px; /* زيادة العرض قليلاً لاستيعاب المحتوى */
+      width: 90%; /* لضمان الاستجابة على الشاشات الصغيرة */
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* إضافة ظل خفيف */
+      margin: 0 auto; /* توسيط الحاسبة داخل الـ Post */
+    }
 
-				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-					</div>
+    .combined-calculator-section h2 {
+      color: #00ffc8; /* نفس لون عنوان حاسبة الخبرة */
+      margin-bottom: 1.5rem;
+      font-size: 2.2rem;
+      text-align: center;
+    }
 
-			</div>
+    .combined-calculator-section label {
+      color: #00ffc8;
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+    .combined-calculator-section input[type="number"],
+    .combined-calculator-section select {
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 15px;
+      background: #2c2c2c;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      box-sizing: border-box; /* لضمان أن padding لا يزيد العرض */
+      -webkit-appearance: none; /* لإزالة الأنماط الافتراضية لـ select */
+      -moz-appearance: none;
+      appearance: none;
+      background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%2300ffc8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3e%3cpolyline points="6 9 12 15 18 9"%3e%3c/polyline%3e%3c/svg%3e'  ); /* أيقونة سهم لـ select */
+      background-repeat: no-repeat;
+      background-position: left 15px center; /* وضع السهم على اليسار */
+      padding-left: 40px; /* مسافة للسهم */
+    }
 
-	</body>
+    .combined-calculator-section button {
+      background: #00ffc8;
+      color: black;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 10px;
+      width: 100%;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .combined-calculator-section button:hover {
+      background-color: #00e6b8; /* لون أغمق عند التحويم */
+    }
+
+    .combined-calculator-section .result-display {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: #2c2c2c;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+
+    .combined-calculator-section .result-display p {
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+
+    .combined-calculator-section .result-display strong {
+      color: #00ffc8;
+    }
+
+    /* أنماط خاصة بالقوائم المنسدلة (Dropdowns) */
+    .dropdown-container {
+        position: relative;
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .dropdown-button {
+        background-color: #2c2c2c; /* نفس لون حقول الإدخال */
+        color: #fff;
+        padding: 15px 20px;
+        font-size: 1rem;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        border-radius: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background-color 0.3s ease;
+        box-sizing: border-box;
+    }
+
+    .dropdown-button:hover {
+        background-color: #3a3a3a;
+    }
+
+    .dropdown-button .fa-chevron-down {
+        transition: transform 0.3s ease;
+    }
+
+    .dropdown-button.open .fa-chevron-down {
+        transform: rotate(180deg);
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #2c2c2c;
+        min-width: 100%;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 10; /* لضمان ظهورها فوق العناصر الأخرى */
+        border-radius: 8px;
+        margin-top: 5px;
+        text-align: right;
+        max-height: 200px; /* لتحديد ارتفاع أقصى للقائمة */
+        overflow-y: auto; /* لإضافة شريط تمرير إذا كانت الخيارات كثيرة */
+    }
+
+    .dropdown-content a {
+        color: #fff;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: right;
+        transition: background-color 0.2s ease;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #444;
+    }
+
+    .dropdown-content.show {
+        display: block;
+    }
+
+    /* إخفاء الأقسام الفرعية للحاسبة المدمجة افتراضياً */
+    #cargo-inputs, #production-inputs, #custom-cargo-input-container {
+        display: none;
+    }
+
+    /* توسيط الحاسبة داخل Post */
+    .post {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* توسيط أفقي للمحتوى داخل الـ post */
+        /* padding: 8rem 8rem 6rem 8rem; */ /* تم تعليق هذا لأن الحاسبة ستضيف padding خاص بها */
+    }
+    .post > header.major, .post > .image.main, .post > p {
+        width: 100%; /* لضمان أن العناصر الأخرى لا تتأثر بالتوسيط */
+        max-width: 100%; /* لضمان أن العناصر الأخرى لا تتأثر بالتوسيط */
+    }
+  </style>
+
+</head>
+<body>
+  <div id="wrapper">
+    <!-- Intro -->
+    <div id="intro">
+      <h1><span>ويكي بليتو</span></h1>
+
+      <p>
+        الموقع مخصص للأدوات والمساعدة للاعبين مقاطعة بليتو
+        <a href="https://boleto7.com/" target="_blank" style="display: block; margin-top: 10px; color: green; text-decoration: none;">
+          الموقع الرسمي
+        </a>
+      </p>
+
+      <ul class="actions">
+        <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+      </ul>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+      <a href="index.html" class="logo">بليتو ويكي</a>
+    </header>
+
+    <!-- Nav -->
+<nav id="nav">
+  <ul class="links">
+    <li><a href="index.html" style="color: #000 !important; font-size: 30px; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">حساب الخبرة</a></li>
+    <li class="active"><a href="#combined-calculator-section" style="color: #000 !important; font-size: 30px; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">احسب كل شئ</a></li>
+    <li><a href="elements.html" style="color: #000 !important; font-size: 30px; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">بليتو ويكي</a></li>
+  </ul>
+</nav>
+
+
+    <!-- Main -->
+    <div id="main">
+
+      <!-- Post -->
+      <section class="post">
+        <header class="major">
+          
+        
+        <!-- الحاسبة الموحدة هنا -->
+        <section id="combined-calculator-section" class="combined-calculator-section">
+            <h2>حاسبة موحدة</h2>
+
+            <label for="calculator-type-select">اختر نوع الحاسبة:</label>
+            <div class="dropdown-container">
+                <button class="dropdown-button" id="calculatorTypeDropdownBtn">
+                    <span>اختر نوع الحاسبة</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="dropdown-content" id="calculatorTypeDropdownContent">
+                    <a href="#" data-calc-type="cargo">احسب الحمولة والعدة</a>
+                    <a href="#" data-calc-type="production">احسب الخبرة والانتاج</a>
+                    <a href="#" data-calc-type="double-exp">احسب ضعف الخبرة</a>
+                </div>
+            </div>
+
+            <!-- قسم حاسبة الحمولة (يظهر عند الاختيار  ) -->
+            <div id="cargo-inputs">
+                <label for="cargo-capacity-select">اختر حمولة السيارة:</label>
+                <div class="dropdown-container">
+                    <button class="dropdown-button" id="cargoCapacityDropdownBtn">
+                        <span>اختر الحمولة</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content" id="cargoCapacityDropdownContent">
+                        <a href="#" data-cargo="40">سيارة حمولة 40 كيلو</a>
+                        <a href="#" data-cargo="60">سيارة حمولة 60 كيلو</a>
+                        <a href="#" data-cargo="80">سيارة حمولة 80 كيلو</a>
+                        <a href="#" data-cargo="120">سيارة حمولة 120 كيلو</a>
+                        <a href="#" data-cargo="250">سيارة حمولة 250 كيلو</a>
+                        <a href="#" data-cargo="500">سيارة حمولة 500 كيلو</a>
+                        <a href="#" data-cargo="custom">حمولة أخرى (أدخل يدويًا)</a>
+                    </div>
+                </div>
+                <div id="custom-cargo-input-container">
+                    <label for="custom-cargo-input">أدخل الحمولة بالكيلو:</label>
+                    <input type="number" id="custom-cargo-input" min="0" value="0">
+                </div>
+            </div>
+
+            <!-- قسم حاسبة الإنتاج (يظهر عند الاختيار) -->
+            <div id="production-inputs">
+                <label for="job-type-select">اختر نوع الشغل:</label>
+                <div class="dropdown-container">
+                    <button class="dropdown-button" id="jobTypeDropdownBtn">
+                        <span>اختر نوع الشغل</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content" id="jobTypeDropdownContent">
+                        <a href="#" data-job="grape">عنب</a>
+                        <a href="#" data-job="honey">مناحل عسل</a>
+                        <a href="#" data-job="cement">أسمنت</a>
+                        <a href="#" data-job="ranch">مراعي</a>
+                        <a href="#" data-job="wood">أخشاب</a>
+                        <a href="#" data-job="fabric">أقمشة</a>
+                        <a href="#" data-job="fish">أسماك</a>
+                    </div>
+                </div>
+
+                <label for="input-amount" id="input-label">أدخل العدد:</label>
+                <input type="number" id="input-amount" min="0" value="0">
+            </div>
+
+            <button id="calculateCombinedBtn">احسب</button>
+
+            <div id="combined-result" class="result-display">
+                <p>النتائج ستظهر هنا.</p>
+            </div>
+        
+
+    </div> <!-- إغلاق div#main -->
+
+    
+
+    <!-- Copyright -->
+    <div id="copyright">
+      <ul>
+        <li>&copy; abu said</li>
+        <li>Design: kareem</li>
+      </ul>
+    </div>
+  </div> <!-- إغلاق div#wrapper -->
+
+  <!-- Scripts -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/jquery.scrollex.min.js"></script>
+  <script src="assets/js/jquery.scrolly.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // عناصر الحاسبة الموحدة
+        const calculatorTypeDropdownBtn = document.getElementById('calculatorTypeDropdownBtn');
+        const calculatorTypeDropdownContent = document.getElementById('calculatorTypeDropdownContent');
+        const cargoInputs = document.getElementById('cargo-inputs');
+        const productionInputs = document.getElementById('production-inputs');
+        const calculateCombinedBtn = document.getElementById('calculateCombinedBtn');
+        const combinedResultDisplay = document.getElementById('combined-result');
+
+        let currentCalculatorType = null; // لتخزين نوع الحاسبة المختار (cargo أو production أو double-exp)
+        let isDoubleExpMode = false; // متغير لتحديد ما إذا كنا في وضع ضعف الخبرة
+
+        // عناصر حاسبة الحمولة
+        const cargoCapacityDropdownBtn = document.getElementById('cargoCapacityDropdownBtn');
+        const cargoCapacityDropdownContent = document.getElementById('cargoCapacityDropdownContent');
+        const customCargoInputContainer = document.getElementById('custom-cargo-input-container');
+        const customCargoInput = document.getElementById('custom-cargo-input');
+        let selectedCargoCapacity = null; // لتخزين حمولة السيارة المختارة (رقم أو 'custom')
+
+        // عناصر حاسبة الإنتاج
+        const jobTypeDropdownBtn = document.getElementById('jobTypeDropdownBtn');
+        const jobTypeDropdownContent = document.getElementById('jobTypeDropdownContent');
+        const inputAmountField = document.getElementById('input-amount');
+        const inputLabel = document.getElementById('input-label');
+        let selectedJobType = null; // لتخزين نوع الشغل المختار
+
+        // بيانات الخبرة لكل نوع شغل
+        const jobData = {
+            grape: { unitName: 'عصير', expPerUnit: 8, inputType: 'amount', weightPerUnit: 0.4 }, // 1 عنبة = 1 كيلو، 100 عنبة تنتج 100 عصير = 40 كيلو -> 1 عصير = 0.4 كيلو
+            honey: { unitName: 'عسل', expPerUnit: 8, inputType: 'tools', toolsNeeded: 20, outputUnits: 100, weightPerOutput: 0.4 }, // 20 عدة = 40 كيلو -> 100 عسل = 40 كيلو -> 1 عسل = 0.4 كيلو
+            cement: { unitName: 'أسمنت', expPerUnit: 8, inputType: 'tools', toolsNeeded: 20, outputUnits: 100, weightPerOutput: 0.4 },
+            ranch: { unitName: 'حليب', expPerUnit: 8, inputType: 'tools', toolsNeeded: 20, outputUnits: 100, weightPerOutput: 0.4 }, // المراعي تنتج حليب
+            wood: { unitName: 'قطعة خشب', expPerUnit: 9, inputType: 'tools', toolsNeeded: 20, outputUnits: 100, weightPerOutput: 0.4 },
+            fabric: { unitName: 'ملابس', expPerUnit: 7, inputType: 'tools', toolsNeeded: 20, outputUnits: 100, weightPerOutput: 0.4 }, // أقمشة تنتج ملابس
+            fish: { unitName: 'سمكة', expPerUnit: 11, inputType: 'amount', weightPerUnit: 1 } // الأسماك بدون عدة عمل، وزن الواحدة 1 كيلو
+        };
+
+
+        // =======================================================
+        // وظائف مساعدة لفتح/إغلاق القوائم المنسدلة
+        // =======================================================
+        function toggleDropdown(button, content) {
+            content.classList.toggle('show');
+            button.classList.toggle('open');
+        }
+
+        function closeDropdown(button, content) {
+            content.classList.remove('show');
+            button.classList.remove('open');
+        }
+
+        // =======================================================
+        // التحكم في اختيار نوع الحاسبة (الحمولة أو الإنتاج أو ضعف الخبرة)
+        // =======================================================
+        calculatorTypeDropdownBtn.addEventListener('click', function(event) {
+            event.stopPropagation(); // مهم جداً لمنع إغلاق القائمة فوراً
+            toggleDropdown(this, calculatorTypeDropdownContent);
+        });
+
+        calculatorTypeDropdownContent.addEventListener('click', function(event) {
+            if (event.target.tagName === 'A') {
+                event.preventDefault();
+                currentCalculatorType = event.target.dataset.calcType;
+                const calculatorName = event.target.textContent;
+
+                calculatorTypeDropdownBtn.querySelector('span').textContent = calculatorName;
+                closeDropdown(calculatorTypeDropdownBtn, calculatorTypeDropdownContent);
+
+                // إعادة تعيين وضع ضعف الخبرة
+                isDoubleExpMode = (currentCalculatorType === 'double-exp');
+
+                // إظهار/إخفاء الأقسام بناءً على الاختيار
+                if (currentCalculatorType === 'cargo') {
+                    cargoInputs.style.display = 'block';
+                    productionInputs.style.display = 'none';
+                    customCargoInputContainer.style.display = 'none'; // إخفاء حقل الحمولة المخصصة
+                    // إعادة تعيين نتائج الحمولة
+                    combinedResultDisplay.innerHTML = `<p>الحمولة المختارة: <strong>لا شيء</strong></p><p>عدد العدة التي يمكن حملها: <strong>0 عدة</strong></p>`;
+                    selectedCargoCapacity = null; // إعادة تعيين الحمولة المختارة
+                    cargoCapacityDropdownBtn.querySelector('span').textContent = 'اختر الحمولة'; // إعادة تعيين نص زر الحمولة
+                    customCargoInput.value = 0; // إعادة تعيين قيمة حقل الحمولة المخصصة
+                } else if (currentCalculatorType === 'production' || currentCalculatorType === 'double-exp') {
+                    cargoInputs.style.display = 'none';
+                    productionInputs.style.display = 'block';
+                    customCargoInputContainer.style.display = 'none'; // إخفاء حقل الحمولة المخصصة
+                    // إعادة تعيين نتائج الإنتاج
+                    combinedResultDisplay.innerHTML = `<p>نوع الشغل: <strong>لا شيء</strong></p><p>الإنتاج المتوقع: <strong>0 وحدة</strong></p><p>الوزن الإجمالي: <strong>0 كيلو</strong></p><p>الخبرة المتوقعة: <strong>0 خبرة</strong></p>`;
+                    selectedJobType = null; // إعادة تعيين نوع الشغل المختار
+                    jobTypeDropdownBtn.querySelector('span').textContent = 'اختر نوع الشغل'; // إعادة تعيين نص زر الشغل
+                    inputAmountField.value = 0; // إعادة تعيين حقل الإدخال
+                    inputLabel.textContent = 'أدخل العدد:'; // إعادة تعيين تسمية حقل الإدخال
+                }
+            }
+        });
+
+        // =======================================================
+        // التحكم في حاسبة الحمولة
+        // =======================================================
+        cargoCapacityDropdownBtn.addEventListener('click', function(event) {
+            event.stopPropagation();
+            toggleDropdown(this, cargoCapacityDropdownContent);
+        });
+
+        cargoCapacityDropdownContent.addEventListener('click', function(event) {
+            if (event.target.tagName === 'A') {
+                event.preventDefault();
+                selectedCargoCapacity = event.target.dataset.cargo; // قد تكون 'custom'
+                cargoCapacityDropdownBtn.querySelector('span').textContent = event.target.textContent;
+                closeDropdown(cargoCapacityDropdownBtn, cargoCapacityDropdownContent);
+
+                if (selectedCargoCapacity === 'custom') {
+                    customCargoInputContainer.style.display = 'block';
+                    customCargoInput.focus(); // تركيز على حقل الإدخال المخصص
+                } else {
+                    customCargoInputContainer.style.display = 'none';
+                }
+            }
+        });
+
+        // =======================================================
+        // التحكم في حاسبة الإنتاج
+        // =======================================================
+        jobTypeDropdownBtn.addEventListener('click', function(event) {
+            event.stopPropagation();
+            toggleDropdown(this, jobTypeDropdownContent);
+        });
+
+        jobTypeDropdownContent.addEventListener('click', function(event) {
+            if (event.target.tagName === 'A') {
+                event.preventDefault();
+                selectedJobType = event.target.dataset.job;
+                const jobName = event.target.textContent;
+
+                jobTypeDropdownBtn.querySelector('span').textContent = jobName;
+                closeDropdown(jobTypeDropdownBtn, jobTypeDropdownContent);
+
+                // تغيير نص التسمية بناءً على نوع الشغل
+                if (jobData[selectedJobType].inputType === 'amount') {
+                    inputLabel.textContent = `أدخل عدد ${jobData[selectedJobType].unitName}s:`; // مثال: عدد العنب، عدد الأسماك
+                } else {
+                    inputLabel.textContent = 'أدخل عدد العدة:';
+                }
+                inputAmountField.value = 0; // إعادة تعيين حقل الإدخال
+            }
+        });
+
+        // =======================================================
+        // دالة الحساب الرئيسية (تعتمد على currentCalculatorType)
+        // =======================================================
+        calculateCombinedBtn.addEventListener('click', function() {
+            if (!currentCalculatorType) {
+                combinedResultDisplay.innerHTML = `<p style="color:red;">يرجى اختيار نوع الحاسبة أولاً.</p>`;
+                return;
+            }
+
+            if (currentCalculatorType === 'cargo') {
+                let finalCargoValue;
+                if (selectedCargoCapacity === 'custom') {
+                    finalCargoValue = parseInt(customCargoInput.value);
+                    if (isNaN(finalCargoValue) || finalCargoValue <= 0) {
+                        combinedResultDisplay.innerHTML = `<p style="color:red;">يرجى إدخال حمولة مخصصة صحيحة.</p>`;
+                        return;
+                    }
+                } else if (selectedCargoCapacity) {
+                    finalCargoValue = parseInt(selectedCargoCapacity);
+                } else {
+                    combinedResultDisplay.innerHTML = `<p style="color:red;">يرجى اختيار حمولة السيارة.</p>`;
+                    return;
+                }
+
+                const toolsPer40kg = 20; // 20 عدة = 40 كيلو
+                const toolsCapacity = (finalCargoValue / 40) * toolsPer40kg;
+
+                combinedResultDisplay.innerHTML = `
+                    <p>الحمولة المختارة: <strong>${finalCargoValue} كيلو</strong></p>
+                    <p>عدد العدة التي يمكن حملها: <strong>${toolsCapacity} عدة</strong></p>
+                `;
+            } else if (currentCalculatorType === 'production' || currentCalculatorType === 'double-exp') {
+                const inputAmount = parseInt(inputAmountField.value);
+                let productionUnits = 0;
+                let totalWeight = 0;
+                let expectedExp = 0;
+                let unitName = '';
+
+                if (isNaN(inputAmount) || inputAmount < 0) {
+                    combinedResultDisplay.innerHTML = `<p style="color:red;">يرجى إدخال قيمة صحيحة.</p>`;
+                    return;
+                }
+
+                if (!selectedJobType) {
+                    combinedResultDisplay.innerHTML = `<p style="color:red;">يرجى اختيار نوع الشغل أولاً.</p>`;
+                    return;
+                }
+
+                const jobInfo = jobData[selectedJobType];
+                unitName = jobInfo.unitName;
+
+                if (jobInfo.inputType === 'amount') { // مثل العنب والأسماك
+                    productionUnits = inputAmount;
+                    totalWeight = inputAmount * jobInfo.weightPerUnit;
+                    expectedExp = inputAmount * jobInfo.expPerUnit;
+                } else { // مثل المناحل، الأسمنت، المراعي، الأخشاب، الأقمشة
+                    productionUnits = (inputAmount / jobInfo.toolsNeeded) * jobInfo.outputUnits;
+                    totalWeight = (inputAmount / jobInfo.toolsNeeded) * (jobInfo.outputUnits * jobInfo.weightPerOutput);
+                    expectedExp = productionUnits * jobInfo.expPerUnit;
+                }
+
+                // تطبيق ضعف الخبرة إذا كان الوضع مفعلاً
+                if (isDoubleExpMode) {
+                    expectedExp *= 2;
+                }
+
+                combinedResultDisplay.innerHTML = `
+                    <p>نوع الشغل: <strong>${jobTypeDropdownBtn.querySelector('span').textContent}</strong></p>
+                    <p>الإنتاج المتوقع: <strong>${productionUnits.toFixed(0)} ${unitName}</strong></p>
+                    <p>الوزن الإجمالي: <strong>${totalWeight.toFixed(2)} كيلو</strong></p>
+                    <p>الخبرة المتوقعة: <strong>${expectedExp.toFixed(0)} خبرة</strong></p>
+                `;
+            }
+        });
+
+        // =======================================================
+        // إغلاق جميع القوائم المنسدلة عند الضغط خارجها
+        // =======================================================
+        window.addEventListener('click', function(event) {
+            const dropdowns = document.querySelectorAll('.dropdown-container');
+            dropdowns.forEach(function(container) {
+                const button = container.querySelector('.dropdown-button');
+                const content = container.querySelector('.dropdown-content');
+                // التأكد من أن النقر لم يكن على الزر نفسه أو داخل المحتوى
+                if (button && content && !button.contains(event.target) && !content.contains(event.target)) {
+                    closeDropdown(button, content);
+                }
+            });
+        });
+    });
+  </script>
+
+</body>
 </html>
