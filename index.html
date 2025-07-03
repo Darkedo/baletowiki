@@ -8,7 +8,7 @@
 	<head>
 		<title>BALETO</title>
 		<meta charset="utf-8" />
-                <title>حاسبة المستوى | بليتو</title>
+                <title>BALETO</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
                 <link rel="stylesheet" href="assets/css/main.css" />
                 <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
@@ -156,13 +156,13 @@ html, body {
 
 				<!-- Intro -->
 					<div id="intro">
-						<h1><span>ويكي بليتو</span></h1>
+						<h1><span>BALETO</span></h1>
 
-						<p>الموقغ مخصص للادوات والمساعدة للاعبين مقاطعة بليتو 
+						<p>ادوات مساعدة داخل مقاطعة بليتو 
 
 
                            <a href="https://boleto7.com/" target="_blank" style="display: block; margin-top: 10px; color: green; text-decoration: none;">
-                                      الموقع الرسمي
+                                      موقع بليتو
                             </a>
 
  
@@ -174,7 +174,7 @@ html, body {
 
 				<!-- Header -->
 					<header id="header">
-						<a href="index.html" class="logo">بليتو ويكي</a>
+						<a href="index.html" class="logo">BAL WIKI</a>
 					</header>
 
 				<!-- Nav -->
@@ -186,7 +186,7 @@ html, body {
         </li>
         <!-- رابط "احسب كل شئ" -->
         <li>
-            <a href="generic.html" style="color: #000 !important; font-size: 30px; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">احسب كل شئ</a>
+            <a href="generic.html" style="color: #000 !important; font-size: 30px; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">حساب الحمولات</a>
         </li>
         <!-- رابط "بليتو ويكي" -->
         <li>
@@ -201,6 +201,17 @@ html, body {
 
 						<!-- Featured Post -->
 							<article class="post featured" style="background: transparent;">
+<!-- تعليمات الإدخال بتنسيق أوضح وخط أكبر -->
+<div style="display: flex; justify-content: center; align-items: center; min-height: 40vh; text-align: right;">
+  <div style="color: #00ffc8; font-size: 24px; font-weight: bold; line-height: 2;">
+    <ul style="list-style-type: disc; padding-right: 20px;">
+      <li> أول خانة تكتب فيها مستواك</li>
+      <li> (اختياري) Fثاني خانة تكتب فيها عدد نقاط لفلك الحالي من 5</li>
+      <li> ثالث خانة تكتب فيها كمية الخبرة اللي هتضيفها عشان يحسب هتوصل لمستوى كام</li>
+    </ul>
+  </div>
+</div>
+
 
 
 
@@ -713,16 +724,34 @@ html, body {
       resultEl.innerHTML = `
         <p style="color: #00ffc8;"><strong style="color: #00ffc8;">المستوى الجديد:</strong> ${newLevel}</p>
         <p style="color: #00ffc8; text-align: left;">
-          <strong style="color: #00ffc8;">التقدم نحو المستوى التالي:</strong>
+          <strong style="color: #00ffc8;">نسبة مستواك الحالي:</strong>
           <span dir="ltr">${progress.toFixed(2)}%</span>
         </p>
         <div class="progress-bar">
           <div class="progress-fill" style="width:${progress}%;"></div>
         </div>
-        <p style="color: #00ffc8;"><strong style="color: #00ffc8;">النقاط المتبقية للوصول للمستوى القادم:</strong> ${remainingXP}</p>
+        <p style="color: #00ffc8;"><strong style="color: #00ffc8;">الخبرة المتبقية للوصول الى المستوى القادم:</strong> ${remainingXP}</p>
       `;
     }
   </script>
+   <!-- عداد الزوار - أسفل يسار الشاشة وثابت -->
+<div style="position: absolute; bottom: 20px; left: 20px; z-index: 9999;">
+  <div style="background: #1e1e1e; padding: 8px 15px; border-radius: 10px; box-shadow: 0 0 6px #00ffc8; font-size: 14px;">
+    <span style="color: #00ffc8; font-weight: bold;">عدد الزوار</span><br>
+    <div id="sfcr42wj7zrrz8g5fxtz4ypx47jfy43fkuc" style="margin-top: 5px;"></div>
+    <script type="text/javascript" src="https://counter1.optistats.ovh/private/counter.js?c=r42wj7zrrz8g5fxtz4ypx47jfy43fkuc&down=async" async></script>
+    <noscript>
+      <a href="https://www.freecounterstat.com" title="website counter">
+        <img src="https://counter1.optistats.ovh/private/freecounterstat.php?c=r42wj7zrrz8g5fxtz4ypx47jfy43fkuc" border="0" title="website counter" alt="website counter">
+      </a>
+    </noscript>
+  </div>
+</div>
+
+
+
+
+
 
 
 	</body>
