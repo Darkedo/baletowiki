@@ -1028,100 +1028,43 @@ table.rank-table th {
     }
 
 
-  const serverMinuteMs = 6000; // كل دقيقة سيرفر = 6 ثواني
-  let serverStartHour = 1;
-  let serverStartMinute = 0;
-  let isAM = true;
-  let startRealTime = new Date();
+ const serverMinuteMs = 6000; // كل دقيقة = 6 ثواني حقيقية
+  const storageKey = "serverStartTime"; // مفتاح التخزين المحلي
 
-  async function fetchServerTime() {
-    try {
-      const response = await fetch("https://wiki.baletohub.wuaze.com/server-time.json");
-      const data = await response.json();
-
-      serverStartHour = data.hour;
-      serverStartMinute = data.minute;
-      isAM = data.isAM;
-      startRealTime = new Date(data.start);
-
-      if (isNaN(startRealTime.getTime())) { // Use .getTime() to check for valid date
-        throw new Error("تنسيق start غير صالح");
-      }
-
-      startClock();
-    } catch (error) {
-      console.error("❌ فشل تحميل أو قراءة توقيت السيرفر:", error);
-      // Fallback to local time if server time cannot be fetched or is invalid
-      startRealTime = new Date(); // Use current client time as the reference start time
-      const now = new Date();
-      serverStartHour = now.getHours();
-      serverStartMinute = now.getMinutes();
-      isAM = serverStartHour < 12;
-      if (serverStartHour > 12) serverStartHour -= 12;
-      if (serverStartHour === 0) serverStartHour = 12;
-      startClock();
-    }
+  // وقت البداية الحقيقي (يتخزن أول مرة فقط)
+  let startRealTime = localStorage.getItem(storageKey);
+  if (!startRealTime) {
+    startRealTime = new Date().toISOString(); // الوقت الحقيقي الحالي UTC
+    localStorage.setItem(storageKey, startRealTime); // نخزنه
   }
 
-  function startClock() {
-    // Clear any existing interval to prevent multiple clocks running
-    if (window.clockInterval) {
-      clearInterval(window.clockInterval);
+  const startDate = new Date(startRealTime);
+  const initialServerMinutes = 1040; // 6:12 AM وهمي
+
+  function updateClock() {
+    const now = new Date();
+    const elapsedMs = Math.max(0, now.getTime() - startDate.getTime());
+    const elapsedServerMinutes = Math.floor(elapsedMs / serverMinuteMs);
+
+    let totalMinutes = (initialServerMinutes + elapsedServerMinutes) % (24 * 60);
+    let hour = Math.floor(totalMinutes / 60);
+    let minute = totalMinutes % 60;
+
+    let ampm = "AM";
+    if (hour >= 12) {
+      ampm = "PM";
+      if (hour > 12) hour -= 12;
     }
+    if (hour === 0) hour = 12;
 
-    // Update every 0.6 seconds (600ms) to make server minute pass every 6 real seconds
-    window.clockInterval = setInterval(() => {
-      const now = new Date();
-      // Calculate elapsed milliseconds from the startRealTime
-      // Ensure elapsedMs is non-negative
-      const elapsedMs = Math.max(0, now.getTime() - startRealTime.getTime());
-      
-      // Calculate elapsed server minutes based on the custom rate
-      const elapsedServerMinutes = Math.floor(elapsedMs / serverMinuteMs);
+    const hh = hour.toString().padStart(2, '0');
+    const mm = minute.toString().padStart(2, '0');
 
-      // Convert initial server time to total minutes from midnight (00:00) in 24-hour format
-      let initialTotalMinutes = serverStartHour * 60 + serverStartMinute;
-      if (!isAM && serverStartHour !== 12) { // If PM and not 12 PM, add 12 hours
-          initialTotalMinutes += 12 * 60;
-      } else if (isAM && serverStartHour === 12) { // If 12 AM, it's 00:xx in 24-hour
-          initialTotalMinutes -= 12 * 60;
-      }
-
-      // Add elapsed server minutes to get current total server minutes
-      let currentTotalServerMinutes = initialTotalMinutes + elapsedServerMinutes;
-
-      // Ensure currentTotalServerMinutes stays within a 24-hour cycle (1440 minutes)
-      currentTotalServerMinutes = currentTotalServerMinutes % (24 * 60);
-      if (currentTotalServerMinutes < 0) {
-          currentTotalServerMinutes += (24 * 60); // Add 24 hours if negative after modulo
-      }
-
-      // Convert back to 12-hour format with AM/PM
-      let displayHour = Math.floor(currentTotalServerMinutes / 60);
-      let displayMinute = currentTotalServerMinutes % 60;
-
-      let ampm = "AM";
-      if (displayHour >= 12) {
-        ampm = "PM";
-        if (displayHour > 12) {
-          displayHour -= 12;
-        }
-      }
-      if (displayHour === 0) {
-        displayHour = 12; // 00:xx becomes 12:xx AM
-      }
-
-      const formattedHour = displayHour.toString().padStart(2, '0');
-      const formattedMinute = displayMinute.toString().padStart(2, '0');
-
-      const clockElement = document.getElementById("server-clock");
-      if (clockElement) {
-        clockElement.innerText = `${formattedHour}:${formattedMinute} ${ampm}`;
-      }
-    }, 600); // Update every 600ms (0.6 seconds) for smoother 6-second minute transition
+    document.getElementById("server-clock").innerText = `${hh}:${mm} ${ampm}`;
   }
 
-  fetchServerTime();
+  setInterval(updateClock, 600); // كل 0.6 ثانية (6 ثواني = دقيقة وهمية)
+  updateClock(); // عرض مبدئي مباشر
   </script>
    <!-- عداد الزوار - أسفل يسار الشاشة وثابت -->
 <div class="visitor-counter">
