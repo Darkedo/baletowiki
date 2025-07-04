@@ -42,15 +42,40 @@ html, body {
     background-attachment: scroll; /* Better performance on mobile */
   }
   
-  /* Fix navigation for mobile */
+  /* Fix navigation for mobile - OVERRIDE THE MAIN CSS */
+  #nav {
+    display: flex !important; /* Force navigation to show on mobile */
+    flex-direction: column !important;
+    height: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 1rem !important;
+    background: rgba(0, 0, 0, 0.8) !important;
+  }
+  
+  #nav ul.links {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+  
+  #nav ul.links li {
+    width: 100% !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
   #nav ul.links li a {
-    font-size: 1.2rem !important;
-    padding: 0 1rem !important;
+    font-size: 1rem !important;
+    padding: 1rem !important;
+    display: block !important;
+    text-align: center !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 5px !important;
   }
   
   /* Improve text readability on mobile */
   .flash-link {
-    font-size: 1.5rem !important;
+    font-size: 1.2rem !important;
   }
   
   /* Fix intro section for mobile */
@@ -94,13 +119,14 @@ html, body {
     line-height: 1.5 !important;
   }
   
-  /* Fix visitor counter for mobile */
+  /* Fix visitor counter for mobile - FIXED POSITIONING */
   .visitor-counter {
     position: fixed !important;
     bottom: 10px !important;
     left: 10px !important;
     right: auto !important;
     z-index: 9999 !important;
+    transform: none !important; /* Prevent any transforms */
   }
   
   .visitor-counter > div {
@@ -120,12 +146,12 @@ html, body {
   }
   
   #nav ul.links li a {
-    font-size: 1rem !important;
-    padding: 0 0.5rem !important;
+    font-size: 0.9rem !important;
+    padding: 0.8rem !important;
   }
   
   .flash-link {
-    font-size: 1.2rem !important;
+    font-size: 1rem !important;
   }
   
   #xp-calculator {
@@ -135,6 +161,17 @@ html, body {
   
   .instructions-container ul {
     font-size: 0.9rem !important;
+  }
+}
+
+/* Desktop visitor counter fix */
+@media screen and (min-width: 769px) {
+  .visitor-counter {
+    position: fixed !important;
+    bottom: 20px !important;
+    left: 20px !important;
+    z-index: 9999 !important;
+    transform: none !important; /* Prevent any transforms */
   }
 }
 
@@ -863,7 +900,7 @@ html, body {
     }
   </script>
    <!-- عداد الزوار - أسفل يسار الشاشة وثابت -->
-<div class="visitor-counter" style="position: absolute; bottom: 20px; left: 20px; z-index: 9999;">
+<div class="visitor-counter" style="position: fixed; bottom: 20px; left: 20px; z-index: 9999;">
   <div style="background: #1e1e1e; padding: 8px 15px; border-radius: 10px; box-shadow: 0 0 6px #00ffc8; font-size: 14px;">
     <span style="color: #00ffc8; font-weight: bold;">عدد الزوار</span><br>
     <div id="sfcr42wj7zrrz8g5fxtz4ypx47jfy43fkuc" style="margin-top: 5px;"></div>
