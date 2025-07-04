@@ -9,7 +9,6 @@
 <head>
 <title>BALETO</title>
 <meta charset="utf-8"/>
-<title>BALETO</title>
 <meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport"/>
 <link href="assets/css/main.css" rel="stylesheet"/>
 <noscript><link href="assets/css/noscript.css" rel="stylesheet"/></noscript>
@@ -481,7 +480,19 @@ table.rank-table th {
 </style>
 <!-- Intro -->
 <div id="intro">
-<h1><span>BALETO</span></h1>
+<h1><span>BALETO</span></h1
+<div id="server-clock" style="
+  font-size: 36px;
+  color: #00ffc8;
+  font-weight: bold;
+  margin-top: 10px;
+  letter-spacing: 2px;
+  font-family: 'Courier New', monospace;
+">
+  00:00 AM
+</div>
+
+			       
 <p>ادوات مساعدة داخل مقاطعة بليتو 
 
 
@@ -1037,6 +1048,60 @@ table.rank-table th {
         <p style="color: #00ffc8;"><strong style="color: #00ffc8;">الخبرة المتبقية للوصول الى المستوى القادم:</strong> ${remainingXP}</p>
       `;
     }
+ const serverMinuteMs = 6000; // كل دقيقة سيرفر = 6 ثواني حقيقية
+  let serverStartHour = 1;
+  let serverStartMinute = 0;
+  let isAM = true;
+  let realStartTime = new Date();
+
+  async function fetchServerTime() {
+    try {
+      const response = await fetch("http://wiki.baletohub.wuaze.com/server-time.json"); // ← غير الرابط حسب مكان رفع الملف
+      const data = await response.json();
+
+      serverStartHour = data.hour;
+      serverStartMinute = data.minute;
+      isAM = data.isAM;
+      realStartTime = new Date(data.updated_at);
+
+      startClock();
+    } catch (error) {
+      console.error("فشل تحميل توقيت السيرفر:", error);
+    }
+  }
+
+  function startClock() {
+    setInterval(() => {
+      const now = new Date();
+      const elapsedMs = now - realStartTime;
+      const elapsedMinutes = Math.floor(elapsedMs / serverMinuteMs);
+
+      let totalMinutes = serverStartHour * 60 + serverStartMinute + elapsedMinutes;
+      let amState = isAM;
+
+      while (totalMinutes >= 720) {
+        totalMinutes -= 720;
+        amState = !amState;
+      }
+
+      let hour = Math.floor(totalMinutes / 60);
+      let minute = totalMinutes % 60;
+
+      if (hour === 0) hour = 12;
+      if (hour > 12) hour -= 12;
+
+      const displayHour = hour.toString().padStart(2, '0');
+      const displayMinute = minute.toString().padStart(2, '0');
+      const ampm = amState ? "AM" : "PM";
+
+      document.getElementById("server-clock").innerText = `${displayHour}:${displayMinute} ${ampm}`;
+    }, 1000);
+  }
+
+  fetchServerTime();
+
+
+	
   </script>
 <!-- عداد الزوار - أسفل يسار الشاشة وثابت -->
 <div class="visitor-counter">
