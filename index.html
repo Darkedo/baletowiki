@@ -42,26 +42,33 @@ html, body {
   }
 }
 
-/* Mobile Navigation - FIXED */
 @media screen and (max-width: 980px) {
   #nav ul.links {
-    flex-direction: row !important;
+    display: flex !important;        /* الأهم */
+    flex-direction: row !important;  /* الترتيب أفقي */
     justify-content: center;
     flex-wrap: wrap;
     gap: 10px;
+    padding: 0 !important;
+    margin: 0 !important;
   }
 
   #nav ul.links li {
     width: auto !important;
+    display: inline-block !important;
   }
 
   #nav ul.links li a {
-    padding: 0.7rem 1.5rem;
-    font-size: 1.2rem !important;
-    display: inline-block;
+    padding: 0.7rem 1.5rem !important;
+    font-size: 1.1rem !important;
+    display: inline-block !important;
     margin-bottom: 0 !important;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff !important;
+    border-radius: 10px;
   }
 }
+
 
 /* Mobile-specific navigation for very small screens */
 @media screen and (max-width: 480px) {
@@ -74,8 +81,8 @@ html, body {
 /* Visitor Counter Mobile Positioning */
 .visitor-counter {
   position: fixed;
-  bottom: 20px;
-  left: 20px;
+  bottom: 10px;
+  left: 10px;
   z-index: 9999;
   background: rgba(30, 30, 30, 0.9);
   padding: 8px 15px;
@@ -83,7 +90,9 @@ html, body {
   box-shadow: 0 0 6px #00ffc8;
   font-size: 14px;
   backdrop-filter: blur(10px);
+  direction: rtl;
 }
+
 
 @media screen and (max-width: 768px) {
   .visitor-counter {
