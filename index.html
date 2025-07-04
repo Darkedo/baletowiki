@@ -35,6 +35,109 @@ html, body {
   background-size: cover;
 }
 
+/* Mobile responsiveness fixes */
+@media screen and (max-width: 768px) {
+  html, body {
+    background-size: cover;
+    background-attachment: scroll; /* Better performance on mobile */
+  }
+  
+  /* Fix navigation for mobile */
+  #nav ul.links li a {
+    font-size: 1.2rem !important;
+    padding: 0 1rem !important;
+  }
+  
+  /* Improve text readability on mobile */
+  .flash-link {
+    font-size: 1.5rem !important;
+  }
+  
+  /* Fix intro section for mobile */
+  #intro {
+    padding: 4rem 2rem 3rem 2rem !important;
+    min-height: 70vh !important;
+  }
+  
+  #intro h1 {
+    font-size: 3rem !important;
+  }
+  
+  #intro p {
+    font-size: 1rem !important;
+  }
+  
+  /* Fix calculator section for mobile */
+  #xp-calculator {
+    max-width: 90% !important;
+    margin: 1rem auto !important;
+    padding: 1.5rem !important;
+  }
+  
+  #xp-calculator input {
+    padding: 12px !important;
+    font-size: 16px !important; /* Prevents zoom on iOS */
+  }
+  
+  #xp-calculator button {
+    padding: 12px !important;
+    font-size: 16px !important;
+  }
+  
+  /* Fix instructions text for mobile */
+  .instructions-container {
+    padding: 1rem !important;
+  }
+  
+  .instructions-container ul {
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+  }
+  
+  /* Fix visitor counter for mobile */
+  .visitor-counter {
+    position: fixed !important;
+    bottom: 10px !important;
+    left: 10px !important;
+    right: auto !important;
+    z-index: 9999 !important;
+  }
+  
+  .visitor-counter > div {
+    padding: 6px 10px !important;
+    font-size: 12px !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #intro {
+    padding: 3rem 1rem 2rem 1rem !important;
+    min-height: 60vh !important;
+  }
+  
+  #intro h1 {
+    font-size: 2.5rem !important;
+  }
+  
+  #nav ul.links li a {
+    font-size: 1rem !important;
+    padding: 0 0.5rem !important;
+  }
+  
+  .flash-link {
+    font-size: 1.2rem !important;
+  }
+  
+  #xp-calculator {
+    max-width: 95% !important;
+    padding: 1rem !important;
+  }
+  
+  .instructions-container ul {
+    font-size: 0.9rem !important;
+  }
+}
+
 
 
 
@@ -139,6 +242,16 @@ html, body {
     position: relative;
     z-index: 1;
   }
+  
+  /* Mobile optimization for intro background */
+  @media screen and (max-width: 768px) {
+    #intro {
+      background-size: cover;
+      background-position: center center;
+      height: auto;
+      min-height: 300px;
+    }
+  }
 </style>
 
 
@@ -217,7 +330,7 @@ html, body {
 						<!-- Featured Post -->
 							<article class="post featured" style="background: transparent;">
 <!-- تعليمات الإدخال بتنسيق أوضح وخط أكبر -->
-<div style="display: flex; justify-content: center; align-items: center; min-height: 40vh; text-align: right;">
+<div class="instructions-container" style="display: flex; justify-content: center; align-items: center; min-height: 40vh; text-align: right;">
   <div style="color: #00ffc8; font-size: 24px; font-weight: bold; line-height: 2;">
     <ul style="list-style-type: disc; padding-right: 20px;">
       <li> أول خانة تكتب فيها مستواك</li>
@@ -750,7 +863,7 @@ html, body {
     }
   </script>
    <!-- عداد الزوار - أسفل يسار الشاشة وثابت -->
-<div style="position: absolute; bottom: 20px; left: 20px; z-index: 9999;">
+<div class="visitor-counter" style="position: absolute; bottom: 20px; left: 20px; z-index: 9999;">
   <div style="background: #1e1e1e; padding: 8px 15px; border-radius: 10px; box-shadow: 0 0 6px #00ffc8; font-size: 14px;">
     <span style="color: #00ffc8; font-weight: bold;">عدد الزوار</span><br>
     <div id="sfcr42wj7zrrz8g5fxtz4ypx47jfy43fkuc" style="margin-top: 5px;"></div>
@@ -771,3 +884,4 @@ html, body {
 
 	</body>
 </html>
+
