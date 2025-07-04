@@ -1036,8 +1036,8 @@ const serverMinuteMs = 6000; // كل دقيقة سيرفر = 6 ثواني حقي
 
   async function fetchServerTime() {
     try {
-      const response = await fetch("http://wiki.baletohub.wuaze.com/server-time.json
-"); // ← غير الرابط حسب مكان رفع الملف
+	    
+      const response = await fetch("http://wiki.baletohub.wuaze.com/server-time.json"); // ← غير الرابط حسب مكان رفع الملف
       const data = await response.json();
 
       serverStartHour = data.hour;
