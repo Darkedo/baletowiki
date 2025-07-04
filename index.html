@@ -1031,12 +1031,12 @@ table.rank-table th {
  const serverMinuteMs = 6000; // كل دقيقة سيرفر = 6 ثواني حقيقية
 
 // الوقت الوهمي الذي يبدأ منه العد (مثلاً 6:12 AM)
-const initialServerMinutes = (21 * 60) + 13;
+const initialServerMinutes = 21 * 60 + 40;
 
 // وقت البداية الوهمي في الوقت الحقيقي (UTC) — نحدد نقطة البداية زمنياً
 // مثلاً ناخد بداية اليوم UTC
 const serverStartRealTime = new Date();
-serverStartRealTime.setUTCHours(0, 0, 0, 0); // بداية اليوم UTC (00:00:00)
+serverStartRealTime.setUTCHours(21, 40, 0, 0); // بداية اليوم UTC (00:00:00)
 
 // دالة تحديث الساعة
 function updateClock() {
