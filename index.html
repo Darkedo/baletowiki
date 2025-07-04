@@ -28,7 +28,7 @@ html, body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  background: url('images/b.png') no-repeat center center fixed;
+  background: url("images/b.png") no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -368,7 +368,7 @@ table.rank-table th {
 
 <style>
   #intro {
-    background-image: url('images/1x.gif');
+    background-image: url("images/1x.gif");
     background-repeat: no-repeat;
     background-size: 100%; /* أو auto مثلاً */
     background-position: 50% -600px;
@@ -1028,7 +1028,7 @@ table.rank-table th {
     }
 
 
-const serverMinuteMs = 6000; // كل دقيقة سيرفر = 6 ثواني
+  const serverMinuteMs = 6000; // كل دقيقة سيرفر = 6 ثواني
   let serverStartHour = 1;
   let serverStartMinute = 0;
   let isAM = true;
@@ -1044,45 +1044,70 @@ const serverMinuteMs = 6000; // كل دقيقة سيرفر = 6 ثواني
       isAM = data.isAM;
       startRealTime = new Date(data.start);
 
-      if (isNaN(startRealTime)) {
+      if (isNaN(startRealTime.getTime())) { // Use .getTime() to check for valid date
         throw new Error("تنسيق start غير صالح");
       }
 
       startClock();
     } catch (error) {
       console.error("❌ فشل تحميل أو قراءة توقيت السيرفر:", error);
+      // Fallback to local time if server time cannot be fetched
+      startRealTime = new Date();
+      serverStartHour = startRealTime.getHours();
+      serverStartMinute = startRealTime.getMinutes();
+      isAM = serverStartHour < 12;
+      if (serverStartHour > 12) serverStartHour -= 12;
+      if (serverStartHour === 0) serverStartHour = 12;
+      startClock();
     }
   }
 
   function startClock() {
-    setInterval(() => {
+    // Clear any existing interval to prevent multiple clocks running
+    if (window.clockInterval) {
+      clearInterval(window.clockInterval);
+    }
+
+    // Update every 0.6 seconds (600ms) to make server minute pass every 6 real seconds
+    window.clockInterval = setInterval(() => {
       const now = new Date();
-      const elapsedMs = now - startRealTime;
-      const elapsedMinutes = Math.max(0, Math.floor(elapsedMs / serverMinuteMs));
+      // Calculate elapsed milliseconds from the startRealTime
+      const elapsedMs = now.getTime() - startRealTime.getTime();
+      
+      // Calculate elapsed server minutes based on the custom rate
+      const elapsedServerMinutes = Math.floor(elapsedMs / serverMinuteMs);
 
-      let totalMinutes = serverStartHour * 60 + serverStartMinute + elapsedMinutes;
-      let amState = isAM;
+      // Calculate the current server time
+      let currentServerHour = serverStartHour;
+      let currentServerMinute = serverStartMinute + elapsedServerMinutes;
+      let currentIsAM = isAM;
 
-      while (totalMinutes >= 720) {
-        totalMinutes -= 720;
-        amState = !amState;
+      // Adjust for minutes overflowing into hours
+      currentServerHour += Math.floor(currentServerMinute / 60);
+      currentServerMinute %= 60;
+
+      // Adjust for hours overflowing into AM/PM cycles
+      // 12 hours in AM/PM cycle, so 720 minutes (12 * 60)
+      const totalHoursPassed = Math.floor(currentServerHour / 12);
+      if (totalHoursPassed % 2 !== 0) {
+        currentIsAM = !currentIsAM;
+      }
+      currentServerHour %= 12;
+
+      // Handle 12 AM/PM display (0 should be 12)
+      if (currentServerHour === 0) {
+        currentServerHour = 12;
       }
 
-      let hour = Math.floor(totalMinutes / 60);
-      let minute = totalMinutes % 60;
-
-      if (hour === 0) hour = 12;
-      if (hour > 12) hour -= 12;
-
-      const displayHour = hour.toString().padStart(2, '0');
-      const displayMinute = minute.toString().padStart(2, '0');
-      const ampm = amState ? "AM" : "PM";
+      const displayHour = currentServerHour.toString().padStart(2, '0');
+      const displayMinute = currentServerMinute.toString().padStart(2, '0');
+      const ampm = currentIsAM ? "AM" : "PM";
 
       const clockElement = document.getElementById("server-clock");
       if (clockElement) {
         clockElement.innerText = `${displayHour}:${displayMinute} ${ampm}`;
       }
-    }, 1000);
+    }, 600); // Update every 600ms (0.6 seconds) for smoother 6-second minute transition
   }
 
   fetchServerTime();
@@ -1101,4 +1126,6 @@ const serverMinuteMs = 6000; // كل دقيقة سيرفر = 6 ثواني
 
 	</body>
 </html>
+
+
 
