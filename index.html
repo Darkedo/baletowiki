@@ -14,141 +14,97 @@
                 <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
                  
- <style>
-/* تأكيد عرض التبويبات أفقيًا على كل الشاشات */
-#nav {
-  display: flex !important;
-  justify-content: center;
-  background: rgba(30, 30, 30, 0.95);
-  padding: 15px;
-  z-index: 9999;
-  position: relative;
-}
+  <style>
 
-#nav ul.links {
-  display: flex !important;
-  flex-direction: row !important;
-  gap: 15px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-#nav ul.links li a {
-  display: block;
-  padding: 10px 15px;
-  background: #00ffc8;
-  color: black;
-  border-radius: 8px;
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 16px;
-}
-
-/* عرض العداد المناسب حسب حجم الشاشة */
-@media (max-width: 768px) {
-  .visitor-counter-desktop {
-    display: none !important;
-  }
-}
-
-@media (min-width: 769px) {
-  .visitor-counter-mobile {
-    display: none !important;
-  }
-}
-
-/* 3. CSS عام */
 body, #wrapper, #main, .post.featured {
   background: transparent !important;
 }
+
 
 .post.featured {
   background: transparent !important;
 }
 
+
+
 html, body {
   margin: 0;
   padding: 0;
-  min-height: 100vh;
+  min-height: 100vh; /* علشان تغطي الشاشة */
   background: url('images/b.png') no-repeat center center fixed;
   background-size: cover;
 }
 
-#xp-calculator {
-  direction: rtl;
-  text-align: right;
-  padding: 2rem;
-  background: #1e1e1e;
-  color: #fff;
-  border-radius: 1rem;
-  max-width: 300px;
-  margin: 2rem auto;
-}
-
-#xp-calculator input {
-  width: 100%;
-  margin-bottom: 1rem;
-  padding: 15px;
-  background: #2c2c2c;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-}
-
-#xp-calculator button {
-  background: #00ffc8;
-  color: black;
-  padding: 10px;
-  border: none;
-  border-radius: 10px;
-  width: 100%;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.progress-bar {
-  background-color: #444;
-  border-radius: 10px;
-  overflow: hidden;
-  height: 20px;
-  margin-top: 10px;
-}
-
-.progress-fill {
-  background-color: #00ffc8;
-  height: 100%;
-  transition: width 0.4s ease;
-}
-
-table.rank-table {
-  margin: 2rem auto;
-  width: 100%;
-  max-width: 600px;
-  background: #222;
-  border-collapse: collapse;
-  color: #fff;
-}
-
-table.rank-table th, table.rank-table td {
-  border: 1px solid #444;
-  padding: 10px;
-  text-align: center;
-}
-
-table.rank-table th {
-  background: #00ffc8;
-  color: #000;
-}
-
-.optional-text {
-  color: red;
-  font-weight: bold;
-}
-</style>
 
 
 
+
+
+
+    #xp-calculator { /* تم إزالة النقطة من #xp-calculator في CSS الأصلي لديك */
+      direction: rtl;
+      text-align: right;
+      padding: 2rem;
+      background: #1e1e1e;
+      color: #fff;
+      border-radius: 1rem;
+      max-width: 300px;
+      margin: 2rem auto;
+    }
+    #xp-calculator input {
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 15px;
+      background: #2c2c2c;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+    }
+    #xp-calculator button {
+      background: #00ffc8;
+      color: black;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      width: 100%;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .progress-bar {
+      background-color: #444;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 20px;
+      margin-top: 10px;
+    }
+    .progress-fill {
+      background-color: #00ffc8;
+      height: 100%;
+      transition: width 0.4s ease;
+    }
+    table.rank-table {
+      margin: 2rem auto;
+      width: 100%;
+      max-width: 600px;
+      background: #222;
+      border-collapse: collapse;
+      color: #fff;
+    }
+    table.rank-table th, table.rank-table td {
+      border: 1px solid #444;
+      padding: 10px;
+      text-align: center;
+    }
+    table.rank-table th {
+      background: #00ffc8;
+      color: #000;
+    }
+    /* CSS جديد لكلمة اختياري باللون الأحمر */
+    .optional-text {
+        color: red;
+        font-weight: bold; /* لجعلها أكثر وضوحاً */
+    }
+  </style>
 		
 		
 	</head>
@@ -298,20 +254,6 @@ table.rank-table th {
         <div id="result" style="margin-top: 1rem;"></div>
       </section>
 
-<!-- عداد الزوار للموبايل -->
-<div class="visitor-counter-mobile">
-  <div style="background: #1e1e1e; padding: 8px 15px; border-radius: 10px; box-shadow: 0 0 6px #00ffc8; font-size: 14px;">
-    <span style="color: #00ffc8; font-weight: bold;">عدد الزوار</span><br>
-    <div id="sfcr42wj7zrrz8g5fxtz4ypx47jfy43fkuc-mobile" style="margin-top: 5px;"></div>
-    <script type="text/javascript" src="https://counter1.optistats.ovh/private/counter.js?c=r42wj7zrrz8g5fxtz4ypx47jfy43fkuc&down=async" async></script>
-    <noscript>
-      <a href="https://www.freecounterstat.com" title="website counter">
-        <img src="https://counter1.optistats.ovh/private/freecounterstat.php?c=r42wj7zrrz8g5fxtz4ypx47jfy43fkuc" border="0" title="website counter" alt="website counter">
-      </a>
-    </noscript>
-  </div>
-</div>
-
 
 
 
@@ -331,8 +273,6 @@ table.rank-table th {
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script> 
-                        <script src="assets/js/jquery.panel.min.js"></script> <!-- ✅ أضف المكتبة -->
-
 
 <script>
     const XP = [0,
@@ -809,8 +749,8 @@ table.rank-table th {
       `;
     }
   </script>
-   <!-- عداد الزوار للديسكتوب - أسفل يسار الشاشة وثابت -->
-<div class="visitor-counter-desktop" style="position: absolute; bottom: 20px; left: 20px; z-index: 9999;">
+   <!-- عداد الزوار - أسفل يسار الشاشة وثابت -->
+<div style="position: absolute; bottom: 20px; left: 20px; z-index: 9999;">
   <div style="background: #1e1e1e; padding: 8px 15px; border-radius: 10px; box-shadow: 0 0 6px #00ffc8; font-size: 14px;">
     <span style="color: #00ffc8; font-weight: bold;">عدد الزوار</span><br>
     <div id="sfcr42wj7zrrz8g5fxtz4ypx47jfy43fkuc" style="margin-top: 5px;"></div>
@@ -831,4 +771,3 @@ table.rank-table th {
 
 	</body>
 </html>
-
