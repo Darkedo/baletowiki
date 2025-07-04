@@ -181,9 +181,9 @@
 
 				breakpoints.on('<=medium', function() {
 
-					// Nav -> NavPanel.
-						$navContent.appendTo($navPanelInner);
-$navPanel.css('display', 'block'); // إظهار قائمة التنقل
+					/// Nav -> NavPanel.
+// $navContent.appendTo($navPanelInner);
+// $navPanel.css('display', 'block'); // إظهار قائمة التنقل
 
 
 					// Flip icon classes.
