@@ -15,171 +15,144 @@
 
                  
   <style>
+/* 1. إصلاح قائمة التنقل وعداد الزوار على الموبايل */
+@media (max-width: 768px) {
+  #nav {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    background: rgba(30, 30, 30, 0.9) !important;
+    padding: 20px !important;
+    margin: 20px auto !important;
+    border-radius: 10px !important;
+    z-index: 999 !important;
+  }
 
+  #nav ul.links {
+    flex-direction: column !important;
+    align-items: center !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  #nav ul.links li a {
+    display: block !important;
+    font-size: 22px !important;
+    padding: 10px 15px !important;
+    background: #00ffc8 !important;
+    color: black !important;
+    border-radius: 8px !important;
+    text-decoration: none !important;
+    margin-bottom: 10px !important;
+    font-weight: bold;
+  }
+
+  .visitor-counter-mobile {
+    display: block !important;
+    z-index: 9999 !important;
+    position: relative !important;
+    text-align: center !important;
+    margin: 20px auto !important;
+  }
+
+  .visitor-counter-desktop {
+    display: none !important;
+  }
+}
+
+/* 2. إخفاء عداد الزوار للموبايل على الديسكتوب */
+@media (min-width: 769px) {
+  .visitor-counter-mobile {
+    display: none !important;
+  }
+}
+
+/* 3. CSS عام */
 body, #wrapper, #main, .post.featured {
   background: transparent !important;
 }
-
 
 .post.featured {
   background: transparent !important;
 }
 
-
-
 html, body {
   margin: 0;
   padding: 0;
-  min-height: 100vh; /* علشان تغطي الشاشة */
+  min-height: 100vh;
   background: url('images/b.png') no-repeat center center fixed;
   background-size: cover;
 }
 
+#xp-calculator {
+  direction: rtl;
+  text-align: right;
+  padding: 2rem;
+  background: #1e1e1e;
+  color: #fff;
+  border-radius: 1rem;
+  max-width: 300px;
+  margin: 2rem auto;
+}
+#xp-calculator input {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 15px;
+  background: #2c2c2c;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+}
+#xp-calculator button {
+  background: #00ffc8;
+  color: black;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  font-weight: bold;
+  cursor: pointer;
+}
+.progress-bar {
+  background-color: #444;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 20px;
+  margin-top: 10px;
+}
+.progress-fill {
+  background-color: #00ffc8;
+  height: 100%;
+  transition: width 0.4s ease;
+}
+table.rank-table {
+  margin: 2rem auto;
+  width: 100%;
+  max-width: 600px;
+  background: #222;
+  border-collapse: collapse;
+  color: #fff;
+}
+table.rank-table th, table.rank-table td {
+  border: 1px solid #444;
+  padding: 10px;
+  text-align: center;
+}
+table.rank-table th {
+  background: #00ffc8;
+  color: #000;
+}
+.optional-text {
+  color: red;
+  font-weight: bold;
+}
+</style>
 
-
-
-
-
-
-    #xp-calculator { /* تم إزالة النقطة من #xp-calculator في CSS الأصلي لديك */
-      direction: rtl;
-      text-align: right;
-      padding: 2rem;
-      background: #1e1e1e;
-      color: #fff;
-      border-radius: 1rem;
-      max-width: 300px;
-      margin: 2rem auto;
-    }
-    #xp-calculator input {
-      width: 100%;
-      margin-bottom: 1rem;
-      padding: 15px;
-      background: #2c2c2c;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-    }
-    #xp-calculator button {
-      background: #00ffc8;
-      color: black;
-      padding: 10px;
-      border: none;
-      border-radius: 10px;
-      width: 100%;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .progress-bar {
-      background-color: #444;
-      border-radius: 10px;
-      overflow: hidden;
-      height: 20px;
-      margin-top: 10px;
-    }
-    .progress-fill {
-      background-color: #00ffc8;
-      height: 100%;
-      transition: width 0.4s ease;
-    }
-    table.rank-table {
-      margin: 2rem auto;
-      width: 100%;
-      max-width: 600px;
-      background: #222;
-      border-collapse: collapse;
-      color: #fff;
-    }
-    table.rank-table th, table.rank-table td {
-      border: 1px solid #444;
-      padding: 10px;
-      text-align: center;
-    }
-    table.rank-table th {
-      background: #00ffc8;
-      color: #000;
-    }
-    /* CSS جديد لكلمة اختياري باللون الأحمر */
-    .optional-text {
-        color: red;
-        font-weight: bold; /* لجعلها أكثر وضوحاً */
-    }
-
-    /* إصلاح قائمة التنقل على الموبايل */
-    @media (max-width: 768px) {
-      #nav {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        position: relative !important;
-        transform: none !important;
-        background: rgba(30, 30, 30, 0.9) !important;
-        padding: 20px !important;
-        margin: 20px auto !important;
-        border-radius: 10px !important;
-        max-width: 90% !important;
-      }
-      
-      #nav ul.links {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 15px !important;
-        list-style: none !important;
-        padding: 0 !important;
-        margin: 0 !important;
-      }
-      
-      #nav ul.links li {
-        display: block !important;
-        width: 100% !important;
-        text-align: center !important;
-      }
-      
-      #nav ul.links li a {
-        display: block !important;
-        padding: 15px !important;
-        background: #00ffc8 !important;
-        color: #000 !important;
-        text-decoration: none !important;
-        border-radius: 8px !important;
-        font-size: 18px !important;
-        font-weight: bold !important;
-        transition: all 0.3s ease !important;
-      }
-      
-      #nav ul.links li a:hover {
-        background: #00d4a3 !important;
-        transform: scale(1.05) !important;
-      }
-    }
-
-    /* إصلاح عداد الزوار على الموبايل */
-    @media (max-width: 768px) {
-      .visitor-counter-mobile {
-        position: relative !important;
-        bottom: auto !important;
-        left: auto !important;
-        margin: 20px auto !important;
-        text-align: center !important;
-        width: fit-content !important;
-        z-index: 1 !important;
-      }
-    }
-
-    /* إخفاء عداد الزوار الأصلي على الموبايل */
-    @media (max-width: 768px) {
-      .visitor-counter-desktop {
-        display: none !important;
-      }
-    }
-
-    /* إخفاء عداد الزوار الموبايل على الديسكتوب */
-    @media (min-width: 769px) {
-      .visitor-counter-mobile {
-        display: none !important;
-      }
-    }
-  </style>
 		
 		
 	</head>
