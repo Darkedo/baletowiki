@@ -1,6 +1,6 @@
 {
   "hour": 2,
   "minute": 0,
-  "isAM": false,
+  "isAM": true,
   "start": "2025-07-05T00:30:00Z"
 }
