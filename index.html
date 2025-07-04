@@ -11,7 +11,6 @@
                 <title>BALETO</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
                 <link rel="stylesheet" href="assets/css/main.css" />
-                <link rel="stylesheet" href="assets/css/mobile.css" />
                 <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
                  
@@ -36,75 +35,345 @@ html, body {
   background-size: cover;
 }
 
+/* Mobile responsive background */
+@media screen and (max-width: 768px) {
+  html, body {
+    background-attachment: scroll; /* Better performance on mobile */
+    background-size: cover;
+    background-position: center center;
+  }
+}
 
+/* Mobile Navigation Improvements */
+@media screen and (max-width: 980px) {
+  #nav {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 1rem;
+    margin: 0;
+    width: 100%;
+    max-width: none;
+    border-radius: 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  #nav ul.links {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  #nav ul.links li {
+    width: 100%;
+    text-align: center;
+  }
+  
+  #nav ul.links li a {
+    padding: 1rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 0.5rem;
+    display: block;
+    font-size: 1.2rem !important;
+  }
+  
+  #nav ul.links li.active a {
+    background: rgba(0, 255, 200, 0.2);
+    color: #00ffc8 !important;
+  }
+}
 
+/* Mobile-specific navigation for very small screens */
+@media screen and (max-width: 480px) {
+  #nav ul.links li a {
+    font-size: 1rem !important;
+    padding: 0.8rem;
+  }
+}
 
+/* Visitor Counter Mobile Positioning */
+.visitor-counter {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 9999;
+  background: rgba(30, 30, 30, 0.9);
+  padding: 8px 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 6px #00ffc8;
+  font-size: 14px;
+  backdrop-filter: blur(10px);
+}
 
+@media screen and (max-width: 768px) {
+  .visitor-counter {
+    bottom: 10px;
+    left: 10px;
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 8px;
+  }
+}
 
+@media screen and (max-width: 480px) {
+  .visitor-counter {
+    bottom: 5px;
+    left: 5px;
+    padding: 4px 8px;
+    font-size: 10px;
+    border-radius: 6px;
+  }
+}
 
-    #xp-calculator { /* تم إزالة النقطة من #xp-calculator في CSS الأصلي لديك */
-      direction: rtl;
-      text-align: right;
-      padding: 2rem;
-      background: #1e1e1e;
-      color: #fff;
-      border-radius: 1rem;
-      max-width: 300px;
-      margin: 2rem auto;
-    }
-    #xp-calculator input {
-      width: 100%;
-      margin-bottom: 1rem;
-      padding: 15px;
-      background: #2c2c2c;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-    }
-    #xp-calculator button {
-      background: #00ffc8;
-      color: black;
-      padding: 10px;
-      border: none;
-      border-radius: 10px;
-      width: 100%;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .progress-bar {
-      background-color: #444;
-      border-radius: 10px;
-      overflow: hidden;
-      height: 20px;
-      margin-top: 10px;
-    }
-    .progress-fill {
-      background-color: #00ffc8;
-      height: 100%;
-      transition: width 0.4s ease;
-    }
-    table.rank-table {
-      margin: 2rem auto;
-      width: 100%;
-      max-width: 600px;
-      background: #222;
-      border-collapse: collapse;
-      color: #fff;
-    }
-    table.rank-table th, table.rank-table td {
-      border: 1px solid #444;
-      padding: 10px;
-      text-align: center;
-    }
-    table.rank-table th {
-      background: #00ffc8;
-      color: #000;
-    }
-    /* CSS جديد لكلمة اختياري باللون الأحمر */
-    .optional-text {
-        color: red;
-        font-weight: bold; /* لجعلها أكثر وضوحاً */
-    }
+/* Calculator Mobile Responsiveness */
+#xp-calculator {
+  direction: rtl;
+  text-align: right;
+  padding: 2rem;
+  background: rgba(30, 30, 30, 0.95);
+  color: #fff;
+  border-radius: 1rem;
+  max-width: 400px;
+  width: 90%;
+  margin: 2rem auto;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (max-width: 768px) {
+  #xp-calculator {
+    padding: 1.5rem;
+    margin: 1rem auto;
+    max-width: 95%;
+    border-radius: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #xp-calculator {
+    padding: 1rem;
+    margin: 0.5rem auto;
+    max-width: 98%;
+    border-radius: 0.6rem;
+  }
+  
+  #xp-calculator h2 {
+    font-size: 1.5rem !important;
+  }
+}
+
+#xp-calculator input {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 15px;
+  background: #2c2c2c;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 480px) {
+  #xp-calculator input {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+}
+
+#xp-calculator button {
+  background: #00ffc8;
+  color: black;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+#xp-calculator button:hover {
+  background: #00e6b8;
+  transform: translateY(-2px);
+}
+
+@media screen and (max-width: 480px) {
+  #xp-calculator button {
+    padding: 10px;
+    font-size: 1rem;
+  }
+}
+
+.progress-bar {
+  background-color: #444;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 20px;
+  margin-top: 10px;
+}
+
+.progress-fill {
+  background-color: #00ffc8;
+  height: 100%;
+  transition: width 0.4s ease;
+}
+
+/* Instructions Mobile Responsiveness */
+.instructions-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 40vh;
+  text-align: right;
+  padding: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .instructions-container {
+    min-height: 30vh;
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .instructions-container {
+    min-height: 25vh;
+    padding: 0.5rem;
+  }
+  
+  .instructions-container div {
+    font-size: 18px !important;
+    line-height: 1.6 !important;
+  }
+}
+
+/* Table Responsiveness */
+table.rank-table {
+  margin: 2rem auto;
+  width: 100%;
+  max-width: 600px;
+  background: rgba(34, 34, 34, 0.9);
+  border-collapse: collapse;
+  color: #fff;
+  backdrop-filter: blur(10px);
+}
+
+@media screen and (max-width: 768px) {
+  table.rank-table {
+    font-size: 0.9rem;
+    margin: 1rem auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  table.rank-table {
+    font-size: 0.8rem;
+    margin: 0.5rem auto;
+  }
+  
+  table.rank-table th, 
+  table.rank-table td {
+    padding: 6px;
+  }
+}
+
+table.rank-table th, table.rank-table td {
+  border: 1px solid #444;
+  padding: 10px;
+  text-align: center;
+}
+
+table.rank-table th {
+  background: #00ffc8;
+  color: #000;
+}
+
+/* CSS جديد لكلمة اختياري باللون الأحمر */
+.optional-text {
+    color: red;
+    font-weight: bold; /* لجعلها أكثر وضوحاً */
+}
+
+/* Intro Section Mobile Improvements */
+@media screen and (max-width: 768px) {
+  #intro {
+    padding: 4rem 2rem 3rem 2rem;
+    min-height: 70vh;
+  }
+  
+  #intro h1 {
+    font-size: 3rem !important;
+  }
+  
+  #intro p {
+    font-size: 1.1rem !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #intro {
+    padding: 3rem 1rem 2rem 1rem;
+    min-height: 60vh;
+  }
+  
+  #intro h1 {
+    font-size: 2.5rem !important;
+  }
+  
+  #intro p {
+    font-size: 1rem !important;
+  }
+}
+
+/* Main Content Mobile Improvements */
+@media screen and (max-width: 768px) {
+  #main {
+    width: 100%;
+    margin: 0;
+  }
+  
+  #main > * {
+    padding: 2rem 1rem 1rem 1rem;
+  }
+  
+  #main > .post {
+    padding: 4rem 2rem 3rem 2rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #main > * {
+    padding: 1rem 0.5rem 0.5rem 0.5rem;
+  }
+  
+  #main > .post {
+    padding: 2rem 1rem 1.5rem 1rem;
+  }
+}
+
+/* Flash Animation Mobile Optimization */
+@media screen and (max-width: 768px) {
+  .flash-link {
+    animation-duration: 3s; /* Slower animation on mobile for better visibility */
+  }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+  #xp-calculator button,
+  .flash-link {
+    transform: none !important; /* Disable hover transforms on touch devices */
+  }
+  
+  #xp-calculator button:active {
+    background: #00d4a3;
+    transform: scale(0.98);
+  }
+}
+
   </style>
 		
 		
@@ -140,20 +409,29 @@ html, body {
     position: relative;
     z-index: 1;
   }
+  
+  /* Mobile intro adjustments */
+  @media screen and (max-width: 768px) {
+    #intro {
+      background-size: cover;
+      background-position: center center;
+      height: 250px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    #intro {
+      height: 200px;
+      background-size: cover;
+    }
+  }
 </style>
 
-
-
-
-
-
-
-		<style>
+<style>
   #wrapper {
     background: transparent !important;
   }
 </style>
-
 
 				<!-- Intro -->
 					<div id="intro">
@@ -218,11 +496,11 @@ html, body {
 						<!-- Featured Post -->
 							<article class="post featured" style="background: transparent;">
 <!-- تعليمات الإدخال بتنسيق أوضح وخط أكبر -->
-<div style="display: flex; justify-content: center; align-items: center; min-height: 40vh; text-align: right;">
+<div class="instructions-container">
   <div style="color: #00ffc8; font-size: 24px; font-weight: bold; line-height: 2;">
     <ul style="list-style-type: disc; padding-right: 20px;">
       <li> أول خانة تكتب فيها مستواك</li>
-      <li> (اختياري) Fثاني خانة تكتب فيها عدد نقاط لفلك الحالي من 5</li>
+      <li> (اختياري) ثاني خانة تكتب فيها عدد نقاط لفلك الحالي من 5</li>
       <li> ثالث خانة تكتب فيها كمية الخبرة اللي هتضيفها عشان يحسب هتوصل لمستوى كام</li>
     </ul>
   </div>
@@ -751,24 +1029,17 @@ html, body {
     }
   </script>
    <!-- عداد الزوار - أسفل يسار الشاشة وثابت -->
-<div style="position: relative; margin-top: 20px; margin-left: 20px; z-index: 1;">
-  <div style="background: #1e1e1e; padding: 8px 15px; border-radius: 10px; box-shadow: 0 0 6px #00ffc8; font-size: 14px;">
-    <span style="color: #00ffc8; font-weight: bold;">عدد الزوار</span><br>
-    <div id="sfcr42wj7zrrz8g5fxtz4ypx47jfy43fkuc" style="margin-top: 5px;"></div>
-    <script type="text/javascript" src="https://counter1.optistats.ovh/private/counter.js?c=r42wj7zrrz8g5fxtz4ypx47jfy43fkuc&down=async" async></script>
-    <noscript>
-      <a href="https://www.freecounterstat.com" title="website counter">
-        <img src="https://counter1.optistats.ovh/private/freecounterstat.php?c=r42wj7zrrz8g5fxtz4ypx47jfy43fkuc" border="0" title="website counter" alt="website counter">
-      </a>
-    </noscript>
-  </div>
+<div class="visitor-counter">
+  <span style="color: #00ffc8; font-weight: bold;">عدد الزوار</span><br>
+  <div id="sfcr42wj7zrrz8g5fxtz4ypx47jfy43fkuc" style="margin-top: 5px;"></div>
+  <script type="text/javascript" src="https://counter1.optistats.ovh/private/counter.js?c=r42wj7zrrz8g5fxtz4ypx47jfy43fkuc&down=async" async></script>
+  <noscript>
+    <a href="https://www.freecounterstat.com" title="website counter">
+      <img src="https://counter1.optistats.ovh/private/freecounterstat.php?c=r42wj7zrrz8g5fxtz4ypx47jfy43fkuc" border="0" title="website counter" alt="website counter">
+    </a>
+  </noscript>
 </div>
-
-
-
-
-
-
 
 	</body>
 </html>
+
