@@ -1036,7 +1036,7 @@ table.rank-table th {
 
   async function fetchServerTime() {
     try {
-      const response = await fetch("https://wiki.baletohub.wuaze.com/server-time.json");
+      const response = await fetch("server-time.json");
       const data = await response.json();
 
       serverStartHour = data.hour;
