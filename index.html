@@ -16,21 +16,19 @@
                  
   <style>
 
+
 body, #wrapper, #main, .post.featured {
   background: transparent !important;
 }
-
 
 .post.featured {
   background: transparent !important;
 }
 
-
-
 html, body {
   margin: 0;
   padding: 0;
-  min-height: 100vh; /* علشان تغطي الشاشة */
+  min-height: 100vh;
   background: url('images/b.png') no-repeat center center fixed;
   background-size: cover;
 }
@@ -38,49 +36,30 @@ html, body {
 /* Mobile responsive background */
 @media screen and (max-width: 768px) {
   html, body {
-    background-attachment: scroll; /* Better performance on mobile */
+    background-attachment: scroll;
     background-size: cover;
     background-position: center center;
   }
 }
 
-/* Mobile Navigation Improvements */
+/* Mobile Navigation - FIXED */
 @media screen and (max-width: 980px) {
-  #nav {
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
-    padding: 1rem;
-    margin: 0;
-    width: 100%;
-    max-width: none;
-    border-radius: 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-  
   #nav ul.links {
-    flex-direction: column;
-    gap: 0.5rem;
+    flex-direction: row !important;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
   }
-  
+
   #nav ul.links li {
-    width: 100%;
-    text-align: center;
+    width: auto !important;
   }
-  
+
   #nav ul.links li a {
-    padding: 1rem;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.1);
-    margin-bottom: 0.5rem;
-    display: block;
+    padding: 0.7rem 1.5rem;
     font-size: 1.2rem !important;
-  }
-  
-  #nav ul.links li.active a {
-    background: rgba(0, 255, 200, 0.2);
-    color: #00ffc8 !important;
+    display: inline-block;
+    margin-bottom: 0 !important;
   }
 }
 
