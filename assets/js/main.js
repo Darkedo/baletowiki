@@ -183,6 +183,8 @@
 
 					// Nav -> NavPanel.
 						$navContent.appendTo($navPanelInner);
+$navPanel.css('display', 'block'); // إظهار قائمة التنقل
+
 
 					// Flip icon classes.
 						$navPanelInner.find('.icons, .icon')
