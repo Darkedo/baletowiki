@@ -1,34 +1,33 @@
 <!DOCTYPE HTML>
-
 <!--
 	karem
 	greatings
         the CCA 3.0 license 
 -->
 <html>
-<head>
-<title>BALETO</title>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport"/>
-<link href="assets/css/main.css" rel="stylesheet"/>
-<noscript><link href="assets/css/noscript.css" rel="stylesheet"/></noscript>
-<style>
+	<head>
+		<title>BALETO</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+                <link rel="stylesheet" href="assets/css/main.css" />
+                <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+                 
+  <style>
+
 
 body, #wrapper, #main, .post.featured {
   background: transparent !important;
 }
 
-
 .post.featured {
   background: transparent !important;
 }
 
-
-
 html, body {
   margin: 0;
   padding: 0;
-  min-height: 100vh; /* علشان تغطي الشاشة */
+  min-height: 100vh;
   background: url('images/b.png') no-repeat center center fixed;
   background-size: cover;
 }
@@ -36,65 +35,53 @@ html, body {
 /* Mobile responsive background */
 @media screen and (max-width: 768px) {
   html, body {
-    background-attachment: scroll; /* Better performance on mobile */
+    background-attachment: scroll;
     background-size: cover;
     background-position: center center;
   }
 }
 
-/* Mobile Navigation Improvements */
 @media screen and (max-width: 980px) {
-  #nav {
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
-    padding: 1rem;
-    margin: 0;
-    width: 100%;
-    max-width: none;
-    border-radius: 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-  
   #nav ul.links {
-    flex-direction: column;
-    gap: 0.5rem;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
   }
-  
+
   #nav ul.links li {
-    width: 100%;
-    text-align: center;
+    width: auto !important;
+    display: inline-block !important;
   }
-  
+
   #nav ul.links li a {
-    padding: 1rem;
-    border-radius: 8px;
+    display: inline-block !important;
+    padding: 10px 20px;
+    font-size: 16px !important;
+    color: #fff !important;
     background: rgba(255, 255, 255, 0.1);
-    margin-bottom: 0.5rem;
-    display: block;
-    font-size: 1.2rem !important;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    white-space: nowrap;
   }
-  
+
   #nav ul.links li.active a {
     background: rgba(0, 255, 200, 0.2);
     color: #00ffc8 !important;
   }
 }
 
-/* Mobile-specific navigation for very small screens */
-@media screen and (max-width: 480px) {
-  #nav ul.links li a {
-    font-size: 1rem !important;
-    padding: 0.8rem;
-  }
-}
-
 /* Visitor Counter Mobile Positioning */
 .visitor-counter {
   position: fixed;
-  bottom: 20px;
-  left: 20px;
+  bottom: 10px;
+  left: 10px;
   z-index: 9999;
   background: rgba(30, 30, 30, 0.9);
   padding: 8px 15px;
@@ -102,7 +89,9 @@ html, body {
   box-shadow: 0 0 6px #00ffc8;
   font-size: 14px;
   backdrop-filter: blur(10px);
+  direction: rtl;
 }
+
 
 @media screen and (max-width: 768px) {
   .visitor-counter {
@@ -373,59 +362,10 @@ table.rank-table th {
 }
 
   </style>
+		
+		
+	</head>
 
-<style>
-@media screen and (max-width: 980px) {
-  #nav ul.links {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-
-  #nav ul.links li {
-    width: auto !important;
-    display: inline-block !important;
-  }
-
-  #nav ul.links li a {
-    display: inline-block !important;
-    padding: 10px 20px;
-    font-size: 16px !important;
-    color: #fff !important;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    white-space: nowrap;
-  }
-
-  #nav ul.links li.active a {
-    background: rgba(0, 255, 200, 0.2);
-    color: #00ffc8 !important;
-  }
-}
-
-/* Fix visitor counter */
-.visitor-counter {
-  position: fixed;
-  bottom: 10px;
-  left: 10px;
-  z-index: 9999;
-  background: rgba(30, 30, 30, 0.9);
-  padding: 8px 15px;
-  border-radius: 10px;
-  box-shadow: 0 0 6px #00ffc8;
-  font-size: 14px;
-  backdrop-filter: blur(10px);
-  direction: rtl;
-}
-</style>
-</head>
 <style>
   #intro {
     background-image: url('images/1x.gif');
@@ -473,14 +413,16 @@ table.rank-table th {
     }
   }
 </style>
+
 <style>
   #wrapper {
     background: transparent !important;
   }
 </style>
-<!-- Intro -->
-<div id="intro">
-<h1><span>BALETO</span></h1
+
+				<!-- Intro -->
+					<div id="intro">
+						<h1><span>BALETO</span></h1>
 <div id="server-clock" style="
   font-size: 36px;
   color: #00ffc8;
@@ -492,36 +434,42 @@ table.rank-table th {
   00:00 AM
 </div>
 
-			       
-<p>ادوات مساعدة داخل مقاطعة بليتو 
 
 
-                           <a href="https://boleto7.com/" style="display: block; margin-top: 10px; color: green; text-decoration: none;" target="_blank">
+						<p>ادوات مساعدة داخل مقاطعة بليتو 
+
+
+                           <a href="https://boleto7.com/" target="_blank" style="display: block; margin-top: 10px; color: green; text-decoration: none;">
                                       موقع بليتو
                             </a>
-</p>
-<ul class="actions">
-<li><a class="button icon solid solo fa-arrow-down scrolly" href="#header">Continue</a></li>
-</ul>
-</div>
-<!-- Header -->
-<header id="header">
-<a class="logo" href="index.html">BAL WIKI</a>
-</header>
-<!-- Nav -->
+
+ 
+						 </p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+						</ul>
+					</div>
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">BAL WIKI</a>
+					</header>
+
+				<!-- Nav -->
 <nav id="nav">
-<ul class="links">
-<li class="active">
-<a class="flash-link" href="#xp-calculator" style="color: #000 !important; font-size: 30px; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5 );">حساب الخبرة</a>
-</li>
-<li>
-<a class="flash-link" href="generic.html" style="color: #000 !important; font-size: 30px; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">حساب الحمولات</a>
-</li>
-<li>
-<a class="flash-link" href="elements.html" style="color: #000 !important; font-size: 30px; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">حساب غير شرعي</a>
-</li>
-</ul>
+    <ul class="links">
+        <li class="active">
+            <a href="#xp-calculator" class="flash-link" style="color: #000 !important; font-size: 30px; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5 );">حساب الخبرة</a>
+        </li>
+        <li>
+            <a href="generic.html" class="flash-link" style="color: #000 !important; font-size: 30px; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">حساب الحمولات</a>
+        </li>
+        <li>
+            <a href="elements.html" class="flash-link" style="color: #000 !important; font-size: 30px; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">حساب غير شرعي</a>
+        </li>
+    </ul>
 </nav>
+
 <style>
 .flash-link {
   animation: flash 2s ease-in-out infinite;
@@ -538,42 +486,72 @@ table.rank-table th {
   }
 }
 </style>
-<!-- Main -->
-<div id="main">
-<!-- Featured Post -->
-<article class="post featured" style="background: transparent;">
+
+
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Featured Post -->
+							<article class="post featured" style="background: transparent;">
 <!-- تعليمات الإدخال بتنسيق أوضح وخط أكبر -->
 <div class="instructions-container">
-<div style="color: #00ffc8; font-size: 24px; font-weight: bold; line-height: 2;">
-<ul style="list-style-type: disc; padding-right: 20px;">
-<li> أول خانة تكتب فيها مستواك</li>
-<li> (اختياري) ثاني خانة تكتب فيها عدد نقاط لفلك الحالي من 5</li>
-<li> ثالث خانة تكتب فيها كمية الخبرة اللي هتضيفها عشان يحسب هتوصل لمستوى كام</li>
-</ul>
+  <div style="color: #00ffc8; font-size: 24px; font-weight: bold; line-height: 2;">
+    <ul style="list-style-type: disc; padding-right: 20px;">
+      <li> أول خانة تكتب فيها مستواك</li>
+      <li> (اختياري) ثاني خانة تكتب فيها عدد نقاط لفلك الحالي من 5</li>
+      <li> ثالث خانة تكتب فيها كمية الخبرة اللي هتضيفها عشان يحسب هتوصل لمستوى كام</li>
+    </ul>
+  </div>
 </div>
-</div>
-<header class="major">
-</header>
-<ul class="actions special">
+
+
+
+
+								<header class="major">
+								
+									
+								</header>
+								<ul class="actions special">
+									
 <section id="xp-calculator">
-<h2 style="color: #00ffc8;">احسب الخبرة المضافة</h2>
-<label for="level" style="color: #00ffc8;">مستواك داخل المقاطعة</label>
-<input id="level" max="400" min="1" type="number"/>
-<label for="current-xp-in-level" style="color: #00ffc8;">إجمالي عدد نقاط خبرة مستواك حاليا <span class="optional-text">(اختياري)</span></label>
-<input id="current-xp-in-level" min="0" type="number"/>
-<label for="xp" style="color: #00ffc8;">نقاط الخبرة التي تريد إضافتها</label>
-<input id="xp" min="0" type="number"/>
-<button onclick="calculate()">احسب المستوى</button>
-<div id="result" style="margin-top: 1rem;"></div>
-</section>
-<!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/jquery.scrollex.min.js"></script>
-<script src="assets/js/jquery.scrolly.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
+        <h2 style="color: #00ffc8;">احسب الخبرة المضافة</h2>
+        <label for="level" style="color: #00ffc8;">مستواك داخل المقاطعة</label>
+
+        <input type="number" id="level" min="1" max="400">
+
+        <label for="current-xp-in-level" style="color: #00ffc8;">إجمالي عدد نقاط خبرة مستواك حاليا <span class="optional-text">(اختياري)</span></label>
+        <input type="number" id="current-xp-in-level" min="0">
+
+        <label for="xp" style="color: #00ffc8;">نقاط الخبرة التي تريد إضافتها</label>
+
+        <input type="number" id="xp" min="0">
+
+        <button onclick="calculate()">احسب المستوى</button>
+
+        <div id="result" style="margin-top: 1rem;"></div>
+      </section>
+
+
+
+
+							
+							
+				
+
+
+		
+
+			
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script> 
+
 <script>
     const XP = [0,
   800,
@@ -1048,71 +1026,76 @@ table.rank-table th {
         <p style="color: #00ffc8;"><strong style="color: #00ffc8;">الخبرة المتبقية للوصول الى المستوى القادم:</strong> ${remainingXP}</p>
       `;
     }
- const serverMinuteMs = 6000; // كل دقيقة سيرفر = 6 ثواني حقيقية
-  let serverStartHour = 1;
-  let serverStartMinute = 0;
+
+
+const serverMinuteMs = 6000; // كل دقيقة سيرفر = 6 ثواني حقيقية
   let isAM = true;
-  let realStartTime = new Date();
+  let startHour = 2;
+  let startMinute = 40;
+  let startTime;
 
-  async function fetchServerTime() {
-    try {
-      const response = await fetch("http://wiki.baletohub.wuaze.com/server-time.json"); // ← غير الرابط حسب مكان رفع الملف
-      const data = await response.json();
+  if (localStorage.getItem("baleto_server_time")) {
+    const saved = JSON.parse(localStorage.getItem("baleto_server_time"));
+    startHour = saved.hour;
+    startMinute = saved.minute;
+    isAM = saved.isAM;
+    startTime = new Date(saved.realTime);
+  } else {
+    // لو مفيش بيانات محفوظة - ابدأ من الوقت المبدئي
+    startHour = 5;
+    startMinute = 50;
+    isAM = false;
+    startTime = new Date();
+    localStorage.setItem("baleto_server_time", JSON.stringify({
+      hour: startHour,
+      minute: startMinute,
+      isAM: isAM,
+      realTime: startTime
+    }));
+  }
 
-      serverStartHour = data.hour;
-      serverStartMinute = data.minute;
-      isAM = data.isAM;
-      realStartTime = new Date(data.updated_at);
+  function updateServerClock() {
+    const now = new Date();
+    const elapsedMs = now - new Date(startTime);
+    const elapsedMinutes = Math.floor(elapsedMs / serverMinuteMs);
 
-      startClock();
-    } catch (error) {
-      console.error("فشل تحميل توقيت السيرفر:", error);
+    let totalMinutes = startHour * 60 + startMinute + elapsedMinutes;
+    let amState = isAM;
+
+    // كل 12 ساعة = 720 دقيقة → يتقلب AM/PM
+    while (totalMinutes >= 720) {
+      totalMinutes -= 720;
+      amState = !amState;
     }
+
+    let hour = Math.floor(totalMinutes / 60);
+    let minute = totalMinutes % 60;
+
+    if (hour === 0) hour = 12;
+    if (hour > 12) hour -= 12;
+
+    const displayHour = hour.toString().padStart(2, '0');
+    const displayMinute = minute.toString().padStart(2, '0');
+    const ampm = amState ? "AM" : "PM";
+
+    document.getElementById("server-clock").innerText = `${displayHour}:${displayMinute} ${ampm}`;
   }
 
-  function startClock() {
-    setInterval(() => {
-      const now = new Date();
-      const elapsedMs = now - realStartTime;
-      const elapsedMinutes = Math.floor(elapsedMs / serverMinuteMs);
+  setInterval(updateServerClock, 1000);
 
-      let totalMinutes = serverStartHour * 60 + serverStartMinute + elapsedMinutes;
-      let amState = isAM;
-
-      while (totalMinutes >= 720) {
-        totalMinutes -= 720;
-        amState = !amState;
-      }
-
-      let hour = Math.floor(totalMinutes / 60);
-      let minute = totalMinutes % 60;
-
-      if (hour === 0) hour = 12;
-      if (hour > 12) hour -= 12;
-
-      const displayHour = hour.toString().padStart(2, '0');
-      const displayMinute = minute.toString().padStart(2, '0');
-      const ampm = amState ? "AM" : "PM";
-
-      document.getElementById("server-clock").innerText = `${displayHour}:${displayMinute} ${ampm}`;
-    }, 1000);
-  }
-
-  fetchServerTime();
-
-
-	
   </script>
-<!-- عداد الزوار - أسفل يسار الشاشة وثابت -->
+   <!-- عداد الزوار - أسفل يسار الشاشة وثابت -->
 <div class="visitor-counter">
-<span style="color: #00ffc8; font-weight: bold;">عدد الزوار</span><br/>
-<div id="sfcr42wj7zrrz8g5fxtz4ypx47jfy43fkuc" style="margin-top: 5px;"></div>
-<script async="" src="https://counter1.optistats.ovh/private/counter.js?c=r42wj7zrrz8g5fxtz4ypx47jfy43fkuc&amp;down=async" type="text/javascript"></script>
-<noscript>
-<a href="https://www.freecounterstat.com" title="website counter">
-<img alt="website counter" border="0" src="https://counter1.optistats.ovh/private/freecounterstat.php?c=r42wj7zrrz8g5fxtz4ypx47jfy43fkuc" title="website counter"/>
-</a>
-</noscript>
+  <span style="color: #00ffc8; font-weight: bold;">عدد الزوار</span><br>
+  <div id="sfcr42wj7zrrz8g5fxtz4ypx47jfy43fkuc" style="margin-top: 5px;"></div>
+  <script type="text/javascript" src="https://counter1.optistats.ovh/private/counter.js?c=r42wj7zrrz8g5fxtz4ypx47jfy43fkuc&down=async" async></script>
+  <noscript>
+    <a href="https://www.freecounterstat.com" title="website counter">
+      <img src="https://counter1.optistats.ovh/private/freecounterstat.php?c=r42wj7zrrz8g5fxtz4ypx47jfy43fkuc" border="0" title="website counter" alt="website counter">
+    </a>
+  </noscript>
 </div>
 
-</ul></article></div></html>
+	</body>
+</html>
+
