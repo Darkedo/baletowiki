@@ -1029,60 +1029,57 @@ table.rank-table th {
 
 
 const serverMinuteMs = 6000; // كل دقيقة سيرفر = 6 ثواني حقيقية
+  let serverStartHour = 1;
+  let serverStartMinute = 0;
   let isAM = true;
-  let startHour = 2;
-  let startMinute = 40;
-  let startTime;
+  let realStartTime = new Date();
 
-  if (localStorage.getItem("baleto_server_time")) {
-    const saved = JSON.parse(localStorage.getItem("baleto_server_time"));
-    startHour = saved.hour;
-    startMinute = saved.minute;
-    isAM = saved.isAM;
-    startTime = new Date(saved.realTime);
-  } else {
-    // لو مفيش بيانات محفوظة - ابدأ من الوقت المبدئي
-    startHour = 5;
-    startMinute = 50;
-    isAM = false;
-    startTime = new Date();
-    localStorage.setItem("baleto_server_time", JSON.stringify({
-      hour: startHour,
-      minute: startMinute,
-      isAM: isAM,
-      realTime: startTime
-    }));
-  }
+  async function fetchServerTime() {
+    try {
+      const response = await fetch("http://wiki.baletohub.wuaze.com/server-time.json
+"); // ← غير الرابط حسب مكان رفع الملف
+      const data = await response.json();
 
-  function updateServerClock() {
-    const now = new Date();
-    const elapsedMs = now - new Date(startTime);
-    const elapsedMinutes = Math.floor(elapsedMs / serverMinuteMs);
+      serverStartHour = data.hour;
+      serverStartMinute = data.minute;
+      isAM = data.isAM;
+      realStartTime = new Date(data.updated_at);
 
-    let totalMinutes = startHour * 60 + startMinute + elapsedMinutes;
-    let amState = isAM;
-
-    // كل 12 ساعة = 720 دقيقة → يتقلب AM/PM
-    while (totalMinutes >= 720) {
-      totalMinutes -= 720;
-      amState = !amState;
+      startClock();
+    } catch (error) {
+      console.error("فشل تحميل توقيت السيرفر:", error);
     }
-
-    let hour = Math.floor(totalMinutes / 60);
-    let minute = totalMinutes % 60;
-
-    if (hour === 0) hour = 12;
-    if (hour > 12) hour -= 12;
-
-    const displayHour = hour.toString().padStart(2, '0');
-    const displayMinute = minute.toString().padStart(2, '0');
-    const ampm = amState ? "AM" : "PM";
-
-    document.getElementById("server-clock").innerText = `${displayHour}:${displayMinute} ${ampm}`;
   }
 
-  setInterval(updateServerClock, 1000);
+  function startClock() {
+    setInterval(() => {
+      const now = new Date();
+      const elapsedMs = now - realStartTime;
+      const elapsedMinutes = Math.floor(elapsedMs / serverMinuteMs);
 
+      let totalMinutes = serverStartHour * 60 + serverStartMinute + elapsedMinutes;
+      let amState = isAM;
+
+      while (totalMinutes >= 720) {
+        totalMinutes -= 720;
+        amState = !amState;
+      }
+
+      let hour = Math.floor(totalMinutes / 60);
+      let minute = totalMinutes % 60;
+
+      if (hour === 0) hour = 12;
+      if (hour > 12) hour -= 12;
+
+      const displayHour = hour.toString().padStart(2, '0');
+      const displayMinute = minute.toString().padStart(2, '0');
+      const ampm = amState ? "AM" : "PM";
+
+      document.getElementById("server-clock").innerText = `${displayHour}:${displayMinute} ${ampm}`;
+    }, 1000);
+  }
+
+  fetchServerTime();
   </script>
    <!-- عداد الزوار - أسفل يسار الشاشة وثابت -->
 <div class="visitor-counter">
