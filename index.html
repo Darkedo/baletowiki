@@ -1051,10 +1051,11 @@ table.rank-table th {
       startClock();
     } catch (error) {
       console.error("❌ فشل تحميل أو قراءة توقيت السيرفر:", error);
-      // Fallback to local time if server time cannot be fetched
-      startRealTime = new Date();
-      serverStartHour = startRealTime.getHours();
-      serverStartMinute = startRealTime.getMinutes();
+      // Fallback to local time if server time cannot be fetched or is invalid
+      startRealTime = new Date(); // Use current client time as the reference start time
+      const now = new Date();
+      serverStartHour = now.getHours();
+      serverStartMinute = now.getMinutes();
       isAM = serverStartHour < 12;
       if (serverStartHour > 12) serverStartHour -= 12;
       if (serverStartHour === 0) serverStartHour = 12;
@@ -1072,40 +1073,50 @@ table.rank-table th {
     window.clockInterval = setInterval(() => {
       const now = new Date();
       // Calculate elapsed milliseconds from the startRealTime
-      const elapsedMs = now.getTime() - startRealTime.getTime();
+      // Ensure elapsedMs is non-negative
+      const elapsedMs = Math.max(0, now.getTime() - startRealTime.getTime());
       
       // Calculate elapsed server minutes based on the custom rate
       const elapsedServerMinutes = Math.floor(elapsedMs / serverMinuteMs);
 
-      // Calculate the current server time
-      let currentServerHour = serverStartHour;
-      let currentServerMinute = serverStartMinute + elapsedServerMinutes;
-      let currentIsAM = isAM;
-
-      // Adjust for minutes overflowing into hours
-      currentServerHour += Math.floor(currentServerMinute / 60);
-      currentServerMinute %= 60;
-
-      // Adjust for hours overflowing into AM/PM cycles
-      // 12 hours in AM/PM cycle, so 720 minutes (12 * 60)
-      const totalHoursPassed = Math.floor(currentServerHour / 12);
-      if (totalHoursPassed % 2 !== 0) {
-        currentIsAM = !currentIsAM;
-      }
-      currentServerHour %= 12;
-
-      // Handle 12 AM/PM display (0 should be 12)
-      if (currentServerHour === 0) {
-        currentServerHour = 12;
+      // Convert initial server time to total minutes from midnight (00:00) in 24-hour format
+      let initialTotalMinutes = serverStartHour * 60 + serverStartMinute;
+      if (!isAM && serverStartHour !== 12) { // If PM and not 12 PM, add 12 hours
+          initialTotalMinutes += 12 * 60;
+      } else if (isAM && serverStartHour === 12) { // If 12 AM, it's 00:xx in 24-hour
+          initialTotalMinutes -= 12 * 60;
       }
 
-      const displayHour = currentServerHour.toString().padStart(2, '0');
-      const displayMinute = currentServerMinute.toString().padStart(2, '0');
-      const ampm = currentIsAM ? "AM" : "PM";
+      // Add elapsed server minutes to get current total server minutes
+      let currentTotalServerMinutes = initialTotalMinutes + elapsedServerMinutes;
+
+      // Ensure currentTotalServerMinutes stays within a 24-hour cycle (1440 minutes)
+      currentTotalServerMinutes = currentTotalServerMinutes % (24 * 60);
+      if (currentTotalServerMinutes < 0) {
+          currentTotalServerMinutes += (24 * 60); // Add 24 hours if negative after modulo
+      }
+
+      // Convert back to 12-hour format with AM/PM
+      let displayHour = Math.floor(currentTotalServerMinutes / 60);
+      let displayMinute = currentTotalServerMinutes % 60;
+
+      let ampm = "AM";
+      if (displayHour >= 12) {
+        ampm = "PM";
+        if (displayHour > 12) {
+          displayHour -= 12;
+        }
+      }
+      if (displayHour === 0) {
+        displayHour = 12; // 00:xx becomes 12:xx AM
+      }
+
+      const formattedHour = displayHour.toString().padStart(2, '0');
+      const formattedMinute = displayMinute.toString().padStart(2, '0');
 
       const clockElement = document.getElementById("server-clock");
       if (clockElement) {
-        clockElement.innerText = `${displayHour}:${displayMinute} ${ampm}`;
+        clockElement.innerText = `${formattedHour}:${formattedMinute} ${ampm}`;
       }
     }, 600); // Update every 600ms (0.6 seconds) for smoother 6-second minute transition
   }
@@ -1116,7 +1127,7 @@ table.rank-table th {
 <div class="visitor-counter">
   <span style="color: #00ffc8; font-weight: bold;">عدد الزوار</span><br>
   <div id="sfcr42wj7zrrz8g5fxtz4ypx47jfy43fkuc" style="margin-top: 5px;"></div>
-  <script type="text/javascript" src="https://counter1.optistats.ovh/private/counter.js?c=r42wj7zrrz8g5fxtz4ypx47jfy43fkuc&down=async" async></script>
+  <script type="text/javascript" src="https://counter1.optistats.ovh/private/counter.js?c=r42wj7zrrz8g5fxtz4ypx47jfy43fkuc&down=async"></script>
   <noscript>
     <a href="https://www.freecounterstat.com" title="website counter">
       <img src="https://counter1.optistats.ovh/private/freecounterstat.php?c=r42wj7zrrz8g5fxtz4ypx47jfy43fkuc" border="0" title="website counter" alt="website counter">
@@ -1126,6 +1137,5 @@ table.rank-table th {
 
 	</body>
 </html>
-
 
 
