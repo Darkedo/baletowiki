@@ -44,13 +44,15 @@ html, body {
 
 @media screen and (max-width: 980px) {
   #nav ul.links {
-    display: flex !important;        /* الأهم */
-    flex-direction: row !important;  /* الترتيب أفقي */
+    display: flex !important;
+    flex-direction: row !important;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     gap: 10px;
-    padding: 0 !important;
-    margin: 0 !important;
+    list-style: none;
+    padding: 0;
+    margin: 0;
   }
 
   #nav ul.links li {
@@ -59,22 +61,20 @@ html, body {
   }
 
   #nav ul.links li a {
-    padding: 0.7rem 1.5rem !important;
-    font-size: 1.1rem !important;
     display: inline-block !important;
-    margin-bottom: 0 !important;
-    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 20px;
+    font-size: 16px !important;
     color: #fff !important;
-    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    white-space: nowrap;
   }
-}
 
-
-/* Mobile-specific navigation for very small screens */
-@media screen and (max-width: 480px) {
-  #nav ul.links li a {
-    font-size: 1rem !important;
-    padding: 0.8rem;
+  #nav ul.links li.active a {
+    background: rgba(0, 255, 200, 0.2);
+    color: #00ffc8 !important;
   }
 }
 
