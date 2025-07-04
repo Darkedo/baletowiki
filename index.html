@@ -36,15 +36,10 @@ html, body {
 }
 
 /* Mobile responsiveness fixes */
-@media screen and (max-width: 768px) {
-  html, body {
-    background-size: cover;
-    background-attachment: scroll; /* Better performance on mobile */
-  }
-  
-  /* Fix navigation for mobile - OVERRIDE THE MAIN CSS */
+@media screen and (max-width: 980px) {
+  /* Override the main.css that hides navigation on mobile */
   #nav {
-    display: flex !important; /* Force navigation to show on mobile */
+    display: flex !important;
     flex-direction: column !important;
     height: auto !important;
     width: 100% !important;
@@ -65,17 +60,19 @@ html, body {
   }
   
   #nav ul.links li a {
-    font-size: 1rem !important;
+    font-size: 1.2rem !important;
     padding: 1rem !important;
     display: block !important;
     text-align: center !important;
     background: rgba(255, 255, 255, 0.1) !important;
     border-radius: 5px !important;
   }
-  
-  /* Improve text readability on mobile */
-  .flash-link {
-    font-size: 1.2rem !important;
+}
+
+@media screen and (max-width: 768px) {
+  html, body {
+    background-size: cover;
+    background-attachment: scroll; /* Better performance on mobile */
   }
   
   /* Fix intro section for mobile */
@@ -118,21 +115,6 @@ html, body {
     font-size: 1rem !important;
     line-height: 1.5 !important;
   }
-  
-  /* Fix visitor counter for mobile - FIXED POSITIONING */
-  .visitor-counter {
-    position: fixed !important;
-    bottom: 10px !important;
-    left: 10px !important;
-    right: auto !important;
-    z-index: 9999 !important;
-    transform: none !important; /* Prevent any transforms */
-  }
-  
-  .visitor-counter > div {
-    padding: 6px 10px !important;
-    font-size: 12px !important;
-  }
 }
 
 @media screen and (max-width: 480px) {
@@ -146,7 +128,7 @@ html, body {
   }
   
   #nav ul.links li a {
-    font-size: 0.9rem !important;
+    font-size: 1rem !important;
     padding: 0.8rem !important;
   }
   
@@ -161,17 +143,6 @@ html, body {
   
   .instructions-container ul {
     font-size: 0.9rem !important;
-  }
-}
-
-/* Desktop visitor counter fix */
-@media screen and (min-width: 769px) {
-  .visitor-counter {
-    position: fixed !important;
-    bottom: 20px !important;
-    left: 20px !important;
-    z-index: 9999 !important;
-    transform: none !important; /* Prevent any transforms */
   }
 }
 
@@ -899,9 +870,9 @@ html, body {
       `;
     }
   </script>
-   <!-- عداد الزوار - أسفل يسار الشاشة وثابت -->
-<div class="visitor-counter" style="position: fixed; bottom: 20px; left: 20px; z-index: 9999;">
-  <div style="background: #1e1e1e; padding: 8px 15px; border-radius: 10px; box-shadow: 0 0 6px #00ffc8; font-size: 14px;">
+   <!-- عداد الزوار - ثابت في الموقع وليس في الشاشة -->
+<div class="visitor-counter" style="position: relative; margin: 2rem 0; padding: 1rem; text-align: center;">
+  <div style="background: #1e1e1e; padding: 8px 15px; border-radius: 10px; box-shadow: 0 0 6px #00ffc8; font-size: 14px; display: inline-block;">
     <span style="color: #00ffc8; font-weight: bold;">عدد الزوار</span><br>
     <div id="sfcr42wj7zrrz8g5fxtz4ypx47jfy43fkuc" style="margin-top: 5px;"></div>
     <script type="text/javascript" src="https://counter1.optistats.ovh/private/counter.js?c=r42wj7zrrz8g5fxtz4ypx47jfy43fkuc&down=async" async></script>
