@@ -1029,46 +1029,59 @@ table.rank-table th {
 
 
 // إعدادات توقيت اللعبة (تعدلها كما تريد)
-const GAME_START_TIME = "8:00 AM"; // الوقت الافتراضي للعبة (نظام 12 ساعة)
-const REAL_SECONDS_PER_GAME_MINUTE = 6; // 6 ثواني حقيقية = 1 دقيقة لعبة
+        const GAME_START_TIME = "8:00 AM"; // الوقت الافتراضي للعبة (نظام 12 ساعة)
+        const REAL_SECONDS_PER_GAME_MINUTE = 6; // 6 ثواني حقيقية = 1 دقيقة لعبة
 
-// دالة تحويل وقت البدء إلى UTC Timestamp
-function getStartUTC() {
-    const [time, ampm] = GAME_START_TIME.split(' ');
-    let [hours, minutes] = time.split(':').map(Number);
+        // دالة تحويل وقت البدء إلى UTC Timestamp
+        function getStartUTC() {
+            const [time, ampm] = GAME_START_TIME.split(' ');
+            let [hours, minutes] = time.split(':').map(Number);
 
-    // تحويل نظام 12 ساعة → 24 ساعة
-    if (ampm === 'PM' && hours < 12) hours += 12;
-    if (ampm === 'AM' && hours === 12) hours = 0;
+            // تحويل نظام 12 ساعة → 24 ساعة
+            if (ampm === 'PM' && hours < 12) hours += 12;
+            if (ampm === 'AM' && hours === 12) hours = 0;
 
-    // إنشاء تاريخ UTC مع وقت البدء (اليوم الحالي UTC)
-    const utcDate = new Date();
-    utcDate.setUTCHours(hours, minutes, 0, 0);
+            // إنشاء تاريخ UTC مع وقت البدء (اليوم الحالي UTC)
+            const utcDate = new Date();
+            utcDate.setUTCHours(hours, minutes, 0, 0);
 
-    return Math.floor(utcDate.getTime() / 1000); // تحويل إلى ثواني
-}
+            // إذا كان وقت البدء في المستقبل، نطرح يومًا واحدًا
+            const now = new Date();
+            if (utcDate > now) {
+                utcDate.setUTCDate(utcDate.getUTCDate() - 1);
+            }
 
-const startUTC = getStartUTC(); // احفظ قيمة البداية مرة واحدة
+            return Math.floor(utcDate.getTime() / 1000); // تحويل إلى ثواني
+        }
 
-// حساب وقت اللعبة الحالي (يعتمد على UTC)
-function getGameTime() {
-    const nowUTC = Math.floor(Date.now() / 1000); // UTC الحالي بالثواني
-    const elapsedSeconds = nowUTC - startUTC;
-    const gameMinutes = Math.floor(elapsedSeconds / REAL_SECONDS_PER_GAME_MINUTE);
+        const startUTC = getStartUTC(); // احفظ قيمة البداية مرة واحدة
 
-    // تحويل الدقائق إلى ساعات ودقائق (12 ساعة)
-    const hours12 = (Math.floor(gameMinutes / 60) % 12) || 12;
-    const mins = gameMinutes % 60;
-    const ampm = Math.floor(gameMinutes / 720) % 2 === 0 ? 'AM' : 'PM'; // 720 دقيقة = 12 ساعة
+        // حساب وقت اللعبة الحالي (يعتمد على UTC)
+        function getGameTime() {
+            const nowUTC = Math.floor(Date.now() / 1000); // UTC الحالي بالثواني
+            const elapsedSeconds = nowUTC - startUTC;
+            
+            // تجنب الأوقات السالبة
+            if (elapsedSeconds < 0) return GAME_START_TIME;
+            
+            const gameMinutes = Math.floor(elapsedSeconds / REAL_SECONDS_PER_GAME_MINUTE);
 
-    return `${String(hours12).padStart(2, '0')}:${String(mins).padStart(2, '0')} ${ampm}`;
-}
+            // تحويل الدقائق إلى ساعات ودقائق (12 ساعة)
+            const hours12 = (Math.floor(gameMinutes / 60) % 12 || 12;
+            const mins = gameMinutes % 60;
+            const ampm = Math.floor(gameMinutes / 720) % 2 === 0 ? 'AM' : 'PM'; // 720 دقيقة = 12 ساعة
 
-// بدء النظام
-setInterval(() => {
-    document.getElementById('server-clock').textContent = getGameTime();
-}, 1000);
+            return `${String(hours12).padStart(2, '0')}:${String(mins).padStart(2, '0')} ${ampm}`;
+        }
 
+        // بدء النظام
+        function updateClock() {
+            document.getElementById('server-clock').textContent = getGameTime();
+        }
+
+        // تحديث الساعة مباشرة ثم كل ثانية
+        updateClock();
+        setInterval(updateClock, 1000);
   </script>
    <!-- عداد الزوار - أسفل يسار الشاشة وثابت -->
 <div class="visitor-counter">
