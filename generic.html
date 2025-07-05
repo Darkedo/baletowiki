@@ -15,6 +15,24 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
   <style>
+
+a.flash-link.active,
+li.active > a.flash-link,
+li.active > a,
+li.active {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5) !important;
+  font-size: 36px !important;
+  font-weight: bold !important;
+  font-family: 'Cairo', 'Arial', sans-serif !important;
+  animation: flash-green 2s ease-in-out infinite !important;
+}
+
+
+
     /* الأنماط العامة من مشروعك (تم نسخها من index.html لضمان التناسق   ) */
     html, body {
       margin: 0 !important;
@@ -268,31 +286,52 @@
 <nav id="nav">
   <ul class="links">
     <li>
-      <a href="index.html" class="flash-link" style="color: #000 !important; font-size: 30px; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+      <a href="index.html" class="flash-link green">
         حساب الخبرة
       </a>
     </li>
     <li class="active">
-      <a href="#combined-calculator-section" class="flash-link" style="color: #000 !important; font-size: 30px; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+      <a href="#combined-calculator-section" class="flash-link green">
         حساب الحمولات
       </a>
     </li>
     <li>
-      <a href="elements.html" class="flash-link" style="color: #000 !important; font-size: 30px; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+      <a href="elements.html" class="flash-link red">
         حساب غير شرعي
       </a>
     </li>
   </ul>
 </nav>
 
+
 <style>
 .flash-link {
-  animation: flash 2s ease-in-out infinite;
+  font-size: 36px !important;
+  font-weight: bold;
+  font-family: 'Cairo', 'Arial', sans-serif;
+  color: #000;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  text-decoration: none;
+  animation-delay: 0s;
+  animation-fill-mode: both;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 2s;
 }
 
-@keyframes flash {
+/* وميض أخضر */
+.flash-link.green {
+  animation-name: flash-green;
+}
+
+/* وميض أحمر */
+.flash-link.red {
+  animation-name: flash-red;
+}
+
+@keyframes flash-green {
   0%, 100% {
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     color: #000;
   }
   50% {
@@ -300,6 +339,18 @@
     color: #00ffc8;
   }
 }
+
+@keyframes flash-red {
+  0%, 100% {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    color: #000;
+  }
+  50% {
+    text-shadow: 0 0 15px #ff0000, 0 0 10px #ff0000;
+    color: #ff0000;
+  }
+}
+
 </style>
 
 
@@ -312,10 +363,10 @@
         <header class="major">
 <!-- تعليمات الإدخال -->
    <div style="display: flex; justify-content: center; align-items: center; min-height: 40vh; text-align: center;">
-  <div style="color: #00ffc8; font-size: 24px; font-weight: bold; line-height: 4;">
-    <p>اختر من القائمة واكتب كمية عدة الوظيفة**</p>
+  <div style="color: #00ffc8; font-size: 24px; font-weight: bold; line-height: 2;">
+    <p>**اختر من القائمة واكتب كمية عدة الوظيفة</p>
     <p>السمك والعنب بدون عدة تنحسب بالكمية**</p>
-  <p>النفط والغاز منفصلين في قسم**</p>
+    <p>**النفط والغاز: 20 عدة = 40 كيلو، تنقسم لنفط وغاز منفصلين**</p>
   </div>
 </div>
 
