@@ -1,0 +1,1093 @@
+<!DOCTYPE HTML>
+<!--
+	karem
+	greatings
+        the CCA 3.0 license 
+-->
+<html>
+	<head>
+		<title>BALETO</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+                <link rel="stylesheet" href="assets/css/main.css" />
+                <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+                 
+  <style>
+
+
+body, #wrapper, #main, .post.featured {
+  background: transparent !important;
+}
+
+.post.featured {
+  background: transparent !important;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: url("images/b.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* Mobile responsive background */
+@media screen and (max-width: 768px) {
+  html, body {
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: center center;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  #nav ul.links {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  #nav ul.links li {
+    width: auto !important;
+    display: inline-block !important;
+  }
+
+  #nav ul.links li a {
+    display: inline-block !important;
+    padding: 10px 20px;
+    font-size: 16px !important;
+    color: #fff !important;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  #nav ul.links li.active a {
+    background: rgba(0, 255, 200, 0.2);
+    color: #00ffc8 !important;
+  }
+}
+
+/* Visitor Counter Mobile Positioning */
+.visitor-counter {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  z-index: 9999;
+  background: rgba(30, 30, 30, 0.9);
+  padding: 8px 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 6px #00ffc8;
+  font-size: 14px;
+  backdrop-filter: blur(10px);
+  direction: rtl;
+}
+
+
+@media screen and (max-width: 768px) {
+  .visitor-counter {
+    bottom: 10px;
+    left: 10px;
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 8px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .visitor-counter {
+    bottom: 5px;
+    left: 5px;
+    padding: 4px 8px;
+    font-size: 10px;
+    border-radius: 6px;
+  }
+}
+
+/* Calculator Mobile Responsiveness */
+#xp-calculator {
+  direction: rtl;
+  text-align: right;
+  padding: 2rem;
+  background: rgba(30, 30, 30, 0.95);
+  color: #fff;
+  border-radius: 1rem;
+  max-width: 400px;
+  width: 90%;
+  margin: 2rem auto;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (max-width: 768px) {
+  #xp-calculator {
+    padding: 1.5rem;
+    margin: 1rem auto;
+    max-width: 95%;
+    border-radius: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #xp-calculator {
+    padding: 1rem;
+    margin: 0.5rem auto;
+    max-width: 98%;
+    border-radius: 0.6rem;
+  }
+  
+  #xp-calculator h2 {
+    font-size: 1.5rem !important;
+  }
+}
+
+#xp-calculator input {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 15px;
+  background: #2c2c2c;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 480px) {
+  #xp-calculator input {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+}
+
+#xp-calculator button {
+  background: #00ffc8;
+  color: black;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+#xp-calculator button:hover {
+  background: #00e6b8;
+  transform: translateY(-2px);
+}
+
+@media screen and (max-width: 480px) {
+  #xp-calculator button {
+    padding: 10px;
+    font-size: 1rem;
+  }
+}
+
+.progress-bar {
+  background-color: #444;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 20px;
+  margin-top: 10px;
+}
+
+.progress-fill {
+  background-color: #00ffc8;
+  height: 100%;
+  transition: width 0.4s ease;
+}
+
+/* Instructions Mobile Responsiveness */
+.instructions-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 40vh;
+  text-align: right;
+  padding: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .instructions-container {
+    min-height: 30vh;
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .instructions-container {
+    min-height: 25vh;
+    padding: 0.5rem;
+  }
+  
+  .instructions-container div {
+    font-size: 18px !important;
+    line-height: 1.6 !important;
+  }
+}
+
+/* Table Responsiveness */
+table.rank-table {
+  margin: 2rem auto;
+  width: 100%;
+  max-width: 600px;
+  background: rgba(34, 34, 34, 0.9);
+  border-collapse: collapse;
+  color: #fff;
+  backdrop-filter: blur(10px);
+}
+
+@media screen and (max-width: 768px) {
+  table.rank-table {
+    font-size: 0.9rem;
+    margin: 1rem auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  table.rank-table {
+    font-size: 0.8rem;
+    margin: 0.5rem auto;
+  }
+  
+  table.rank-table th, 
+  table.rank-table td {
+    padding: 6px;
+  }
+}
+
+table.rank-table th, table.rank-table td {
+  border: 1px solid #444;
+  padding: 10px;
+  text-align: center;
+}
+
+table.rank-table th {
+  background: #00ffc8;
+  color: #000;
+}
+
+/* CSS جديد لكلمة اختياري باللون الأحمر */
+.optional-text {
+    color: red;
+    font-weight: bold; /* لجعلها أكثر وضوحاً */
+}
+
+/* Intro Section Mobile Improvements */
+@media screen and (max-width: 768px) {
+  #intro {
+    padding: 4rem 2rem 3rem 2rem;
+    min-height: 70vh;
+  }
+  
+  #intro h1 {
+    font-size: 3rem !important;
+  }
+  
+  #intro p {
+    font-size: 1.1rem !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #intro {
+    padding: 3rem 1rem 2rem 1rem;
+    min-height: 60vh;
+  }
+  
+  #intro h1 {
+    font-size: 2.5rem !important;
+  }
+  
+  #intro p {
+    font-size: 1rem !important;
+  }
+}
+
+/* Main Content Mobile Improvements */
+@media screen and (max-width: 768px) {
+  #main {
+    width: 100%;
+    margin: 0;
+  }
+  
+  #main > * {
+    padding: 2rem 1rem 1rem 1rem;
+  }
+  
+  #main > .post {
+    padding: 4rem 2rem 3rem 2rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #main > * {
+    padding: 1rem 0.5rem 0.5rem 0.5rem;
+  }
+  
+  #main > .post {
+    padding: 2rem 1rem 1.5rem 1rem;
+  }
+}
+
+/* Flash Animation Mobile Optimization */
+@media screen and (max-width: 768px) {
+  .flash-link {
+    animation-duration: 3s; /* Slower animation on mobile for better visibility */
+  }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+  #xp-calculator button,
+  .flash-link {
+    transform: none !important; /* Disable hover transforms on touch devices */
+  }
+  
+  #xp-calculator button:active {
+    background: #00d4a3;
+    transform: scale(0.98);
+  }
+}
+
+  </style>
+		
+		
+	</head>
+
+<style>
+  #intro {
+    background-image: url("images/1x.gif");
+    background-repeat: no-repeat;
+    background-size: 100%; /* أو auto مثلاً */
+    background-position: 50% -600px;
+    background-color: #004; /* لو حابب تغمق الخلفية */
+    height: 300px; /* طول الجزء اللي فيه الخلفية */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative; /* ضروري علشان ::before */
+    overflow: hidden;
+  }
+
+  #intro::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4); /* طبقة تغميق */
+    z-index: 0;
+  }
+
+  #intro * {
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Mobile intro adjustments */
+  @media screen and (max-width: 768px) {
+    #intro {
+      background-size: cover;
+      background-position: center center;
+      height: 250px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    #intro {
+      height: 200px;
+      background-size: cover;
+    }
+  }
+</style>
+
+<style>
+  #wrapper {
+    background: transparent !important;
+  }
+</style>
+
+				<!-- Intro -->
+					<div id="intro">
+						<h1><span>BALETO</span></h1>
+<div id="server-clock" style="
+  font-size: 36px;
+  color: #00ffc8;
+  font-weight: bold;
+  margin-top: 10px;
+  letter-spacing: 2px;
+  font-family: 'Courier New', monospace;
+">
+  4:45 AM
+</div>
+
+
+
+						<p>ادوات مساعدة داخل مقاطعة بليتو 
+
+
+                           <a href="https://boleto7.com/" target="_blank" style="display: block; margin-top: 10px; color: green; text-decoration: none;">
+                                      موقع بليتو
+                            </a>
+
+ 
+						 </p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+						</ul>
+					</div>
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">BAL WIKI</a>
+					</header>
+
+				<!-- Nav -->
+<nav id="nav">
+    <ul class="links">
+        <li class="active">
+            <a href="#xp-calculator" class="flash-link" style="color: #000 !important; font-size: 30px; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5 );">حساب الخبرة</a>
+        </li>
+        <li>
+            <a href="generic.html" class="flash-link" style="color: #000 !important; font-size: 30px; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">حساب الحمولات</a>
+        </li>
+        <li>
+            <a href="elements.html" class="flash-link" style="color: #000 !important; font-size: 30px; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">حساب غير شرعي</a>
+        </li>
+    </ul>
+</nav>
+
+<style>
+.flash-link {
+  animation: flash 2s ease-in-out infinite;
+}
+
+@keyframes flash {
+  0%, 100% {
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    color: #000;
+  }
+  50% {
+    text-shadow: 0 0 15px #00ffc8, 0 0 10px #00ffc8;
+    color: #00ffc8;
+  }
+}
+</style>
+
+
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Featured Post -->
+							<article class="post featured" style="background: transparent;">
+<!-- تعليمات الإدخال بتنسيق أوضح وخط أكبر -->
+<div class="instructions-container">
+  <div style="color: #00ffc8; font-size: 24px; font-weight: bold; line-height: 2;">
+    <ul style="list-style-type: disc; padding-right: 20px;">
+      <li> أول خانة تكتب فيها مستواك</li>
+      <li> (اختياري) ثاني خانة تكتب فيها عدد نقاط لفلك الحالي من 5</li>
+      <li> ثالث خانة تكتب فيها كمية الخبرة اللي هتضيفها عشان يحسب هتوصل لمستوى كام</li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+								<header class="major">
+								
+									
+								</header>
+								<ul class="actions special">
+									
+<section id="xp-calculator">
+        <h2 style="color: #00ffc8;">احسب الخبرة المضافة</h2>
+        <label for="level" style="color: #00ffc8;">مستواك داخل المقاطعة</label>
+
+        <input type="number" id="level" min="1" max="400">
+
+        <label for="current-xp-in-level" style="color: #00ffc8;">إجمالي عدد نقاط خبرة مستواك حاليا <span class="optional-text">(اختياري)</span></label>
+        <input type="number" id="current-xp-in-level" min="0">
+
+        <label for="xp" style="color: #00ffc8;">نقاط الخبرة التي تريد إضافتها</label>
+
+        <input type="number" id="xp" min="0">
+
+        <button onclick="calculate()">احسب المستوى</button>
+
+        <div id="result" style="margin-top: 1rem;"></div>
+      </section>
+
+
+
+
+							
+							
+				
+
+
+		
+
+			
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script> 
+
+<script>
+    const XP = [0,
+  800,
+  2100,
+  3800,
+  6100,
+  9500,
+  12500,
+  16000,
+  19800,
+  24000,
+  28500,
+  33400,
+  38700,
+  44200,
+  50200,
+  56400,
+  63000,
+  69900,
+  77100,
+  84700,
+  92500,
+  100700,
+  109200,
+  118000,
+  127100,
+  136500,
+  146200,
+  156200,
+  166500,
+  177100,
+  188000,
+  199200,
+  210700,
+  222400,
+  234500,
+  246800,
+  259400,
+  272300,
+  285500,
+  299000,
+  312700,
+  326800,
+  341000,
+  355600,
+  370500,
+  385600,
+  401000,
+  416600,
+  432600,
+  448800,
+  465200,
+  482000,
+  499000,
+  516300,
+  533800,
+  551600,
+  569600,
+  588000,
+  606500,
+  625400,
+  644500,
+  663800,
+  683400,
+  703300,
+  723400,
+  743800,
+  764500,
+  785400,
+  806500,
+  827900,
+  849600,
+  871500,
+  893600,
+  916000,
+  938700,
+  961600,
+  984700,
+  1008100,
+  1031800,
+  1055700,
+  1079800,
+  1104200,
+  1128800,
+  1153700,
+  1178800,
+  1204200,
+  1229800,
+  1255600,
+  1281700,
+  1308100,
+  1334600,
+  1361400,
+  1388500,
+  1415800,
+  1443300,
+  1471100,
+  1499100,
+  1527300,
+  1555800,
+  1584350,
+  1612950,
+  1641600,
+  1670300,
+  1699050,
+  1727850,
+  1756700,
+  1785600,
+  1814550,
+  1843550,
+  1872600,
+  1901700,
+  1930850,
+  1960050,
+  1989300,
+  2018600,
+  2047950,
+  2077350,
+  2106800,
+  2136300,
+  2165850,
+  2195450,
+  2225100,
+  2254800,
+  2284550,
+  2314350,
+  2344200,
+  2374100,
+  2404050,
+  2434050,
+  2464100,
+  2494200,
+  2524350,
+  2554550,
+  2584800,
+  2615100,
+  2645450,
+  2675850,
+  2706300,
+  2736800,
+  2767350,
+  2797950,
+  2828600,
+  2859300,
+  2890050,
+  2920850,
+  2951700,
+  2982600,
+  3013550,
+  3044550,
+  3075600,
+  3106700,
+  3137850,
+  3169050,
+  3200300,
+  3231600,
+  3262950,
+  3294350,
+  3325800,
+  3357300,
+  3388850,
+  3420450,
+  3452100,
+  3483800,
+  3515550,
+  3547350,
+  3579200,
+  3611100,
+  3643050,
+  3675050,
+  3707100,
+  3739200,
+  3771350,
+  3803550,
+  3835800,
+  3868100,
+  3900450,
+  3932850,
+  3965300,
+  3997800,
+  4030350,
+  4062950,
+  4095600,
+  4128300,
+  4161050,
+  4193850,
+  4226700,
+  4259600,
+  4292550,
+  4325550,
+  4358600,
+  4391700,
+  4424850,
+  4458050,
+  4491300,
+  4524600,
+  4557950,
+  4591350,
+  4624800,
+  4658300,
+  4691850,
+  4725450,
+  4759100,
+  4792800,
+  4826550,
+  4860350,
+  4894200,
+  4928100,
+  4962050,
+  4996050,
+  5030100,
+  5064200,
+  5098350,
+  5132550,
+  5166800,
+  5201100,
+  5235450,
+  5269850,
+  5304300,
+  5338800,
+  5373350,
+  5407950,
+  5442600,
+  5477300,
+  5512050,
+  5546850,
+  5581700,
+  5616600,
+  5651550,
+  5686550,
+  5721600,
+  5756700,
+  5791850,
+  5827050,
+  5862300,
+  5897600,
+  5932950,
+  5968350,
+  6003800,
+  6039300,
+  6074850,
+  6110450,
+  6146100,
+  6181800,
+  6217550,
+  6253350,
+  6289200,
+  6325100,
+  6361050,
+  6397050,
+  6433100,
+  6469200,
+  6505350,
+  6541550,
+  6577800,
+  6614100,
+  6650450,
+  6686850,
+  6723300,
+  6759800,
+  6796350,
+  6832950,
+  6869600,
+  6906300,
+  6943050,
+  6979850,
+  7016700,
+  7053600,
+  7090550,
+  7127550,
+  7164600,
+  7201700,
+  7238850,
+  7276050,
+  7313300,
+  7350600,
+  7387950,
+  7425350,
+  7462800,
+  7500300,
+  7537850,
+  7575450,
+  7613100,
+  7650800,
+  7688550,
+  7726350,
+  7764200,
+  7802100,
+  7840050,
+  7878050,
+  7916100,
+  7954200,
+  7992350,
+  8030550,
+  8068800,
+  8107100,
+  8145450,
+  8183850,
+  8222300,
+  8260800,
+  8299350,
+8337950,
+8376600,
+8415300,
+8454050,
+8492850,
+8531700,
+8570600,
+8609550,
+8648550,
+8687600,
+8726700,
+8765850,
+8805050,
+8844300,
+8883600,
+8922950,
+8962350,
+9001800,
+9041300,
+9080850,
+9120450,
+9160100,
+9199800,
+9239550,
+9279350,
+9319200,
+9359100,
+9399050,
+9439050,
+9479100,
+9519200,
+9559350,
+9599550,
+9639800,
+9680100,
+9720450,
+9760850,
+9801300,
+9841800,
+9882350,
+9922950,
+9963600,
+10004300,
+10045050,
+10085850,
+10126700,
+10167600,
+10208550,
+10249550,
+10290600,
+10331700,
+10372850,
+10414050,
+10455300,
+10496600,
+10537950,
+10579350,
+10620800,
+10662300,
+10703850,
+10745450,
+10787100,
+10828800,
+10870550,
+10912350,
+10954200,
+10996100,
+11038050,
+11080050,
+11122100,
+11164200,
+11206350,
+11248550,
+11290800,
+11333100,
+11375450,
+11417850,
+11460300,
+11502800,
+11545350,
+11587950,
+11630600,
+11673300,
+11716050,
+11758850,
+11801700,
+11844600,
+11887550,
+11930550,
+11973600,
+12016700,
+12059850,
+12103050,
+12146300,
+12189600,
+12232950,
+12276350,
+12319800,
+12363300,
+12406850]; // انسخ جدول XP هنا كما هو
+    function calculate() {
+      const levelInput = document.getElementById('level'); // حقل المستوى المدخل من المستخدم
+      const currentTotalXPInput = document.getElementById('current-xp-in-level'); // حقل إجمالي نقاط الخبرة التراكمية
+      const xpToAdd = parseInt(document.getElementById('xp').value);
+      const resultEl = document.getElementById('result');
+
+      const userLevel = parseInt(levelInput.value); // المستوى الذي أدخله المستخدم
+      let userTotalXP = parseInt(currentTotalXPInput.value); // إجمالي نقاط الخبرة التراكمية التي أدخلها المستخدم
+
+      // التحقق من صحة المدخلات الأساسية
+      if (isNaN(userLevel) || userLevel < 1 || userLevel > 400) {
+        resultEl.innerHTML = '<p style="color:red;">يرجى إدخال مستوى صحيح (من 1 إلى 400).</p>';
+        return;
+      }
+      if (isNaN(xpToAdd) || xpToAdd < 0) {
+        resultEl.innerHTML = '<p style="color:red;">يرجى إدخال نقاط خبرة موجبة للإضافة.</p>';
+        return;
+      }
+
+      // إذا لم يتم إدخال قيمة في حقل إجمالي نقاط الخبرة التراكمية، افترض أنه في بداية المستوى
+      if (isNaN(userTotalXP) || userTotalXP < 0) {
+          userTotalXP = XP[userLevel - 1]; // نقاط الخبرة المطلوبة لبداية المستوى المدخل
+      } else {
+          // إذا تم إدخال قيمة، تحقق من تناسقها مع المستوى المدخل
+          if (userLevel > 1 && userTotalXP < XP[userLevel - 1]) {
+              resultEl.innerHTML = '<p style="color:red;">إجمالي نقاط الخبرة التراكمية المدخلة لا تتناسب مع المستوى المدخل. يرجى التحقق.</p>';
+              return;
+          }
+          if (userLevel < 400 && userTotalXP >= XP[userLevel]) {
+              resultEl.innerHTML = '<p style="color:red;">إجمالي نقاط الخبرة التراكمية المدخلة تتجاوز المستوى المدخل. يرجى التحقق.</p>';
+              return;
+          }
+      }
+
+
+      // الآن، userTotalXP هو إجمالي نقاط الخبرة الحالية للاعب (سواء تم إدخالها أو تم افتراضها)
+      // ونحن نضيف xpToAdd إليها
+      const totalXPAfterAddition = userTotalXP + xpToAdd;
+      let newLevel = 0;
+
+      // البحث عن المستوى الجديد بناءً على إجمالي نقاط الخبرة التراكمية بعد الإضافة
+      for (let i = 0; i < XP.length; i++) {
+        if (totalXPAfterAddition >= XP[i]) {
+          newLevel = i + 1;
+        } else {
+          break;
+        }
+      }
+      
+      if (newLevel > 400) newLevel = 400;
+
+      const isMax = newLevel === 400;
+      const currentLevelXPThreshold = XP[newLevel - 1] || 0; // XP المطلوبة لبداية المستوى الجديد
+      const nextLevelXPThreshold = XP[newLevel] || currentLevelXPThreshold; // XP المطلوبة لبداية المستوى التالي
+
+      const xpInNewLevel = totalXPAfterAddition - currentLevelXPThreshold;
+      const xpForNextLevel = nextLevelXPThreshold - currentLevelXPThreshold;
+      
+      const progress = isMax ? 100 : (xpInNewLevel / xpForNextLevel) * 100;
+      const remainingXP = isMax ? 0 : nextLevelXPThreshold - totalXPAfterAddition;
+
+      resultEl.innerHTML = `
+        <p style="color: #00ffc8;"><strong style="color: #00ffc8;">المستوى الجديد:</strong> ${newLevel}</p>
+        <p style="color: #00ffc8; text-align: left;">
+          <strong style="color: #00ffc8;">نسبة مستواك الحالي:</strong>
+          <span dir="ltr">${progress.toFixed(2)}%</span>
+        </p>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width:${progress}%;"></div>
+        </div>
+        <p style="color: #00ffc8;"><strong style="color: #00ffc8;">الخبرة المتبقية للوصول الى المستوى القادم:</strong> ${remainingXP}</p>
+      `;
+    }
+
+
+// إعدادات يمكنك تعديلها بسهولة //
+        const START_HOUR = 8;    // 5 مساءً (17 بتوقيت UTC)
+        const START_MINUTE = 00;  // 30 دقيقة
+        const SECONDS_PER_GAME_MINUTE = 6; // 6 ثواني حقيقية = 1 دقيقة لعبة
+        // نهاية الإعدادات //
+
+        // حساب وقت البدء UTC
+        function getStartTime() {
+            const now = new Date();
+            const startTime = new Date();
+            
+            startTime.setUTCHours(START_HOUR, START_MINUTE, 0, 0);
+            
+            // إذا كان وقت البدء في المستقبل، نطرح يومًا
+            if (startTime > now) {
+                startTime.setUTCDate(startTime.getUTCDate() - 1);
+            }
+            
+            return startTime;
+        }
+
+        // تحويل الدقائق إلى تنسيق 12 ساعة
+        function formatTime(minutes) {
+            const hours = Math.floor(minutes / 60) % 24;
+            const mins = minutes % 60;
+            
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            const hours12 = hours % 12 || 12;
+            
+            return `${String(hours12).padStart(2, '0')}:${String(mins).padStart(2, '0')} ${ampm}`;
+        }
+
+        // تحديث الساعة
+        function updateGameTime() {
+            const startTime = getStartTime();
+            const now = new Date();
+            
+            const elapsedSeconds = (now - startTime) / 1000;
+            const gameMinutes = Math.floor(elapsedSeconds / SECONDS_PER_GAME_MINUTE);
+            
+            document.getElementById('server-clock').textContent = formatTime(gameMinutes);
+        }
+
+        // التشغيل
+        updateGameTime();
+        setInterval(updateGameTime, 1000);
+  </script>
+   <!-- عداد الزوار - أسفل يسار الشاشة وثابت -->
+<div class="visitor-counter">
+  <span style="color: #00ffc8; font-weight: bold;">عدد الزوار</span><br>
+  <div id="sfcr42wj7zrrz8g5fxtz4ypx47jfy43fkuc" style="margin-top: 5px;"></div>
+  <script type="text/javascript" src="https://counter1.optistats.ovh/private/counter.js?c=r42wj7zrrz8g5fxtz4ypx47jfy43fkuc&down=async"></script>
+  <noscript>
+    <a href="https://www.freecounterstat.com" title="website counter">
+      <img src="https://counter1.optistats.ovh/private/freecounterstat.php?c=r42wj7zrrz8g5fxtz4ypx47jfy43fkuc" border="0" title="website counter" alt="website counter">
+    </a>
+  </noscript>
+</div>
+
+	</body>
+</html>
+
+
