@@ -1034,10 +1034,11 @@ table.rank-table th {
 const initialServerMinutes = 21 * 60 + 30;
 
 // وقت البداية الوهمي في الوقت الحقيقي (UTC) — نحدد نقطة البداية زمنياً
-// مثلاً ناخد بداية اليوم UTC
+// مثلاً ناخد بداية اليوم UTC 
+const offsetHours = new Date().getTimezoneOffset() / 60;
 const serverStartRealTime = new Date();
-serverStartRealTime.setUTCHours(18, 0, 0, 0); // بداية اليوم UTC (00:00:00)
-
+serverStartRealTime.setUTCHours(0, 0, 0, 0); // بداية اليوم UTC (00:00:00)
+serverStartRealTime.setHours(serverStartRealTime.getHours() + offsetHours);
 // دالة تحديث الساعة
 function updateClock() {
   const now = new Date();
