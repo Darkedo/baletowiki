@@ -223,7 +223,7 @@
     }
 
     /* إخفاء الأقسام الفرعية للحاسبة المدمجة افتراضياً */
-    #cargo-inputs, #production-inputs, #custom-cargo-input-container {
+    #cargo-inputs, #production-inputs, #custom-cargo-input-container, #oil-gas-inputs {
         display: none;
     }
 
@@ -315,6 +315,7 @@
   <div style="color: #00ffc8; font-size: 24px; font-weight: bold; line-height: 2;">
     <p>**اختر من القائمة واكتب كمية عدة الوظيفة</p>
     <p>السمك والعنب بدون عدة تنحسب بالكمية**</p>
+    <p>**النفط والغاز: 20 عدة = 40 كيلو، تنقسم لنفط وغاز منفصلين**</p>
   </div>
 </div>
 
@@ -334,6 +335,7 @@
                     <a href="#" data-calc-type="cargo">احسب الحمولة والعدة</a>
                     <a href="#" data-calc-type="production">احسب الخبرة والانتاج</a>
                     <a href="#" data-calc-type="double-exp">احسب ضعف الخبرة</a>
+                    <a href="#" data-calc-type="oil-gas">احسب النفط والغاز</a>
                 </div>
             </div>
 
@@ -384,6 +386,25 @@
                 <input type="number" id="input-amount" min="0" value="0">
             </div>
 
+            <!-- قسم حاسبة النفط والغاز (جديد) -->
+            <div id="oil-gas-inputs">
+                <label for="oil-gas-type-select">اختر نوع العملية:</label>
+                <div class="dropdown-container">
+                    <button class="dropdown-button" id="oilGasTypeDropdownBtn">
+                        <span>اختر نوع العملية</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content" id="oilGasTypeDropdownContent">
+                        
+                        <a href="#" data-oil-gas-type="oil-only">نفط</a>
+                        <a href="#" data-oil-gas-type="gas-only">غاز</a>
+                    </div>
+                </div>
+
+                <label for="oil-gas-amount" id="oil-gas-label">أدخل عدد العدة:</label>
+                <input type="number" id="oil-gas-amount" min="0" value="0">
+            </div>
+
             <button id="calculateCombinedBtn">احسب</button>
 
             <div id="combined-result" class="result-display">
@@ -420,10 +441,11 @@
         const calculatorTypeDropdownContent = document.getElementById('calculatorTypeDropdownContent');
         const cargoInputs = document.getElementById('cargo-inputs');
         const productionInputs = document.getElementById('production-inputs');
+        const oilGasInputs = document.getElementById('oil-gas-inputs');
         const calculateCombinedBtn = document.getElementById('calculateCombinedBtn');
         const combinedResultDisplay = document.getElementById('combined-result');
 
-        let currentCalculatorType = null; // لتخزين نوع الحاسبة المختار (cargo أو production أو double-exp)
+        let currentCalculatorType = null; // لتخزين نوع الحاسبة المختار
         let isDoubleExpMode = false; // متغير لتحديد ما إذا كنا في وضع ضعف الخبرة
 
         // عناصر حاسبة الحمولة
@@ -431,26 +453,54 @@
         const cargoCapacityDropdownContent = document.getElementById('cargoCapacityDropdownContent');
         const customCargoInputContainer = document.getElementById('custom-cargo-input-container');
         const customCargoInput = document.getElementById('custom-cargo-input');
-        let selectedCargoCapacity = null; // لتخزين حمولة السيارة المختارة (رقم أو 'custom')
+        let selectedCargoCapacity = null;
 
         // عناصر حاسبة الإنتاج
         const jobTypeDropdownBtn = document.getElementById('jobTypeDropdownBtn');
         const jobTypeDropdownContent = document.getElementById('jobTypeDropdownContent');
         const inputAmountField = document.getElementById('input-amount');
         const inputLabel = document.getElementById('input-label');
-        let selectedJobType = null; // لتخزين نوع الشغل المختار
+        let selectedJobType = null;
 
-        // بيانات الخبرة لكل نوع شغل
+        // عناصر حاسبة النفط والغاز (جديد)
+        const oilGasTypeDropdownBtn = document.getElementById('oilGasTypeDropdownBtn');
+        const oilGasTypeDropdownContent = document.getElementById('oilGasTypeDropdownContent');
+        const oilGasAmountField = document.getElementById('oil-gas-amount');
+        const oilGasLabel = document.getElementById('oil-gas-label');
+        let selectedOilGasType = null;
+
+        // بيانات الخبرة لكل نوع شغل (محدث)
         const jobData = {
-            grape: { unitName: 'عصير', expPerUnit: 8, inputType: 'amount', weightPerUnit: 0.4 }, // 1 عنبة = 1 كيلو، 100 عنبة تنتج 100 عصير = 40 كيلو -> 1 عصير = 0.4 كيلو
-            honey: { unitName: 'عسل', expPerUnit: 8, inputType: 'tools', toolsNeeded: 20, outputUnits: 100, weightPerOutput: 0.4 }, // 20 عدة = 40 كيلو -> 100 عسل = 40 كيلو -> 1 عسل = 0.4 كيلو
+            grape: { unitName: 'عصير', expPerUnit: 8, inputType: 'amount', weightPerUnit: 0.4 },
+            honey: { unitName: 'عسل', expPerUnit: 8, inputType: 'tools', toolsNeeded: 20, outputUnits: 100, weightPerOutput: 0.4 },
             cement: { unitName: 'أسمنت', expPerUnit: 8, inputType: 'tools', toolsNeeded: 20, outputUnits: 100, weightPerOutput: 0.4 },
-            ranch: { unitName: 'حليب', expPerUnit: 8, inputType: 'tools', toolsNeeded: 20, outputUnits: 100, weightPerOutput: 0.4 }, // المراعي تنتج حليب
+            ranch: { unitName: 'حليب', expPerUnit: 8, inputType: 'tools', toolsNeeded: 20, outputUnits: 100, weightPerOutput: 0.4 },
             wood: { unitName: 'قطعة خشب', expPerUnit: 9, inputType: 'tools', toolsNeeded: 20, outputUnits: 100, weightPerOutput: 0.4 },
-            fabric: { unitName: 'ملابس', expPerUnit: 7, inputType: 'tools', toolsNeeded: 20, outputUnits: 100, weightPerOutput: 0.4 }, // أقمشة تنتج ملابس
-            fish: { unitName: 'سمكة', expPerUnit: 11, inputType: 'amount', weightPerUnit: 1 } // الأسماك بدون عدة عمل، وزن الواحدة 1 كيلو
+            fabric: { unitName: 'ملابس', expPerUnit: 7, inputType: 'tools', toolsNeeded: 20, outputUnits: 100, weightPerOutput: 0.4 },
+            fish: { unitName: 'سمكة', expPerUnit: 11, inputType: 'amount', weightPerUnit: 0.4 } // تم تعديل وزن السمك من 1 إلى 0.4 كيلو
         };
 
+        // بيانات النفط والغاز (جديد)
+        const oilGasData = {
+            combined: {
+                toolsNeeded: 20, // 20 عدة مدمجة
+                totalWeight: 40, // تساوي 40 كيلو
+                gasExp: 11, // الغاز يعطي 11 خبرة
+                oilExp: 10  // النفط يعطي 10 خبرة
+            },
+            oil: {
+                toolsNeeded: 20, // 20 عدة نفط
+                totalWeight: 40, // تساوي 40 كيلو
+                outputUnits: 80, // تنتج 80 أنبوب نفط
+                expPerUnit: 10   // كل أنبوب يعطي 10 خبرة
+            },
+            gas: {
+                toolsNeeded: 20, // 20 عدة غاز
+                totalWeight: 40, // تساوي 40 كيلو
+                outputUnits: 80, // تنتج 80 أسطوانة غاز
+                expPerUnit: 11   // كل أسطوانة تعطي 11 خبرة
+            }
+        };
 
         // =======================================================
         // وظائف مساعدة لفتح/إغلاق القوائم المنسدلة
@@ -466,10 +516,10 @@
         }
 
         // =======================================================
-        // التحكم في اختيار نوع الحاسبة (الحمولة أو الإنتاج أو ضعف الخبرة)
+        // التحكم في اختيار نوع الحاسبة
         // =======================================================
         calculatorTypeDropdownBtn.addEventListener('click', function(event) {
-            event.stopPropagation(); // مهم جداً لمنع إغلاق القائمة فوراً
+            event.stopPropagation();
             toggleDropdown(this, calculatorTypeDropdownContent);
         });
 
@@ -486,25 +536,31 @@
                 isDoubleExpMode = (currentCalculatorType === 'double-exp');
 
                 // إظهار/إخفاء الأقسام بناءً على الاختيار
+                cargoInputs.style.display = 'none';
+                productionInputs.style.display = 'none';
+                oilGasInputs.style.display = 'none';
+                customCargoInputContainer.style.display = 'none';
+
                 if (currentCalculatorType === 'cargo') {
                     cargoInputs.style.display = 'block';
-                    productionInputs.style.display = 'none';
-                    customCargoInputContainer.style.display = 'none'; // إخفاء حقل الحمولة المخصصة
-                    // إعادة تعيين نتائج الحمولة
                     combinedResultDisplay.innerHTML = `<p>الحمولة المختارة: <strong>لا شيء</strong></p><p>عدد العدة التي يمكن حملها: <strong>0 عدة</strong></p>`;
-                    selectedCargoCapacity = null; // إعادة تعيين الحمولة المختارة
-                    cargoCapacityDropdownBtn.querySelector('span').textContent = 'اختر الحمولة'; // إعادة تعيين نص زر الحمولة
-                    customCargoInput.value = 0; // إعادة تعيين قيمة حقل الحمولة المخصصة
+                    selectedCargoCapacity = null;
+                    cargoCapacityDropdownBtn.querySelector('span').textContent = 'اختر الحمولة';
+                    customCargoInput.value = 0;
                 } else if (currentCalculatorType === 'production' || currentCalculatorType === 'double-exp') {
-                    cargoInputs.style.display = 'none';
                     productionInputs.style.display = 'block';
-                    customCargoInputContainer.style.display = 'none'; // إخفاء حقل الحمولة المخصصة
-                    // إعادة تعيين نتائج الإنتاج
                     combinedResultDisplay.innerHTML = `<p>نوع الشغل: <strong>لا شيء</strong></p><p>الإنتاج المتوقع: <strong>0 وحدة</strong></p><p>الوزن الإجمالي: <strong>0 كيلو</strong></p><p>الخبرة المتوقعة: <strong>0 خبرة</strong></p>`;
-                    selectedJobType = null; // إعادة تعيين نوع الشغل المختار
-                    jobTypeDropdownBtn.querySelector('span').textContent = 'اختر نوع الشغل'; // إعادة تعيين نص زر الشغل
-                    inputAmountField.value = 0; // إعادة تعيين حقل الإدخال
-                    inputLabel.textContent = 'أدخل العدد:'; // إعادة تعيين تسمية حقل الإدخال
+                    selectedJobType = null;
+                    jobTypeDropdownBtn.querySelector('span').textContent = 'اختر نوع الشغل';
+                    inputAmountField.value = 0;
+                    inputLabel.textContent = 'أدخل العدد:';
+                } else if (currentCalculatorType === 'oil-gas') {
+                    oilGasInputs.style.display = 'block';
+                    combinedResultDisplay.innerHTML = `<p>نوع العملية: <strong>لا شيء</strong></p><p>الإنتاج المتوقع: <strong>0 وحدة</strong></p><p>الوزن الإجمالي: <strong>0 كيلو</strong></p><p>الخبرة المتوقعة: <strong>0 خبرة</strong></p>`;
+                    selectedOilGasType = null;
+                    oilGasTypeDropdownBtn.querySelector('span').textContent = 'اختر نوع العملية';
+                    oilGasAmountField.value = 0;
+                    oilGasLabel.textContent = 'أدخل عدد العدة:';
                 }
             }
         });
@@ -520,13 +576,13 @@
         cargoCapacityDropdownContent.addEventListener('click', function(event) {
             if (event.target.tagName === 'A') {
                 event.preventDefault();
-                selectedCargoCapacity = event.target.dataset.cargo; // قد تكون 'custom'
+                selectedCargoCapacity = event.target.dataset.cargo;
                 cargoCapacityDropdownBtn.querySelector('span').textContent = event.target.textContent;
                 closeDropdown(cargoCapacityDropdownBtn, cargoCapacityDropdownContent);
 
                 if (selectedCargoCapacity === 'custom') {
                     customCargoInputContainer.style.display = 'block';
-                    customCargoInput.focus(); // تركيز على حقل الإدخال المخصص
+                    customCargoInput.focus();
                 } else {
                     customCargoInputContainer.style.display = 'none';
                 }
@@ -552,16 +608,37 @@
 
                 // تغيير نص التسمية بناءً على نوع الشغل
                 if (jobData[selectedJobType].inputType === 'amount') {
-                    inputLabel.textContent = `أدخل عدد ${jobData[selectedJobType].unitName}s:`; // مثال: عدد العنب، عدد الأسماك
+                    inputLabel.textContent = `أدخل عدد ${jobData[selectedJobType].unitName}:`;
                 } else {
                     inputLabel.textContent = 'أدخل عدد العدة:';
                 }
-                inputAmountField.value = 0; // إعادة تعيين حقل الإدخال
+                inputAmountField.value = 0;
             }
         });
 
         // =======================================================
-        // دالة الحساب الرئيسية (تعتمد على currentCalculatorType)
+        // التحكم في حاسبة النفط والغاز (جديد)
+        // =======================================================
+        oilGasTypeDropdownBtn.addEventListener('click', function(event) {
+            event.stopPropagation();
+            toggleDropdown(this, oilGasTypeDropdownContent);
+        });
+
+        oilGasTypeDropdownContent.addEventListener('click', function(event) {
+            if (event.target.tagName === 'A') {
+                event.preventDefault();
+                selectedOilGasType = event.target.dataset.oilGasType;
+                const typeName = event.target.textContent;
+
+                oilGasTypeDropdownBtn.querySelector('span').textContent = typeName;
+                closeDropdown(oilGasTypeDropdownBtn, oilGasTypeDropdownContent);
+
+                oilGasAmountField.value = 0;
+            }
+        });
+
+        // =======================================================
+        // دالة الحساب الرئيسية
         // =======================================================
         calculateCombinedBtn.addEventListener('click', function() {
             if (!currentCalculatorType) {
@@ -584,7 +661,7 @@
                     return;
                 }
 
-                const toolsPer40kg = 20; // 20 عدة = 40 كيلو
+                const toolsPer40kg = 20;
                 const toolsCapacity = (finalCargoValue / 40) * toolsPer40kg;
 
                 combinedResultDisplay.innerHTML = `
@@ -611,17 +688,16 @@
                 const jobInfo = jobData[selectedJobType];
                 unitName = jobInfo.unitName;
 
-                if (jobInfo.inputType === 'amount') { // مثل العنب والأسماك
+                if (jobInfo.inputType === 'amount') {
                     productionUnits = inputAmount;
                     totalWeight = inputAmount * jobInfo.weightPerUnit;
                     expectedExp = inputAmount * jobInfo.expPerUnit;
-                } else { // مثل المناحل، الأسمنت، المراعي، الأخشاب، الأقمشة
+                } else {
                     productionUnits = (inputAmount / jobInfo.toolsNeeded) * jobInfo.outputUnits;
                     totalWeight = (inputAmount / jobInfo.toolsNeeded) * (jobInfo.outputUnits * jobInfo.weightPerOutput);
                     expectedExp = productionUnits * jobInfo.expPerUnit;
                 }
 
-                // تطبيق ضعف الخبرة إذا كان الوضع مفعلاً
                 if (isDoubleExpMode) {
                     expectedExp *= 2;
                 }
@@ -632,6 +708,63 @@
                     <p>الوزن الإجمالي: <strong>${totalWeight.toFixed(2)} كيلو</strong></p>
                     <p>الخبرة المتوقعة: <strong>${expectedExp.toFixed(0)} خبرة</strong></p>
                 `;
+            } else if (currentCalculatorType === 'oil-gas') {
+                const inputAmount = parseInt(oilGasAmountField.value);
+
+                if (isNaN(inputAmount) || inputAmount < 0) {
+                    combinedResultDisplay.innerHTML = `<p style="color:red;">يرجى إدخال قيمة صحيحة.</p>`;
+                    return;
+                }
+
+                if (!selectedOilGasType) {
+                    combinedResultDisplay.innerHTML = `<p style="color:red;">يرجى اختيار نوع العملية أولاً.</p>`;
+                    return;
+                }
+
+                let resultHTML = '';
+                const typeName = oilGasTypeDropdownBtn.querySelector('span').textContent;
+
+                if (selectedOilGasType === 'combined') {
+                    // عدة مدمجة: 20 عدة = 40 كيلو، تعطي خبرة غاز (11) ونفط (10)
+                    const totalWeight = (inputAmount / oilGasData.combined.toolsNeeded) * oilGasData.combined.totalWeight;
+                    const gasExp = (inputAmount / oilGasData.combined.toolsNeeded) * oilGasData.combined.gasExp;
+                    const oilExp = (inputAmount / oilGasData.combined.toolsNeeded) * oilGasData.combined.oilExp;
+                    const totalExp = gasExp + oilExp;
+
+                    resultHTML = `
+                        <p>نوع العملية: <strong>${typeName}</strong></p>
+                        <p>الوزن الإجمالي: <strong>${totalWeight.toFixed(2)} كيلو</strong></p>
+                        <p>خبرة الغاز: <strong>${gasExp.toFixed(0)} خبرة</strong></p>
+                        <p>خبرة النفط: <strong>${oilExp.toFixed(0)} خبرة</strong></p>
+                        <p>إجمالي الخبرة: <strong>${totalExp.toFixed(0)} خبرة</strong></p>
+                    `;
+                } else if (selectedOilGasType === 'oil-only') {
+                    // نفط فقط: 20 عدة = 40 كيلو = 80 أنبوب نفط
+                    const totalWeight = (inputAmount / oilGasData.oil.toolsNeeded) * oilGasData.oil.totalWeight;
+                    const oilPipes = (inputAmount / oilGasData.oil.toolsNeeded) * oilGasData.oil.outputUnits;
+                    const totalExp = oilPipes * oilGasData.oil.expPerUnit;
+
+                    resultHTML = `
+                        <p>نوع العملية: <strong>${typeName}</strong></p>
+                        <p>الإنتاج المتوقع: <strong>${oilPipes.toFixed(0)} أنبوب نفط</strong></p>
+                        <p>الوزن الإجمالي: <strong>${totalWeight.toFixed(2)} كيلو</strong></p>
+                        <p>الخبرة المتوقعة: <strong>${totalExp.toFixed(0)} خبرة</strong></p>
+                    `;
+                } else if (selectedOilGasType === 'gas-only') {
+                    // غاز فقط: 20 عدة = 40 كيلو = 80 أسطوانة غاز
+                    const totalWeight = (inputAmount / oilGasData.gas.toolsNeeded) * oilGasData.gas.totalWeight;
+                    const gasCylinders = (inputAmount / oilGasData.gas.toolsNeeded) * oilGasData.gas.outputUnits;
+                    const totalExp = gasCylinders * oilGasData.gas.expPerUnit;
+
+                    resultHTML = `
+                        <p>نوع العملية: <strong>${typeName}</strong></p>
+                        <p>الإنتاج المتوقع: <strong>${gasCylinders.toFixed(0)} أسطوانة غاز</strong></p>
+                        <p>الوزن الإجمالي: <strong>${totalWeight.toFixed(2)} كيلو</strong></p>
+                        <p>الخبرة المتوقعة: <strong>${totalExp.toFixed(0)} خبرة</strong></p>
+                    `;
+                }
+
+                combinedResultDisplay.innerHTML = resultHTML;
             }
         });
 
@@ -643,7 +776,6 @@
             dropdowns.forEach(function(container) {
                 const button = container.querySelector('.dropdown-button');
                 const content = container.querySelector('.dropdown-content');
-                // التأكد من أن النقر لم يكن على الزر نفسه أو داخل المحتوى
                 if (button && content && !button.contains(event.target) && !content.contains(event.target)) {
                     closeDropdown(button, content);
                 }
@@ -654,3 +786,4 @@
 
 </body>
 </html>
+
