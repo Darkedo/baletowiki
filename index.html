@@ -1028,44 +1028,52 @@ table.rank-table th {
     }
 
 
-// إعدادات توقيت اللعبة
-        const GAME_START_HOUR = 17; // 8 صباحاً
-        const REAL_SECONDS_PER_GAME_MINUTE = 6; // 6 ثواني حقيقية = 1 دقيقة لعبة
-        
-        // وقت البدء (الوقت الحالي عند تحميل الصفحة)
-        const startTime = new Date();
-        startTime.setUTCHours(GAME_START_HOUR, 0, 0, 0);
-        
-        // إذا كان وقت البدء في المستقبل، نرجع لليوم السابق
-        const now = new Date();
-        if (startTime > now) {
-            startTime.setUTCDate(startTime.getUTCDate() - 1);
-        }
-        
-        const startTimestamp = startTime.getTime();
+// إعدادات يمكنك تعديلها بسهولة //
+        const START_HOUR = 17;    // 5 مساءً (17 بتوقيت UTC)
+        const START_MINUTE = 14;  // 30 دقيقة
+        const SECONDS_PER_GAME_MINUTE = 6; // 6 ثواني حقيقية = 1 دقيقة لعبة
+        // نهاية الإعدادات //
 
-        function getGameTime() {
+        // حساب وقت البدء UTC
+        function getStartTime() {
             const now = new Date();
-            const elapsedRealSeconds = (now.getTime() - startTimestamp) / 1000;
-            const gameMinutes = Math.floor(elapsedRealSeconds / REAL_SECONDS_PER_GAME_MINUTE);
+            const startTime = new Date();
             
-            const hours = Math.floor(gameMinutes / 60) % 24;
-            const minutes = gameMinutes % 60;
+            startTime.setUTCHours(START_HOUR, START_MINUTE, 0, 0);
             
-            // تحويل إلى نظام 12 ساعة
+            // إذا كان وقت البدء في المستقبل، نطرح يومًا
+            if (startTime > now) {
+                startTime.setUTCDate(startTime.getUTCDate() - 1);
+            }
+            
+            return startTime;
+        }
+
+        // تحويل الدقائق إلى تنسيق 12 ساعة
+        function formatTime(minutes) {
+            const hours = Math.floor(minutes / 60) % 24;
+            const mins = minutes % 60;
+            
             const ampm = hours >= 12 ? 'PM' : 'AM';
             const hours12 = hours % 12 || 12;
             
-            return `${String(hours12).padStart(2, '0')}:${String(minutes).padStart(2, '0')} ${ampm}`;
+            return `${String(hours12).padStart(2, '0')}:${String(mins).padStart(2, '0')} ${ampm}`;
         }
 
-        // تحديث الساعة كل ثانية
-        function updateClock() {
-            document.getElementById('server-clock').textContent = getGameTime();
+        // تحديث الساعة
+        function updateGameTime() {
+            const startTime = getStartTime();
+            const now = new Date();
+            
+            const elapsedSeconds = (now - startTime) / 1000;
+            const gameMinutes = Math.floor(elapsedSeconds / SECONDS_PER_GAME_MINUTE);
+            
+            document.getElementById('server-clock').textContent = formatTime(gameMinutes);
         }
-        
-        setInterval(updateClock, 1000);
-        updateClock(); // تحديث فوري عند التحميل
+
+        // التشغيل
+        updateGameTime();
+        setInterval(updateGameTime, 1000);
   </script>
    <!-- عداد الزوار - أسفل يسار الشاشة وثابت -->
 <div class="visitor-counter">
