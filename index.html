@@ -1028,52 +1028,43 @@ table.rank-table th {
     }
 
 
-// إعدادات يمكنك تعديلها بسهولة //
-        const START_HOUR = 8;    // 5 مساءً (17 بتوقيت UTC)
-        const START_MINUTE = 00;  // 30 دقيقة
-        const SECONDS_PER_GAME_MINUTE = 6; // 6 ثواني حقيقية = 1 دقيقة لعبة
-        // نهاية الإعدادات //
+ // كل دقيقة سيرفر = 6 ثواني حقيقية
 
-        // حساب وقت البدء UTC
-        function getStartTime() {
-            const now = new Date();
-            const startTime = new Date();
-            
-            startTime.setUTCHours(START_HOUR, START_MINUTE, 0, 0);
-            
-            // إذا كان وقت البدء في المستقبل، نطرح يومًا
-            if (startTime > now) {
-                startTime.setUTCDate(startTime.getUTCDate() - 1);
-            }
-            
-            return startTime;
-        }
+// الوقت الوهمي الذي يبدأ منه العد (مثلاً 6:12 AM)
+const initialServerMinutes = 640; // 10:40 AM
+const serverMinuteMs = 6000; // كل دقيقة لعبة = 6 ثواني حقيقية
 
-        // تحويل الدقائق إلى تنسيق 12 ساعة
-        function formatTime(minutes) {
-            const hours = Math.floor(minutes / 60) % 24;
-            const mins = minutes % 60;
-            
-            const ampm = hours >= 12 ? 'PM' : 'AM';
-            const hours12 = hours % 12 || 12;
-            
-            return `${String(hours12).padStart(2, '0')}:${String(mins).padStart(2, '0')} ${ampm}`;
-        }
 
-        // تحديث الساعة
-        function updateGameTime() {
-            const startTime = getStartTime();
-            const now = new Date();
-            
-            const elapsedSeconds = (now - startTime) / 1000;
-            const gameMinutes = Math.floor(elapsedSeconds / SECONDS_PER_GAME_MINUTE);
-            
-            document.getElementById('server-clock').textContent = formatTime(gameMinutes);
-        }
+// وقت البداية الوهمي في الوقت الحقيقي (UTC) — نحدد نقطة البداية زمنياً
+// مثلاً ناخد بداية اليوم UTC 
+const serverStartRealTime = new Date();
+serverStartRealTime.setUTCHours(0, 0, 0, 0); // بداية اليوم UTC (00:00:00)
+// دالة تحديث الساعة
+function updateClock() {
+  const now = new Date();
+  const elapsedMs = now.getTime() - serverStartRealTime.getTime();
 
-        // التشغيل
-        updateGameTime();
-        setInterval(updateGameTime, 1000);
+  const elapsedServerMinutes = Math.floor(elapsedMs / serverMinuteMs);
+  let totalMinutes = (initialServerMinutes + elapsedServerMinutes) % (24 * 60);
+
+  let hour = Math.floor(totalMinutes / 60);
+  let minute = totalMinutes % 60;
+
+  let ampm = "AM";
+  if (hour >= 12) {
+    ampm = "PM";
+    if (hour > 12) hour -= 12;
+  }
+  if (hour === 0) hour = 12;
+
+  const hh = hour.toString().padStart(2, '0');
+  const mm = minute.toString().padStart(2, '0');
+
+  document.getElementById("server-clock").innerText = `${hh}:${mm} ${ampm}`;
+}
+
+setInterval(updateClock, 600);
+updateClock();
   </script>
    <!-- عداد الزوار - أسفل يسار الشاشة وثابت -->
 <div class="visitor-counter">
