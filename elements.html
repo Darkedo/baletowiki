@@ -6,16 +6,43 @@
 -->
 <html>
 	<head>
-		<title>BALETO</title> <!-- تم تحديث العنوان -->
+		<title>BALETO</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		<!-- رابط لـ Font Awesome للأيقونات (لضمان ظهور أيقونات السوشيال إذا بقيت) -->
+		<!-- رابط لـ Font Awesome للأيقونات -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 		<style>
-			/* الأنماط العامة من مشروعك (تم نسخها من index.html و generic.html لضمان التناسق  ) */
+
+li.active > .flash-link.red {
+  color: #ff0000 !important;
+  text-shadow: 0 0 15px #ff0000, 0 0 10px #ff0000 !important;
+  animation: none !important; /* اختياري: وقف الوميض لو عايزها ثابتة */
+}
+
+.flash-link.red:hover {
+  color: #ff0000 !important;
+  text-shadow: 0 0 15px #ff0000, 0 0 10px #ff0000 !important;
+}
+
+a.flash-link.active,
+li.active > a.flash-link,
+li.active > a,
+li.active {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  text-shadow: 1px 1px 2px rgba(2, 0, 0, 0.5) !important;
+  font-size: 36px !important;
+  font-weight: bold !important;
+  font-family: 'Cairo', 'Arial', sans-serif !important;
+  animation: flash-red 2s ease-in-out infinite !important;
+}
+
+			/* الأنماط العامة من مشروعك */
 			html, body {
 				margin: 0 !important;
 				padding: 0 !important;
@@ -62,7 +89,7 @@
 				z-index: 1;
 			}
 
-			/* تعديلات على الروابط في Nav لتكون مرئية (تم نسخها من index.html و generic.html لضمان التناسق) */
+			/* تعديلات على الروابط في Nav لتكون مرئية */
 			#nav ul.links li a {
 				color: #000 !important;
 				font-size: 30px;
@@ -70,12 +97,173 @@
 				text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 			}
 			#nav ul.links li.active a {
-				color: white !important; /* للحفاظ على لون العنصر النشط */
+				color: white !important;
 			}
 
-			/* أنماط الفوتر - لضمان إزالة الأقسام غير المرغوبة */
-			#footer .split.contact section:not(.alt) {
-				display: none; /* إخفاء أقسام الهاتف والبريد والسوشيال */
+			/* أنماط عامة للحاسبة المدمجة */
+			.smuggling-calculator-section {
+				direction: rtl;
+				text-align: right;
+				padding: 2rem;
+				background: #1e1e1e;
+				color: #fff;
+				border-radius: 1rem;
+				max-width: 500px;
+				width: 90%;
+				box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+				margin: 0 auto;
+			}
+
+			.smuggling-calculator-section h2 {
+				color: #ff4757; /* لون أحمر للتهريب غير الشرعي */
+				margin-bottom: 1.5rem;
+				font-size: 2.2rem;
+				text-align: center;
+			}
+
+			.smuggling-calculator-section label {
+				color: #ff4757;
+				display: block;
+				margin-bottom: 0.5rem;
+				font-size: 1.1rem;
+			}
+
+			.smuggling-calculator-section input[type="number"],
+			.smuggling-calculator-section select {
+				width: 100%;
+				margin-bottom: 1rem;
+				padding: 15px;
+				background: #2c2c2c;
+				color: #fff;
+				border: none;
+				border-radius: 8px;
+				font-size: 1rem;
+				box-sizing: border-box;
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				appearance: none;
+				background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23ff4757" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3e%3cpolyline points="6 9 12 15 18 9"%3e%3c/polyline%3e%3c/svg%3e');
+				background-repeat: no-repeat;
+				background-position: left 15px center;
+				padding-left: 40px;
+			}
+
+			.smuggling-calculator-section button {
+				background: #ff4757;
+				color: white;
+				padding: 12px 20px;
+				border: none;
+				border-radius: 10px;
+				width: 100%;
+				font-weight: bold;
+				cursor: pointer;
+				font-size: 1.2rem;
+				transition: background-color 0.3s ease;
+			}
+
+			.smuggling-calculator-section button:hover {
+				background-color: #ff3742;
+			}
+
+			.smuggling-calculator-section .result-display {
+				margin-top: 1.5rem;
+				padding: 1rem;
+				background: #2c2c2c;
+				border-radius: 8px;
+				color: #fff;
+				font-size: 1.1rem;
+				text-align: center;
+			}
+
+			.smuggling-calculator-section .result-display p {
+				margin: 0.5rem 0;
+				color: #fff;
+			}
+
+			.smuggling-calculator-section .result-display strong {
+				color: #ff4757;
+			}
+
+			/* أنماط خاصة بالقوائم المنسدلة */
+			.dropdown-container {
+				position: relative;
+				width: 100%;
+				margin-bottom: 1rem;
+			}
+
+			.dropdown-button {
+				background-color: #2c2c2c;
+				color: #fff;
+				padding: 15px 20px;
+				font-size: 1rem;
+				border: none;
+				cursor: pointer;
+				width: 100%;
+				border-radius: 8px;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				transition: background-color 0.3s ease;
+				box-sizing: border-box;
+			}
+
+			.dropdown-button:hover {
+				background-color: #3a3a3a;
+			}
+
+			.dropdown-button .fa-chevron-down {
+				transition: transform 0.3s ease;
+			}
+
+			.dropdown-button.open .fa-chevron-down {
+				transform: rotate(180deg);
+			}
+
+			.dropdown-content {
+				display: none;
+				position: absolute;
+				background-color: #2c2c2c;
+				min-width: 100%;
+				box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+				z-index: 10;
+				border-radius: 8px;
+				margin-top: 5px;
+				text-align: right;
+				max-height: 200px;
+				overflow-y: auto;
+			}
+
+			.dropdown-content a {
+				color: #fff;
+				padding: 12px 16px;
+				text-decoration: none;
+				display: block;
+				text-align: right;
+				transition: background-color 0.2s ease;
+			}
+
+			.dropdown-content a:hover {
+				background-color: #444;
+			}
+
+			.dropdown-content.show {
+				display: block;
+			}
+
+			/* إخفاء الأقسام الفرعية افتراضياً */
+			#drugs-inputs, #meat-inputs {
+				display: none;
+			}
+
+			/* توسيط الحاسبة داخل Post */
+			.post {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			.post > header.major, .post > .image.main, .post > p {
+				width: 100%;
+				max-width: 100%;
 			}
 		</style>
 	</head>
@@ -102,65 +290,158 @@
 
 				<!-- Header -->
 					<header id="header">
-						<a href="index.html" class="logo">bal wiki</a> <!-- تم تحديث الشعار -->
+						<a href="index.html" class="logo">bal wiki</a>
 					</header>
 
-				<!-- Nav -->
-					<nav id="nav">
-  <ul class="links">
-    <li>
-      <a href="index.html" class="flash-link">حساب الخبرة</a>
-    </li>
-    <li>
-      <a href="generic.html" class="flash-link">حساب الحمولات</a>
-    </li>
-    <li class="active">
-      <a href="elements.html" class="flash-link">حساب غير شرعي</a>
-    </li>
-  </ul>
+				<nav id="nav">
+	<ul class="links">
+		<li>
+			<a href="index.html" class="flash-link green">حساب الخبرة</a>
+		</li>
+		<li>
+			<a href="generic.html" class="flash-link green">حساب الحمولات</a>
+		</li>
+		<li class="active">
+			<a href="elements.html" class="flash-link red">حساب غير شرعي</a>
+		</li>
+	</ul>
 </nav>
 
-<style>
-.flash-link {
-  font-size: 30px;
-  font-weight: bold;
-  color: #000 !important;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-  animation: flash 2s ease-in-out infinite;
+					<style>
+					.flash-link {
+	font-size: 30px;
+	font-weight: bold;
+	color: #000 !important;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+	animation: flash-green 2s ease-in-out infinite;
 }
 
-@keyframes flash {
-  0%, 100% {
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-    color: #000;
-  }
-  50% {
-    text-shadow: 0 0 15px #00ffc8, 0 0 10px #00ffc8;
-    color: #00ffc8;
-  }
+/* وميض أخضر */
+.flash-link.green {
+	animation-name: flash-green;
 }
-</style>
 
+@keyframes flash-green {
+	0%, 100% {
+		text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+		color: #000;
+	}
+	50% {
+		text-shadow: 0 0 15px #00ff55, 0 0 10px #00ff55;
+		color: #00ff55;
+	}
+}
+
+/* وميض أحمر */
+.flash-link.red {
+	animation-name: flash-red;
+}
+
+@keyframes flash-red {
+	0%, 100% {
+		text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+		color: #000;
+	}
+	50% {
+		text-shadow: 0 0 15px #ff0000, 0 0 10px #ff0000;
+		color: #ff0000;
+	}
+}
+					</style>
 
 				<!-- Main -->
 					<div id="main">
 
-						<!-- Post - هذا القسم سيكون فارغًا للمحتوى المستقبلي -->
+						<!-- Post -->
 							<section class="post">
 								<header class="major">
-									<h1>لسه</h1> <!-- عنوان عام للمحتوى المستقبلي -->
-									<p>................</p>
+									<!-- تعليمات الإدخال -->
+									<div style="display: flex; justify-content: center; align-items: center; min-height: 40vh; text-align: center;">
+										<div style="color: #ff4757; font-size: 24px; font-weight: bold; line-height: 2;">
+										
+										<p>** اختر نوع التهريب (قسم لحوم-قسم مخدرات)**</p>
+											
+										</div>
+									</div>
 								</header>
-								<!-- هنا سيتم إضافة المحتوى الخاص بك لاحقًا -->
+								
+								<!-- الحاسبة الموحدة هنا -->
+								<section id="smuggling-calculator-section" class="smuggling-calculator-section">
+									<h2>حساب التهريب غير الشرعي</h2>
+
+									<label for="smuggling-type-select">اختر نوع التهريب:</label>
+									<div class="dropdown-container">
+										<button class="dropdown-button" id="smugglingTypeDropdownBtn">
+											<span>اختر نوع التهريب</span>
+											<i class="fas fa-chevron-down"></i>
+										</button>
+										<div class="dropdown-content" id="smugglingTypeDropdownContent">
+											<a href="#" data-smuggling-type="drugs">تهريب مخدرات</a>
+											<a href="#" data-smuggling-type="meat">تهريب لحوم</a>
+										</div>
+									</div>
+
+									<!-- قسم تهريب المخدرات -->
+									<div id="drugs-inputs">
+										<label for="drug-type-select">اختر نوع المخدرات:</label>
+										<div class="dropdown-container">
+											<button class="dropdown-button" id="drugTypeDropdownBtn">
+												<span>اختر نوع المخدرات</span>
+												<i class="fas fa-chevron-down"></i>
+											</button>
+											<div class="dropdown-content" id="drugTypeDropdownContent">
+												<a href="#" data-drug-type="opium">أفيون</a>
+												<a href="#" data-drug-type="meth">شبو</a>
+												<a href="#" data-drug-type="cocaine">كوكايين</a>
+												<a href="#" data-drug-type="hashish">حشيش</a>
+											</div>
+										</div>
+
+										<label for="drug-amount" id="drug-label">أدخل عدد الوحدات:</label>
+										<input type="number" id="drug-amount" min="0" value="0">
+									</div>
+
+									<!-- قسم تهريب اللحوم -->
+									<div id="meat-inputs">
+										<label for="meat-type-select">اختر نوع اللحوم:</label>
+										<div class="dropdown-container">
+											<button class="dropdown-button" id="meatTypeDropdownBtn">
+												<span>اختر نوع اللحوم</span>
+												<i class="fas fa-chevron-down"></i>
+											</button>
+											<div class="dropdown-content" id="meatTypeDropdownContent">
+												<a href="#" data-meat-type="rat">لحم فار</a>
+												<a href="#" data-meat-type="crow">لحم غراب</a>
+												<a href="#" data-meat-type="falcon">لحم صقر</a>
+												<a href="#" data-meat-type="rabbit">لحم أرنب</a>
+												<a href="#" data-meat-type="tiger">لحم نمر بري</a>
+												<a href="#" data-meat-type="chicken">لحم دجاج</a>
+												<a href="#" data-meat-type="fox">لحم ثعلب</a>
+												<a href="#" data-meat-type="deer">لحم غزال</a>
+												<a href="#" data-meat-type="husky">لحم هاسكي</a>
+												<a href="#" data-meat-type="police_dog">لحم كلب بوليسي</a>
+												<a href="#" data-meat-type="beef">لحم بقر</a>
+											</div>
+										</div>
+
+										<label for="meat-amount" id="meat-label">أدخل عدد اللحم:</label>
+										<input type="number" id="meat-amount" min="0" value="0">
+									</div>
+
+									<button id="calculateSmugglingBtn">احسب</button>
+
+									<div id="smuggling-result" class="result-display">
+										<p>النتائج ستظهر هنا.</p>
+									</div>
+								</section>
+
 							</section>
 
 					</div>
 
-				
-
 				<!-- Copyright -->
 					<div id="copyright">
-						<ul><li>&copy; BAL</li><li>Design: kareem</li></ul> <!-- تم تحديث حقوق النشر -->
+						<ul><li>&copy; BAL</li><li>Design: kareem</li></ul>
 					</div>
 
 			</div>
@@ -174,5 +455,219 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 
+			<script>
+				document.addEventListener('DOMContentLoaded', function() {
+					// عناصر الحاسبة الموحدة
+					const smugglingTypeDropdownBtn = document.getElementById('smugglingTypeDropdownBtn');
+					const smugglingTypeDropdownContent = document.getElementById('smugglingTypeDropdownContent');
+					const drugsInputs = document.getElementById('drugs-inputs');
+					const meatInputs = document.getElementById('meat-inputs');
+					const calculateSmugglingBtn = document.getElementById('calculateSmugglingBtn');
+					const smugglingResultDisplay = document.getElementById('smuggling-result');
+
+					let currentSmugglingType = null;
+
+					// عناصر تهريب المخدرات
+					const drugTypeDropdownBtn = document.getElementById('drugTypeDropdownBtn');
+					const drugTypeDropdownContent = document.getElementById('drugTypeDropdownContent');
+					const drugAmountField = document.getElementById('drug-amount');
+					const drugLabel = document.getElementById('drug-label');
+					let selectedDrugType = null;
+
+					// عناصر تهريب اللحوم
+					const meatTypeDropdownBtn = document.getElementById('meatTypeDropdownBtn');
+					const meatTypeDropdownContent = document.getElementById('meatTypeDropdownContent');
+					const meatAmountField = document.getElementById('meat-amount');
+					const meatLabel = document.getElementById('meat-label');
+					let selectedMeatType = null;
+
+					// بيانات المخدرات
+					const drugData = {
+						opium: { name: 'أفيون', pricePerBag: 3500, expPerBag: 7 },
+						meth: { name: 'شبو', pricePerBag: 3500, expPerBag: 7 },
+						cocaine: { name: 'كوكايين', pricePerBag: 2500, expPerBag: 7 },
+						hashish: { name: 'حشيش', pricePerBag: 2500, expPerBag: 7 }
+					};
+
+					// بيانات اللحوم
+					const meatData = {
+						rat: { name: 'لحم فار', price: 13000 },
+						crow: { name: 'لحم غراب', price: 13000 },
+						falcon: { name: 'لحم صقر', price: 13000 },
+						rabbit: { name: 'لحم أرنب', price: 11000 },
+						tiger: { name: 'لحم نمر بري', price: 11000 },
+						chicken: { name: 'لحم دجاج', price: 10500 },
+						fox: { name: 'لحم ثعلب', price: 10500 },
+						deer: { name: 'لحم غزال', price: 10000 },
+						husky: { name: 'لحم هاسكي', price: 10000 },
+						police_dog: { name: 'لحم كلب بوليسي', price: 10000 },
+						beef: { name: 'لحم بقر', price: 9500 }
+					};
+
+					// وظائف مساعدة لفتح/إغلاق القوائم المنسدلة
+					function toggleDropdown(button, content) {
+						content.classList.toggle('show');
+						button.classList.toggle('open');
+					}
+
+					function closeDropdown(button, content) {
+						content.classList.remove('show');
+						button.classList.remove('open');
+					}
+
+					// التحكم في اختيار نوع التهريب
+					smugglingTypeDropdownBtn.addEventListener('click', function(event) {
+						event.stopPropagation();
+						toggleDropdown(this, smugglingTypeDropdownContent);
+					});
+
+					smugglingTypeDropdownContent.addEventListener('click', function(event) {
+						if (event.target.tagName === 'A') {
+							event.preventDefault();
+							currentSmugglingType = event.target.dataset.smugglingType;
+							const typeName = event.target.textContent;
+
+							smugglingTypeDropdownBtn.querySelector('span').textContent = typeName;
+							closeDropdown(smugglingTypeDropdownBtn, smugglingTypeDropdownContent);
+
+							// إظهار/إخفاء الأقسام بناءً على الاختيار
+							drugsInputs.style.display = 'none';
+							meatInputs.style.display = 'none';
+
+							if (currentSmugglingType === 'drugs') {
+								drugsInputs.style.display = 'block';
+								smugglingResultDisplay.innerHTML = `<p>نوع التهريب: <strong>مخدرات</strong></p><p>النتائج ستظهر بعد الحساب</p>`;
+								selectedDrugType = null;
+								drugTypeDropdownBtn.querySelector('span').textContent = 'اختر نوع المخدرات';
+								drugAmountField.value = 0;
+							} else if (currentSmugglingType === 'meat') {
+								meatInputs.style.display = 'block';
+								smugglingResultDisplay.innerHTML = `<p>نوع التهريب: <strong>لحوم</strong></p><p>النتائج ستظهر بعد الحساب</p>`;
+								selectedMeatType = null;
+								meatTypeDropdownBtn.querySelector('span').textContent = 'اختر نوع اللحوم';
+								meatAmountField.value = 0;
+							}
+						}
+					});
+
+					// التحكم في تهريب المخدرات
+					drugTypeDropdownBtn.addEventListener('click', function(event) {
+						event.stopPropagation();
+						toggleDropdown(this, drugTypeDropdownContent);
+					});
+
+					drugTypeDropdownContent.addEventListener('click', function(event) {
+						if (event.target.tagName === 'A') {
+							event.preventDefault();
+							selectedDrugType = event.target.dataset.drugType;
+							const drugName = event.target.textContent;
+
+							drugTypeDropdownBtn.querySelector('span').textContent = drugName;
+							closeDropdown(drugTypeDropdownBtn, drugTypeDropdownContent);
+
+							drugAmountField.value = 0;
+						}
+					});
+
+					// التحكم في تهريب اللحوم
+					meatTypeDropdownBtn.addEventListener('click', function(event) {
+						event.stopPropagation();
+						toggleDropdown(this, meatTypeDropdownContent);
+					});
+
+					meatTypeDropdownContent.addEventListener('click', function(event) {
+						if (event.target.tagName === 'A') {
+							event.preventDefault();
+							selectedMeatType = event.target.dataset.meatType;
+							const meatName = event.target.textContent;
+
+							meatTypeDropdownBtn.querySelector('span').textContent = meatName;
+							closeDropdown(meatTypeDropdownBtn, meatTypeDropdownContent);
+
+							meatAmountField.value = 0;
+						}
+					});
+
+					// دالة الحساب الرئيسية
+					calculateSmugglingBtn.addEventListener('click', function() {
+						if (!currentSmugglingType) {
+							smugglingResultDisplay.innerHTML = `<p style="color:red;">يرجى اختيار نوع التهريب أولاً.</p>`;
+							return;
+						}
+
+						if (currentSmugglingType === 'drugs') {
+							const inputAmount = parseInt(drugAmountField.value);
+
+							if (isNaN(inputAmount) || inputAmount < 0) {
+								smugglingResultDisplay.innerHTML = `<p style="color:red;">يرجى إدخال قيمة صحيحة.</p>`;
+								return;
+							}
+
+							if (!selectedDrugType) {
+								smugglingResultDisplay.innerHTML = `<p style="color:red;">يرجى اختيار نوع المخدر أولاً.</p>`;
+								return;
+							}
+
+							// حساب المخدرات: 100 وحدة = 20 كيلو = 20 شدة
+							// كل 20 وحدة تنتج 5 شدات (أو كل 4 وحدات تنتج شدة واحدة)
+							const totalWeight = (inputAmount / 100) * 20; // الوزن الإجمالي
+							const totalBags = inputAmount * 0.2;							const drugInfo = drugData[selectedDrugType];
+							const totalMoney = totalBags * drugInfo.pricePerBag;
+							const totalExp = totalBags * drugInfo.expPerBag;
+
+							smugglingResultDisplay.innerHTML = `
+								<p>نوع المخدر: <strong>${drugInfo.name}</strong></p>
+								<p>عدد الوحدات: <strong>${inputAmount} وحدة</strong></p>
+								<p>الوزن الإجمالي: <strong>${totalWeight.toFixed(2)} كيلو</strong></p>
+								<p>عدد الشدات المنتجة: <strong>${totalBags} شدة</strong></p>
+								<p>إجمالي الأرباح: <strong>${totalMoney.toLocaleString()} غير شرعي</strong></p>
+								<p>إجمالي الخبرة: <strong>${totalExp} خبرة</strong></p>
+								<p style="color: #ffa502; font-size: 18px;">ملحوظة: الحد الادنى (50) شدة الحد الاقصى (100) شدة داخل الميناء</p>
+							`;
+						} else if (currentSmugglingType === 'meat') {
+							const inputAmount = parseInt(meatAmountField.value);
+
+							if (isNaN(inputAmount) || inputAmount < 0) {
+								smugglingResultDisplay.innerHTML = `<p style="color:red;">يرجى إدخال قيمة صحيحة.</p>`;
+								return;
+							}
+
+							if (!selectedMeatType) {
+								smugglingResultDisplay.innerHTML = `<p style="color:red;">يرجى اختيار نوع اللحم أولاً.</p>`;
+								return;
+							}
+
+							// حساب اللحوم: كل قطعة لحم = 1 كيلو
+							const totalWeight = inputAmount; // الوزن الإجمالي
+							const meatInfo = meatData[selectedMeatType];
+							const totalMoney = inputAmount * meatInfo.price;
+							const totalExp = inputAmount * 7;
+
+							smugglingResultDisplay.innerHTML = `
+								<p>نوع اللحم: <strong>${meatInfo.name}</strong></p>
+								<p>عدد القطع: <strong>${inputAmount} قطعة</strong></p>
+								<p>الوزن الإجمالي: <strong>${totalWeight} كيلو بداخل السيارة</strong></p>
+								<p>إجمالي الأرباح: <strong>${totalMoney.toLocaleString()} غير شرعي</strong></p>
+								<p>إجمالي الخبرة: <strong>${totalExp} خبرة</strong></p>
+								<p style="color: #ffa502; font-size: 18px;">ملحوظة: الحد الادنى (15) لحمة الحد الاقصى (100) لحمة داخل الميناء</p>
+							`;
+						}
+					});
+
+					// إغلاق جميع القوائم المنسدلة عند الضغط خارجها
+					window.addEventListener('click', function(event) {
+						const dropdowns = document.querySelectorAll('.dropdown-container');
+						dropdowns.forEach(function(container) {
+							const button = container.querySelector('.dropdown-button');
+							const content = container.querySelector('.dropdown-content');
+							if (button && content && !button.contains(event.target) && !content.contains(event.target)) {
+								closeDropdown(button, content);
+							}
+						});
+					});
+				});
+			</script>
+
 	</body>
 </html>
+
